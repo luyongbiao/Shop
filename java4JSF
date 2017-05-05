@@ -1,5 +1,5 @@
-
 //今天是2017/5/5测试Github---222
+//last time i want to delete this
 public class JosephuForArray{		
 	public static void main(String []args){
 		CycleLink cl=new CycleLink();
