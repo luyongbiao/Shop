@@ -29,17 +29,16 @@ public class AdminLoginServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		String name = req.getParameter("name");
 		String password = req.getParameter("password");
+		String name = req.getParameter("name");
 		Admin admin = new Admin();
 		admin.setAdminName(name);
 		admin.setAdminPassword(password);
 		boolean adminLogin = false;
 		if (name != null && !name.equals("")) {
 			adminLogin = new AdminService().login(admin);
-				HttpSession session = req.getSession();
-				session.setAttribute(admin.getAdminName(), admin);
+			HttpSession session = req.getSession();
+			session.setAttribute(admin.getAdminName(), admin);
 		}
 		if (adminLogin == true)
 			resp.sendRedirect("index.jsp");
@@ -52,20 +51,6 @@ public class AdminLoginServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		req.setCharacterEncoding("utf-8");
-		String name = req.getParameter("name");
-		String password = req.getParameter("password");
-		Admin admin = new Admin();
-		admin.setAdminName(name);
-		admin.setAdminPassword(password);
-		boolean adminLogin = false;
-		if (name != null && !name.equals("")) {
-			adminLogin = new AdminService().login(admin);
-		}
-		if (adminLogin == true)
-			resp.sendRedirect("index.jsp");
-		resp.sendRedirect("loginError.jsp");
 	}
 
 }

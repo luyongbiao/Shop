@@ -1,8 +1,8 @@
 package org.bqj.shopping.dao.impl;
 
 import org.bqj.shopping.entity.Customer;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.Before;
+import org.junit.Test;
 
 public class BaseDAOTest {
 	/*private CustomerDAOImpl customerDAOImpl;*/
@@ -15,7 +15,7 @@ public class BaseDAOTest {
 	/*private OrdersDAOImpl ordersDAOImpl;*/
 	/*private OrdersDetailDAOImpl ordersDetailDAOImpl;*/
 	 
-	@BeforeEach
+	@Before
 	public void startup() {
 		/*this.customerDAOImpl = new CustomerDAOImpl();*/
 		/*this.adminDAOImpl = new AdminDAOImpl();*/
@@ -181,21 +181,21 @@ public class BaseDAOTest {
 		/*
 		 *  //测试Custoemr
 		Customer c = new Customer();
-		c.setCustomerName("不少人");
-		c.setCustomerGendar("女");
+		c.setCustomerName("涓嶅皯浜�");
+		c.setCustomerGendar("濂�");
 		c.setCustomerPassword("13233211");
 		c.setCustomerAge(11);
 		c.setCustomerHomePhone("54354354354");
 		c.setCustoemrMobilePhone("dfdsllfsld");
-		c.setCustomerAddress("广东高州");
+		c.setCustomerAddress("骞夸笢楂樺窞");
 		c.setCvipid(1);
 		customerDAOImpl.save(c);*/
 		
 		/*
 		 *  //测试Admin
 		 * Admin admin = new Admin();
-		admin.setAdminName("管理员2");
-		admin.setAdminGendar("女");
+		admin.setAdminName("绠＄悊鍛�2");
+		admin.setAdminGendar("濂�");
 		admin.setAdminPassword("789987541415");
 		admin.setAdminMobilePhone("45783478");
 		this.adminDAOImpl.save(admin);*/
@@ -205,24 +205,24 @@ public class BaseDAOTest {
 		 *  //测试Cart
 		Cart c = new Cart();
 		c.setCartCreateTime(new Timestamp(System.currentTimeMillis()));
-		c.setCartStatus("是否");
+		c.setCartStatus("鏄惁");
 		c.setCustomerId(2);
 		this.cartDAOImpl.save(c);*/
 		
 		/*
 		 *  //测试Category
 		Category c = new Category();
-		c.setCategoryName("电子产品");
+		c.setCategoryName("鐢靛瓙浜у搧");
 		c.setCategoryLevel(1);
-		c.setCategoryDesc("用电的产品 抵抗力官方进口量的撒飞机哦诶哦日哦耳温计偶然看了未考虑加入刻录机");
+		c.setCategoryDesc("鐢ㄧ數鐨勪骇鍝� 鎶垫姉鍔涘畼鏂硅繘鍙ｉ噺鐨勬拻椋炴満鍝﹁鍝︽棩鍝﹁�虫俯璁″伓鐒剁湅浜嗘湭鑰冭檻鍔犲叆鍒诲綍鏈�");
 		this.categoryDAOImpl.save(c);*/
 		
 		/*
 		 *  //测试Goods
 		Goods g = new Goods();
-		g.setGoodsName("联系电脑");
+		g.setGoodsName("鑱旂郴鐢佃剳");
 		g.setGoodsPrice(4000.0);
-		g.setGoodsDesc("独立开发可怜人看见了考虑人口为哦日哦我");
+		g.setGoodsDesc("鐙珛寮�鍙戝彲鎬滀汉鐪嬭浜嗚�冭檻浜哄彛涓哄摝鏃ュ摝鎴�");
 		g.setGoodsStock(100);
 		g.setGoodsHits(new Long(0));
 		g.setGoodsSales(new Long(0));
@@ -248,7 +248,7 @@ public class BaseDAOTest {
 		/*	
 		 * //测试Orders
 		Orders o = new Orders();
-		o.setOrdersNote("圆通快递");
+		o.setOrdersNote("鍦嗛�氬揩閫�");
 		o.setOrdersPayTime(new Timestamp(System.currentTimeMillis()));
 		o.setOrdersCreateTime(new Timestamp(System.currentTimeMillis()));
 		o.setOrdersStatusId(1);
@@ -351,7 +351,7 @@ public class BaseDAOTest {
 		 *  //测试Custoemr
 		 * Customer c = new Customer();
 		c.setCustomerId(2);
-		c.setCustomerName("大人");
+		c.setCustomerName("澶т汉");
 		c.setCvipid(1);
 		customerDAOImpl.modify(c);*/
 		
@@ -359,7 +359,7 @@ public class BaseDAOTest {
 		 *  //测试Admin
 		 * Admin admin = new Admin();
 		admin.setAdminId(3);
-		admin.setAdminName("超级管理员");
+		admin.setAdminName("瓒呯骇绠＄悊鍛�");
 		admin.setAdminPassword("9879898");
 		this.adminDAOImpl.modify(admin);*/
 		
@@ -368,7 +368,7 @@ public class BaseDAOTest {
 		Cart c = new Cart();       
 		c.setCartCreateTime(new Timestamp(new Date().getTime()));
 		c.setCartId(2);
-		c.setCartStatus("是否");
+		c.setCartStatus("鏄惁");
 		c.setCustomerId(2);
 		this.cartDAOImpl.modify(c);*/
 		
@@ -377,7 +377,7 @@ public class BaseDAOTest {
 		 *  //测试Category
 		Category c = new Category();
 		c.setCategoryId(2);
-		c.setCategoryName("洗漱用品");
+		c.setCategoryName("娲楁急鐢ㄥ搧");
 		c.setCategoryLevel(3);
 		this.categoryDAOImpl.modify(c);*/
 		
@@ -385,11 +385,11 @@ public class BaseDAOTest {
 		 *  //测试Goods
 		Goods g = new Goods();
 		g.setGoodsId(4);
-		g.setGoodsName("手机");
+		g.setGoodsName("鎵嬫満");
 		g.setGoodsPrice(5000.0);
 		g.setGoodsHits(1L);
 		g.setGoodsShelfTime(new Timestamp(new Date().getTime()));
-		g.setGoodsDesc("的牢房里的");
+		g.setGoodsDesc("鐨勭墷鎴块噷鐨�");
 		this.goodsDAOImpl.modify(g);*/
 		
 		/*	
@@ -413,7 +413,7 @@ public class BaseDAOTest {
 		 * //测试Orders
 		Orders o = new Orders();
 		o.setOrdersId(1);
-		o.setOrdersNote("国通快递");
+		o.setOrdersNote("鍥介�氬揩閫�");
 		o.setOrdersPayTime(new Timestamp(System.currentTimeMillis()));
 		o.setOrdersCreateTime(new Timestamp(System.currentTimeMillis()));
 		o.setOrdersStatusId(2);

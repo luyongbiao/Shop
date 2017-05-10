@@ -104,7 +104,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 			
 		} catch (NoSuchMethodException e) {
 			e.printStackTrace();
-			
+
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		}
