@@ -7,7 +7,11 @@ public class Customer {
 
     private String customerPassword;
 
+<<<<<<< HEAD
+    private String customerGender;
+=======
     private String customerGendar;
+>>>>>>> origin/master
 
     private Integer customerAge;
 
@@ -43,12 +47,21 @@ public class Customer {
         this.customerPassword = customerPassword == null ? null : customerPassword.trim();
     }
 
+<<<<<<< HEAD
+    public String getCustomerGender() {
+        return customerGender;
+    }
+
+    public void setCustomerGender(String customerGender) {
+        this.customerGender = customerGender == null ? null : customerGender.trim();
+=======
     public String getCustomerGendar() {
         return customerGendar;
     }
 
     public void setCustomerGendar(String customerGendar) {
         this.customerGendar = customerGendar == null ? null : customerGendar.trim();
+>>>>>>> origin/master
     }
 
     public Integer getCustomerAge() {

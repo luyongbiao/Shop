@@ -7,7 +7,11 @@ public class Admin {
 
     private String adminPassword;
 
-    private String adminGendar;
+
+    private String adminGender;
+
+    
+
 
     private String adminMobilePhone;
 
@@ -35,12 +39,13 @@ public class Admin {
         this.adminPassword = adminPassword == null ? null : adminPassword.trim();
     }
 
-    public String getAdminGendar() {
-        return adminGendar;
+
+    public String getAdminGender() {
+        return adminGender;
     }
 
-    public void setAdminGendar(String adminGendar) {
-        this.adminGendar = adminGendar == null ? null : adminGendar.trim();
+    public void setAdminGender(String adminGender) {
+        this.adminGender = adminGender == null ? null : adminGender.trim();
     }
 
     public String getAdminMobilePhone() {
