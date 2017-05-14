@@ -2,7 +2,6 @@ package org.bqj.shopping.dao.impl;
 
 import java.util.List;
 
-import org.bqj.shopping.entity.Customer;
 import org.bqj.shopping.entity.Goods;
 import org.junit.Before;
 import org.junit.Test;

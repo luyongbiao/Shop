@@ -28,7 +28,6 @@ public class AdminService {
 	public void register(Admin admin) {
 		this.adminDAO.save(admin);
 	}
-<<<<<<< HEAD
 	
 	public void delete(Integer id) {
 		this.adminDAO.removeOne(id);
@@ -37,6 +36,4 @@ public class AdminService {
 	public void update(Admin admin) {
 		this.adminDAO.modify(admin);
 	}
-=======
->>>>>>> origin/master
 }
