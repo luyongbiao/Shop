@@ -1,92 +1,93 @@
 package org.bqj.shopping.dao.impl;
 
-import org.bqj.shopping.entity.Customer;
+import org.bqj.shopping.entity.*;
+
 import org.junit.Before;
 import org.junit.Test;
 
 public class BaseDAOTest {
-	/*private CustomerDAOImpl customerDAOImpl;*/
-	/*private AdminDAOImpl adminDAOImpl;*/
-	/*private CartDAOImpl cartDAOImpl;*/
-	/*private CategoryDAOImpl categoryDAOImpl;*/
-	/*private GoodsDAOImpl goodsDAOImpl;*/
-	/*private CartDetailDAOImpl cartDetailDAOImpl;*/
-	/*private GoodsCategoryDAOImpl goodsCategoryDAOImpl;*/
-	/*private OrdersDAOImpl ordersDAOImpl;*/
-	/*private OrdersDetailDAOImpl ordersDetailDAOImpl;*/
+	private CustomerDAOImpl customerDAOImpl;
+	private AdminDAOImpl adminDAOImpl;
+	private CartDAOImpl cartDAOImpl;
+	private CategoryDAOImpl categoryDAOImpl;
+	private GoodsDAOImpl goodsDAOImpl;
+	private CartDetailDAOImpl cartDetailDAOImpl;
+	private GoodsCategoryDAOImpl goodsCategoryDAOImpl;
+	private OrdersDAOImpl ordersDAOImpl;
+	private OrdersDetailDAOImpl ordersDetailDAOImpl;
 	 
 	@Before
 	public void startup() {
-		/*this.customerDAOImpl = new CustomerDAOImpl();*/
-		/*this.adminDAOImpl = new AdminDAOImpl();*/
-		/*this.cartDAOImpl = new CartDAOImpl();*/
-		/*this.categoryDAOImpl = new CategoryDAOImpl();*/
-		/*this.goodsDAOImpl = new GoodsDAOImpl();*/
-		/*this.cartDetailDAOImpl = new CartDetailDAOImpl();*/
-		/*this.goodsCategoryDAOImpl = new GoodsCategoryDAOImpl();*/
-		/*this.ordersDAOImpl = new OrdersDAOImpl();*/
-		/*this.ordersDetailDAOImpl = new OrdersDetailDAOImpl();*/
+		this.customerDAOImpl = new CustomerDAOImpl();
+		this.adminDAOImpl = new AdminDAOImpl();
+		this.cartDAOImpl = new CartDAOImpl();
+		this.categoryDAOImpl = new CategoryDAOImpl();
+		this.goodsDAOImpl = new GoodsDAOImpl();
+		this.cartDetailDAOImpl = new CartDetailDAOImpl();
+		this.goodsCategoryDAOImpl = new GoodsCategoryDAOImpl();
+		this.ordersDAOImpl = new OrdersDAOImpl();
+		this.ordersDetailDAOImpl = new OrdersDetailDAOImpl();
 	}
 
 	@Test
 	public void testLoadById() {
-		Customer customer = new CustomerDAOImpl().loadById(1);
-		System.out.println(customer.getCustomerName());
-		/*
-		 * // 测试Custoemr
+		//Customer customer = new CustomerDAOImpl().loadById(1);
+		//System.out.println(customer.getCustomerName());
+		
+		  // 测试Custoemr
 		Customer customer = customerDAOImpl.loadById(1);
-		System.out.println(customer.getCustomerName());*/
-		
-		/*
-		 *  //测试Admin
-		 * Admin admin = this.adminDAOImpl.loadById(1);
-		System.out.println(admin.getAdminName());*/
+		System.out.println(customer.getCustomerName());
 		
 		
-		/*
-		 *  //测试Cart
-		Cart cart = this.cartDAOImpl.loadById(2);
+		 //测试Admin
+		  Admin admin = this.adminDAOImpl.loadById(3);
+		System.out.println(admin.getAdminName());
+		
+		
+		
+		 //测试Cart
+		Cart cart = this.cartDAOImpl.loadById(1);
 		System.out.println(cart.getCustomerId());
-		*/
 		
-		/*
-		 *  //测试Category
-		Category c = this.categoryDAOImpl.loadById(1);
+		
+		
+		 //测试Category
+		Category c = this.categoryDAOImpl.loadById(4);
 		System.out.println(c.getCategoryName());
-		*/
 		
-		/*
-		 *  //测试Goods
-		Goods g = this.goodsDAOImpl.loadById(2);
+		
+		
+		  //测试Goods
+		Goods g = this.goodsDAOImpl.loadById(4);
 		System.out.println(g.getGoodsName());
 		System.out.println(g.getGoodsPrice());
 		System.out.println(g.getGoodsShelfTime());
-		*/
 		
-		/*	
-		 * //测试CartDetail
-		CartDetail c = this.cartDetailDAOImpl.loadById(1);
-		System.out.println(c.getCartId());
-		System.out.println(c.getGoodsId());*/
 		
-		/*	
-		 * //测试GoodsCategory
+			
+		  //测试CartDetail
+		CartDetail c1 = this.cartDetailDAOImpl.loadById(1);
+		System.out.println(c1.getCartId());
+		System.out.println(c1.getGoodsId());
+		
+			
+		 //测试GoodsCategory
 		GoodsCategory gc = this.goodsCategoryDAOImpl.loadById(1);
 		System.out.println(gc.getCategoryId());
-		System.out.println(gc.getGoodsId());*/
+		System.out.println(gc.getGoodsId());
 		
-		/*	
-		 * //测试Orders
-		Orders o = this.ordersDAOImpl.loadById(1);
+			
+		  //测试Orders
+		Orders o = this.ordersDAOImpl.loadById(4);
 		System.out.println(o.getCustomerId());
-		System.out.println(o.getOrdersCreateTime());*/
+		System.out.println(o.getOrdersCreateTime());
 		
-		/*	
-		 * //测试OrdersDetail
-		OrdersDetail od = this.ordersDetailDAOImpl.loadById(1);
+			
+		 //测试OrdersDetail
+		OrdersDetail od = this.ordersDetailDAOImpl.loadById(3);
 		System.out.println(od.getOrdersId());
 		System.out.println(od.getTotalPrice());
-		*/
+		
 	}
 
 	@Test

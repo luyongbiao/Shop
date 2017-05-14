@@ -54,7 +54,6 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 
 				e.printStackTrace();
 			}
-			
 			setMethods[i] = pd.getWriteMethod(); //得到set方法
 			getMethods[i] = pd.getReadMethod();
 			i++;
