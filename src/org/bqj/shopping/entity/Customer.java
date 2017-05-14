@@ -7,7 +7,7 @@ public class Customer {
 
     private String customerPassword;
 
-    private String customerGendar;
+    private String customerGender;
 
     private Integer customerAge;
 
@@ -43,12 +43,12 @@ public class Customer {
         this.customerPassword = customerPassword == null ? null : customerPassword.trim();
     }
 
-    public String getCustomerGendar() {
-        return customerGendar;
+    public String getCustomerGender() {
+        return customerGender;
     }
 
-    public void setCustomerGendar(String customerGendar) {
-        this.customerGendar = customerGendar == null ? null : customerGendar.trim();
+    public void setCustomerGender(String customerGender) {
+        this.customerGender = customerGender == null ? null : customerGender.trim();
     }
 
     public Integer getCustomerAge() {

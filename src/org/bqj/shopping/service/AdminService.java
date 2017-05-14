@@ -28,4 +28,12 @@ public class AdminService {
 	public void register(Admin admin) {
 		this.adminDAO.save(admin);
 	}
+	
+	public void delete(Integer id) {
+		this.adminDAO.removeOne(id);
+	}
+	
+	public void update(Admin admin) {
+		this.adminDAO.modify(admin);
+	}
 }

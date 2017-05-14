@@ -1,6 +1,9 @@
 package org.bqj.shopping.dao.impl;
 
+import java.util.List;
+
 import org.bqj.shopping.entity.Customer;
+import org.bqj.shopping.entity.Goods;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,10 +31,14 @@ public class BaseDAOTest {
 		/*this.ordersDetailDAOImpl = new OrdersDetailDAOImpl();*/
 	}
 
+	/**
+	 * 
+	 */
 	@Test
 	public void testLoadById() {
-		Customer customer = new CustomerDAOImpl().loadById(1);
-		System.out.println(customer.getCustomerName());
+		List<Goods> list = new GoodsDAOImpl().findByGoodsName("手");
+		for (Goods g : list)
+			System.out.println(g.getGoodsName());
 		/*
 		 * // 测试Custoemr
 		Customer customer = customerDAOImpl.loadById(1);

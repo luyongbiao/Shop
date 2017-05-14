@@ -25,7 +25,7 @@ ul {
 .top_menu {
     float: left;
     background-color: red;
-    margin-left:100px;
+    margin:0 100px;
 }
 
 .top_menu li{
@@ -62,7 +62,7 @@ ul {
 .logo_search {
   background-color:green;
   margin-left:100px;
-  margin-right:100px;
+  width:1166px;
   height:100px;
 }
 
@@ -114,7 +114,8 @@ ul {
 }
 
 .category_menu {
-  margin:0 200px;
+  margin-left:200px;
+  width:1166px;
   background-color:blue;
 }
 

@@ -22,18 +22,18 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	
 	private  String tableName;
 	private Class<T> tclass;
-	private Method[] setMethods; //得到泛型T中所有set方法
-	private Method[] getMethods; //得到泛型T中所有get方法
-	private String[] typeNames; //得到泛型T所有类型的SimpleName
-	private Field[] fields; //得到泛型T所有属性
+	private Method[] setMethods; 
+	private Method[] getMethods; 
+	private String[] typeNames; 
+	private Field[] fields; 
 	
 	public BaseDAOImpl() {
-		Class<?> clazz = this.getClass(); //得到当前类Class对象
-		Type gtype = clazz.getGenericSuperclass(); //得到参数化类型
+		Class<?> clazz = this.getClass(); 
+		Type gtype = clazz.getGenericSuperclass(); 
 		ParameterizedType ptype = (ParameterizedType)gtype;
 		@SuppressWarnings("unchecked")
 		Class<T> classType = (Class<T>) 
-							ptype.getActualTypeArguments()[0]; //得到实际参数类型
+							ptype.getActualTypeArguments()[0]; 
 		this.tclass = classType;
 		this.tableName = classType.getSimpleName().toLowerCase();
 
@@ -43,7 +43,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 		this.getMethods = new Method[fields.length];
 		int i = 0;
 		for(Field field: fields) {
-			Type type = field.getGenericType(); //得到所有属性的类型
+			Type type = field.getGenericType();
 			typeNames[i] = type.getTypeName()
 					.substring(type.getTypeName().lastIndexOf(".") + 1);
 			PropertyDescriptor pd = null;
@@ -55,7 +55,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 				e.printStackTrace();
 			}
 			
-			setMethods[i] = pd.getWriteMethod(); //得到set方法
+			setMethods[i] = pd.getWriteMethod();
 			getMethods[i] = pd.getReadMethod();
 			i++;
 		}
@@ -272,7 +272,6 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 		System.out.println(sql);
 		DB.close(stmt);
 		DB.close(conn);
-		
 	}
 
 	@Override
@@ -292,5 +291,58 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 		DB.close(pstmt);
 		DB.close(conn);
 		return count;
+	}
+
+	@Override
+	public List<T> find(int begin, int pageSize) {
+		String sql = "select * from " + this.tableName + 
+								" limit " + begin + "," + pageSize;
+		System.out.println(sql);
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		ResultSet rs = DB.executeQuery(stmt, sql);
+		List<T> list  = new ArrayList<>();
+		try {
+			while (rs.next()) {
+				T t = tclass.newInstance();
+				for(int i = 0; i < typeNames.length; i++) {
+					String methodName = "get" + typeNames[i].substring
+							(0,1).toUpperCase() + typeNames[i].substring(1);
+					Method method = null;
+					if (!typeNames[i].equals("Integer")) {
+						method = rs.getClass().getMethod(methodName, int.class);
+					} else {
+						method = rs.getClass().getMethod("getInt", int.class);
+					}
+					setMethods[i].invoke(t, method.invoke(rs, (i+1)));
+				}
+				list.add(t);
+			}
+		} catch (InstantiationException e) {
+			
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			
+			e.printStackTrace();
+		} catch (NoSuchMethodException e) {
+			
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			
+			e.printStackTrace();
+		} catch (SQLException e) {
+			
+			e.printStackTrace();
+		}
+		DB.close(rs);
+		DB.close(stmt);
+		DB.close(conn);
+		return list;
 	}
 }

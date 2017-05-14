@@ -18,4 +18,6 @@ public interface BaseDAO<T> {
 	public void modify(T t);
 	
 	public int findCount();
+	
+	public List<T> find(int begin, int pageSize);
 }
