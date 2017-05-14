@@ -1,14 +1,14 @@
 package org.bqj.shopping.dao.impl;
 
-<<<<<<< HEAD
+
 import org.bqj.shopping.entity.*;
 
-=======
+
 import java.util.List;
 
 import org.bqj.shopping.entity.Customer;
 import org.bqj.shopping.entity.Goods;
->>>>>>> branch 'master' of https://github.com/luyongbiao/Shop.git
+//>>>>>>> branch 'master' of https://github.com/luyongbiao/Shop.git
 import org.junit.Before;
 import org.junit.Test;
 
@@ -41,12 +41,12 @@ public class BaseDAOTest {
 	 */
 	@Test
 	public void testLoadById() {
-<<<<<<< HEAD
+//<<<<<<< HEAD
 		//Customer customer = new CustomerDAOImpl().loadById(1);
 		//System.out.println(customer.getCustomerName());
 		
 		  // 测试Custoemr
-=======
+//=======
 		List<Goods> list = new GoodsDAOImpl().findByGoodsName("手");
 		for (Goods g : list)
 			System.out.println(g.getGoodsName());
