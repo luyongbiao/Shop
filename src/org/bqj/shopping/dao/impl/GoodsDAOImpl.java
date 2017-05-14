@@ -1,5 +1,6 @@
 package org.bqj.shopping.dao.impl;
 
+<<<<<<< HEAD
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,11 +10,15 @@ import java.util.List;
 
 import org.bqj.shopping.dao.GoodsDAO;
 import org.bqj.shopping.db.DB;
+=======
+import org.bqj.shopping.dao.GoodsDAO;
+>>>>>>> origin/master
 import org.bqj.shopping.entity.Goods;
 
 public class GoodsDAOImpl extends BaseDAOImpl<Goods> 
 									implements GoodsDAO {
 
+<<<<<<< HEAD
 	@Override
 	public List<Goods> findByGoodsName(String goodsName) {
 		String sql = "select * from goods where goodsName like '%" + goodsName + "%'";
@@ -43,4 +48,6 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 		DB.close(conn);
 		return list;
 	}
+=======
+>>>>>>> origin/master
 }
