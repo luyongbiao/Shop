@@ -49,4 +49,25 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 		return list;
 	}
 
+	public List<Goods> findByCategoryId(int categoryId){
+		
+		String sql = "select goodsId from goodscategory where categoryId="+categoryId;
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		ResultSet rs = DB.executeQuery(stmt, sql);
+		List<Goods> list = new ArrayList<>();
+		try {
+			while(rs.next()){
+				Goods goods = null;
+				int goodsId = rs.getInt(1);
+				goods = this.loadById(goodsId);
+				list.add(goods);		
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return list;
+	}
 }

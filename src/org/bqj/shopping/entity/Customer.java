@@ -6,9 +6,8 @@ public class Customer {
     private String customerName;
 
     private String customerPassword;
+    
     private String customerGender;
-
-
 
     private Integer customerAge;
 

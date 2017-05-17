@@ -7,11 +7,7 @@ public class Admin {
 
     private String adminPassword;
 
-
     private String adminGender;
-
-    
-
 
     private String adminMobilePhone;
 

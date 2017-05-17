@@ -47,9 +47,10 @@ public class BaseDAOTest {
 		
 		  // 测试Custoemr
 //=======
-		List<Goods> list = new GoodsDAOImpl().findByGoodsName("手");
-		for (Goods g : list)
-			System.out.println(g.getGoodsName());
+//		List<Goods> list = new GoodsDAOImpl().findByGoodsName("手");
+//		for (Goods g : list)
+//			System.out.println(g.getGoodsName());
+
 		/*
 		 * // 测试Custoemr
 >>>>>>> branch 'master' of https://github.com/luyongbiao/Shop.git
@@ -110,14 +111,13 @@ public class BaseDAOTest {
 
 	@Test
 	public void testFindAll() {
-		/*
-		 * //测试Custoemr
+		/测试Custoemr
 		List<Customer> list = customerDAOImpl.findAll();
 		System.out.println(list.size());
 		for (Customer c : list) {
 			System.out.println(c.getCustomerName());
 			System.out.println(c.getCustomerGendar()); 
-		}*/
+		}
 		
 		/*
 		 *  //测试Admin
@@ -194,7 +194,16 @@ public class BaseDAOTest {
 		}
 		*/
 	}
-
+	@Test
+	public void testFindAll() {
+		//测试Custoemr
+		List<Customer> list = customerDAOImpl.findAll();
+		System.out.println(list.size());
+		for (Customer c : list) {
+			System.out.println(c.getCustomerName()+"aaa");
+			System.out.println(c.getCustomerAge());
+		}
+	}
 	@Test
 	public void testSave() {
 		/*
