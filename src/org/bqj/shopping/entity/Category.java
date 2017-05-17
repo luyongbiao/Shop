@@ -4,9 +4,7 @@ public class Category {
     private Integer categoryId;
 
     private String categoryName;
-
-    private Integer categoryLevel;
-
+    
     private String categoryDesc;
 
     public Integer getCategoryId() {
@@ -23,14 +21,6 @@ public class Category {
 
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName == null ? null : categoryName.trim();
-    }
-
-    public Integer getCategoryLevel() {
-        return categoryLevel;
-    }
-
-    public void setCategoryLevel(Integer categoryLevel) {
-        this.categoryLevel = categoryLevel;
     }
 
     public String getCategoryDesc() {

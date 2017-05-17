@@ -35,10 +35,36 @@ public class BaseDAOTest {
 	 */
 	@Test
 	public void testLoadById() {
-		List<Goods> list = new GoodsDAOImpl().findByGoodsName("手");
-		for (Goods g : list)
-			System.out.println(g.getGoodsName());
+		Runnable thread1 = new Runnable() {
+			public void run() {
+				List<Goods> list = new GoodsDAOImpl().findByGoodsName("手");
+				for (Goods g : list)
+					System.out.println(g.getGoodsName());
+			}
+		};
+		
+		Runnable thread2 = new Runnable() {
+			public void run() {
+				List<Goods> list2 = new GoodsDAOImpl().findByGoodsName("机");
+				for (Goods g : list2)
+					System.out.println(g.getGoodsName());
+			}
+		};
+		
+		Thread[] threads1 = new Thread[3];
+		Thread[] threads2 = new Thread[3];
+		
+		for (int i = 0; i <3; i++) {
+			threads1[i] = new Thread(thread1);
+			threads2[i] =  new Thread(thread2);
+		}
+		
+		for (int i = 0; i < 3; i++) {
+			threads1[i].start();
+			threads2[i].start();
+		}
 		/*
+		 * 
 		 * // 测试Custoemr
 		Customer customer = customerDAOImpl.loadById(1);
 		System.out.println(customer.getCustomerName());*/

@@ -8,15 +8,21 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DB {
+	private static ThreadLocal<Connection> threadLocal = new ThreadLocal<>();
+	private static Connection conn;
 	
 	public static Connection getConn() {
-		Connection conn = null;
+		if (threadLocal.get() != null) {
+			return threadLocal.get();
+		}
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/shopping";
 			String username = "root";
 			String password = "root";
 			conn = DriverManager.getConnection(url, username, password);
+			conn.setAutoCommit(false);
+			threadLocal.set(conn);
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
@@ -112,6 +118,7 @@ public class DB {
 		if (conn != null) {
 			try {
 				conn.close();
+				threadLocal.set(null);
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}

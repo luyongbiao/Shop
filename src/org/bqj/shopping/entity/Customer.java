@@ -16,9 +16,7 @@ public class Customer {
     private String custoemrMobilePhone;
 
     private String customerHomePhone;
-
-    private Integer vipId;
-
+    
     public Integer getCustomerId() {
         return customerId;
     }
@@ -81,13 +79,5 @@ public class Customer {
 
     public void setCustomerHomePhone(String customerHomePhone) {
         this.customerHomePhone = customerHomePhone == null ? null : customerHomePhone.trim();
-    }
-
-    public Integer getVipId() {
-        return vipId;
-    }
-
-    public void setVipId(Integer vipId) {
-        this.vipId = vipId;
     }
 }
