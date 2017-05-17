@@ -1,5 +1,6 @@
 package org.bqj.shopping.servlet;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
@@ -11,6 +12,8 @@ import javax.servlet.http.HttpSession;
 
 import org.bqj.shopping.entity.Admin;
 import org.bqj.shopping.service.AdminService;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 @WebServlet("/adminServlet")
 public class AdminServlet extends HttpServlet {
@@ -30,59 +33,105 @@ public class AdminServlet extends HttpServlet {
 	 */
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String op = request.getParameter("op");
+		doPost(request, response);
+	}
+	
+	/**
+	 * @see HttpServlet#doPost(HttpServletrequest request, HttpServletresponseonse responseonse)
+	 */
+	@Override
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		response.setContentType("text/html; charset=utf-8");
+		response.setCharacterEncoding("utf-8");
+		
+		String json = readJSONString(request);
+		JSONObject jsonObject = null;
+		
+		String op = "";
+			try {
+				jsonObject = new JSONObject(json);
+				op = jsonObject.getString("op");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		
 		if (op.equals("login")) {
-			String adminPassword = request.getParameter("adminPassword");
-			String adminName = request.getParameter("adminName");
+			String adminPassword = "";
+			String adminName = "";
+			
+			try {
+				adminPassword = jsonObject.getString("adminPassword");
+				adminName = jsonObject.getString("adminName");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 			Admin admin = new Admin();
 			admin.setAdminName(adminName);
 			admin.setAdminPassword(adminPassword);
+			
 			boolean adminLogin = false;
+
 			if (adminName != null && !adminName.equals("")) {
-				adminLogin = this.adminService.login(admin);
-				HttpSession session = request.getSession();
-				session.setAttribute(admin.getAdminName(), admin);
+				if (adminPassword != null && !adminPassword.equals("")) {
+					adminLogin = this.adminService.login(admin);
+					HttpSession session = request.getSession();
+					session.setAttribute(admin.getAdminName(), admin);
+				}
 			}
 			if (adminLogin == true)
-				response.sendRedirect("index.jsp");
+				response.getWriter().print("index.jsp");
 			else
-				response.sendRedirect("loginError.jsp");
+				response.getWriter().print("error");
+			
 		} else if (op.equals("register")) {
 			String adminName = request.getParameter("adminName");
 			String adminPassword = request.getParameter("adminPassword");
 			String adminGender = request.getParameter("adminGender");
 			String adminMobilePhone = request.getParameter("adminMobilePhone");
+			
 			Admin admin = new Admin();
 			admin.setAdminName(adminName);
 			admin.setAdminPassword(adminPassword);
 			admin.setAdminGender(adminGender);
 			admin.setAdminMobilePhone(adminMobilePhone);
+			
 			this.adminService.register(admin);
+			
 		} else if (op.equals("delete")) {
 			int id = 0;
 			String adminId = request.getParameter("adminId");
 			if (adminId != null && !adminId.equals(""))
 				id = Integer.parseInt(adminId);
+			
 			this.adminService.delete(id);
+			
 		} else if (op.equals("update")) {
 			int id = 0;
 			String adminId = request.getParameter("adminId");
 			if (adminId != null && !adminId.equals(""))
 				id = Integer.parseInt(adminId);
+			
 			String adminName = request.getParameter("adminName");
 			String adminPassword = request.getParameter("adminPassword");
 			String adminGender = request.getParameter("adminGender");
 			String adminMobilePhone = request.getParameter("adminMobilePhone");
+			
 			Admin admin = new Admin();
 			admin.setAdminId(id);
 			admin.setAdminName(adminName);
 			admin.setAdminPassword(adminPassword);
 			admin.setAdminGender(adminGender);
 			admin.setAdminMobilePhone(adminMobilePhone);
+			
 			this.adminService.update(admin);
+			
 		}
 	}
 	
+<<<<<<< HEAD
 	/**
 	 * @see HttpServlet#doPost(HttpServletrequest request, HttpServletresponseonse responseonse)
 	 */
@@ -91,4 +140,19 @@ public class AdminServlet extends HttpServlet {
 	
 	}
 
+=======
+	public String readJSONString(HttpServletRequest request) {
+		StringBuffer json = new StringBuffer();
+		String line = null;
+		try {
+			BufferedReader reader = request.getReader();
+			while ((line = reader.readLine()) != null) {
+				json.append(line);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return json.toString();
+	} 
+>>>>>>> remotes/origin/branch1
 }

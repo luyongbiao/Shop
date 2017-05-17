@@ -6,7 +6,11 @@ public class Customer {
     private String customerName;
 
     private String customerPassword;
+<<<<<<< HEAD
     
+=======
+
+>>>>>>> remotes/origin/branch1
     private String customerGender;
 
     private Integer customerAge;
@@ -16,9 +20,7 @@ public class Customer {
     private String custoemrMobilePhone;
 
     private String customerHomePhone;
-
-    private Integer vipId;
-
+    
     public Integer getCustomerId() {
         return customerId;
     }
@@ -42,7 +44,10 @@ public class Customer {
     public void setCustomerPassword(String customerPassword) {
         this.customerPassword = customerPassword == null ? null : customerPassword.trim();
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> remotes/origin/branch1
 
     public String getCustomerGender() {
         return customerGender;
@@ -82,13 +87,5 @@ public class Customer {
 
     public void setCustomerHomePhone(String customerHomePhone) {
         this.customerHomePhone = customerHomePhone == null ? null : customerHomePhone.trim();
-    }
-
-    public Integer getVipId() {
-        return vipId;
-    }
-
-    public void setVipId(Integer vipId) {
-        this.vipId = vipId;
     }
 }

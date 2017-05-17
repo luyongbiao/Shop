@@ -17,9 +17,15 @@ public interface BaseDAO<T> {
 	
 	public void modify(T t);
 	
+<<<<<<< HEAD
 	public int findCount();
 
 	
 	public List<T> find(int begin, int pageSize);
 
+=======
+	public int findCount();
+	
+	public List<T> find(int begin, int pageSize);
+>>>>>>> remotes/origin/branch1
 }
