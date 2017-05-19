@@ -1,0 +1,199 @@
+* {
+    margin:0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+body {
+    background:#f6f9fb;
+}
+
+.register_head {
+    height:80px;
+    margin-bottom: 10px;
+}
+
+.w,.head_hr {
+    width:1000px;
+    margin:0 auto;
+    position: relative;
+    height: 100%;
+}
+
+.head_logo {
+    float:left;
+    width:200px;
+}
+
+.head_logo img {
+    height:80px;
+}
+
+.head_hr {
+    height: 3px;
+    background: #C0A78C;
+}
+
+.head_login {
+    float:right;
+    width:200px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+/* .head_login span, .head_login a {
+    vertical-align:middle;
+} */
+
+.head_login a{
+    color:#C0A78C;
+}
+
+.form_header a:last-child {
+    float: right;
+    color:#646464;
+}
+
+.head_login a:hover, .form_header a:hover {
+    color:red;
+}
+
+.register_form{
+    margin-top:20px;
+    height:700px;
+}
+
+.shadow {
+    background-color: #ebeeef;
+    width:950px;
+    height: 100%;
+}
+
+.form_content {
+    width: 950px;
+    height: 700px;
+    background-color: #fff;
+    position:absolute;
+    margin-top:-700px;
+    margin-left:10px;
+    padding:0 20px;
+    border:1px solid #ddd;
+}
+
+.form_header {
+    margin-top:20px;
+    height: 50px;
+    border-bottom: 1px solid #ddd;
+}
+
+.form_header a:not(:last-child) {
+    display: block;
+    float: left;
+    color:#646464;
+}
+.kong {
+	color:red;
+	font-size:15px;
+	display:none;
+	/* display:table-cell; */
+}
+
+.customer_login , .admin_login {
+    display:inline-block;
+    width:150px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 18px;
+    border: 1px solid #ddd;
+    border-bottom:none;
+    left:20px;
+    top:9px;
+    position: relative;
+    margin-left: 10px;
+    background-color: #f5f5f5;
+    cursor:pointer;
+}
+
+.customer_login {
+    border-bottom: 1px solid #fff;
+     background-color: #fff;
+}
+
+.customer_content {
+    height: 380px;
+    padding-top:50px;
+    
+}
+
+.customer_content table, .admin_content table{
+    width: 540px;
+    margin: 0 auto;
+}
+
+.customer_content table .t,.admin_content table .t {
+    width:35%;
+    text-align: right;
+    padding-right: 20px;
+    color:#646464;
+}
+
+.customer_content table input:not([type=submit]):not([type=radio]), .admin_content table input:not([type=submit]):not([type=radio]){
+    width:200px;
+    height: 18px;
+    border-radius: 2px;
+    color: #333;
+    padding:5px 8px;
+    font-family: 'Microsoft YaHei';
+    outline: 0 none;
+    font-size: 15px;
+    line-height: 18px;
+    border:1px solid #e6e6e6;
+}
+
+.customer_content table tr, .admin_content table tr {
+    color:#646464;
+    height: 60px;
+}
+
+.customer_content table td[colspan='2'], .admin_content table td[colspan='2'] {
+    text-align: center;
+}
+
+.customer_content input[type=submit],  .admin_content input[type=submit]{
+    border:none;
+    width:120px;
+    height: 40px;
+    background-color:rgba(192, 167, 134, 0.8);
+    border-radius: 5px;
+    font-size:18px;
+    line-height: 40px;
+    font-weight: 700;
+    color: #646464;
+    cursor: pointer;
+    letter-spacing: 5px;
+}
+
+.customer_content input[type=submit]:hover,  .admin_content input[type=submit]:hover{
+    text-decoration: none;
+    background-color: #C0A78C; 
+    color:#333;
+}
+
+.admin_content {
+    display: none;
+    padding-top:50px;
+}
+
+input[type=radio] {
+    width:50px;
+    height:15px;
+}
+

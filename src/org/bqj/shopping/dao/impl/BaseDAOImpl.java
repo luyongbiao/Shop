@@ -20,7 +20,7 @@ import org.bqj.shopping.db.DB;
 
 public class BaseDAOImpl<T> implements BaseDAO<T> {
 	
-	private  String tableName;
+	private String tableName;
 	private Class<T> tclass;
 	private Method[] setMethods; 
 	private Method[] getMethods; 

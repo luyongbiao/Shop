@@ -6,11 +6,6 @@ public class Customer {
     private String customerName;
 
     private String customerPassword;
-<<<<<<< HEAD
-    
-=======
-
->>>>>>> remotes/origin/branch1
     private String customerGender;
 
     private Integer customerAge;
@@ -44,11 +39,6 @@ public class Customer {
     public void setCustomerPassword(String customerPassword) {
         this.customerPassword = customerPassword == null ? null : customerPassword.trim();
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> remotes/origin/branch1
-
     public String getCustomerGender() {
         return customerGender;
     }

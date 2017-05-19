@@ -24,4 +24,8 @@ public class CustomerService {
 		return false;
 	}
 	
+	public void register(Customer customer) {
+		this.custoemrDAO.save(customer);
+	}
+	
 }

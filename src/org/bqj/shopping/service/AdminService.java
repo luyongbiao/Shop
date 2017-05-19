@@ -12,8 +12,6 @@ public class AdminService {
 	public AdminService() {
 		this.adminDAO = new AdminDAOImpl();
 	}
-	
-	
 	public boolean login(Admin admin) {
 		List<Admin> admins = this.adminDAO.findAll();
 		for (Admin a : admins) {

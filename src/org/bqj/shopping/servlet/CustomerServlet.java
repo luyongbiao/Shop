@@ -80,6 +80,35 @@ public class CustomerServlet extends HttpServlet {
 			else
 				response.getWriter().print("error");
 		}
+		
+		if (op.equals("register")) {
+			String customerName = "";
+			String customerPassword = "";
+//			boolean customerRegister = false;
+			try {
+				customerName = jsonObject.getString("customerName");
+				customerPassword = jsonObject.getString("customerPassword");
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			Customer customer = new Customer();
+			customer.setCustomerName(customerName);
+			customer.setCustomerPassword(customerPassword);
+			this.customerService.register(customer);
+			
+			if (true)
+				response.getWriter().print("index.html");
+//			else
+//				response.getWriter().print("error");
+			
+			
+			
+			
+			
+			
+			
+			
+		}
 	}
 	
 	public String readJSONString(HttpServletRequest request) {

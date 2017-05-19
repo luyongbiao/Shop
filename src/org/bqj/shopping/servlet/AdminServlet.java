@@ -113,34 +113,19 @@ public class AdminServlet extends HttpServlet {
 			String adminId = request.getParameter("adminId");
 			if (adminId != null && !adminId.equals(""))
 				id = Integer.parseInt(adminId);
-			
 			String adminName = request.getParameter("adminName");
 			String adminPassword = request.getParameter("adminPassword");
 			String adminGender = request.getParameter("adminGender");
 			String adminMobilePhone = request.getParameter("adminMobilePhone");
-			
 			Admin admin = new Admin();
 			admin.setAdminId(id);
 			admin.setAdminName(adminName);
 			admin.setAdminPassword(adminPassword);
 			admin.setAdminGender(adminGender);
 			admin.setAdminMobilePhone(adminMobilePhone);
-			
 			this.adminService.update(admin);
-			
 		}
 	}
-	
-<<<<<<< HEAD
-	/**
-	 * @see HttpServlet#doPost(HttpServletrequest request, HttpServletresponseonse responseonse)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
-
-=======
 	public String readJSONString(HttpServletRequest request) {
 		StringBuffer json = new StringBuffer();
 		String line = null;
@@ -154,5 +139,4 @@ public class AdminServlet extends HttpServlet {
 		}
 		return json.toString();
 	} 
->>>>>>> remotes/origin/branch1
 }
