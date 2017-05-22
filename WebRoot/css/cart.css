@@ -247,14 +247,14 @@ goods_count {
 .goods_count span:first-child {
     margin-left: 30px;
     border:1px solid #ddd;
-    background-image: url('count.jpg');
+    background-image: url('../image/count.jpg');
     background-size: cover;
     cursor:pointer;
 }
 
 .goods_count span:last-child {
     border:1px solid #ddd;
-    background-image: url('increase.jpg');
+    background-image: url('../image/increase.jpg');
      background-size: cover;
     cursor:pointer;
 }

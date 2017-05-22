@@ -218,7 +218,7 @@ ul {
   background-color: #e9e9e9;
   font: 12px/1.5 "Microsoft Yahei",tahoma,arial;
   padding:5px;
-  background-image: url("price.png");
+  background-image: url("../image/price.png");
   background-repeat: no-repeat;
 }
 
@@ -266,12 +266,12 @@ ul {
 .goods_count span:first-child {
      margin-left: 30px;
     border:1px solid #ddd;
-    background-image: url('increase.jpg');
+    background-image: url('../image/increase.jpg');
 }
 
 .goods_count span:last-child {
     border:1px solid #ddd;
-    background-image: url('count.jpg');
+    background-image: url('../image/count.jpg');
 }
 
 .goods_count span:not(.count_img) {
