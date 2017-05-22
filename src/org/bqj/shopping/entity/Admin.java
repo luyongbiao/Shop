@@ -7,11 +7,7 @@ public class Admin {
 
     private String adminPassword;
 
-<<<<<<< HEAD
     private String adminGender;
-=======
-    private String adminGender;
->>>>>>> remotes/origin/branch1
 
     private String adminMobilePhone;
 
@@ -38,10 +34,6 @@ public class Admin {
     public void setAdminPassword(String adminPassword) {
         this.adminPassword = adminPassword == null ? null : adminPassword.trim();
     }
-<<<<<<< HEAD
-
-=======
->>>>>>> remotes/origin/branch1
 
     public String getAdminGender() {
         return adminGender;

@@ -1,0 +1,436 @@
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  cursor:pointer;
+}
+
+ul {
+    list-style: none;
+}
+
+.detail_top {
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #eee;
+}
+
+.top_content {
+    width:1190px;
+    margin:0 auto;
+    height:30px;
+    position:relative;
+}
+
+.top_menu {
+    float:left;
+    width:210px;
+}
+
+.top_menu li{
+    float:left;
+    margin-right:20px;
+    line-height: 29px;
+}
+
+.top_menu a {
+    color: #6C6C6C;
+    font-size:13px;
+}
+
+.detail_top a:hover {
+    color:#ff2832;
+}
+
+.top_phone {
+    float:right;
+    line-height: 29px;
+}
+
+.top_phone span:not(:first-child) {
+    margin-left:10px;
+}
+
+.top_phone a {
+    color: #6C6C6C;
+    font-size:13px;
+}
+
+.logo_search {
+    width:1190px;
+    margin:0 auto;
+    position: relative;
+    height:100px;
+}
+
+.logo {
+  float:left;
+  width: 270px;
+}
+
+.logo img{
+    margin-top:25px;
+    margin-left:50px;
+    width:162px;
+    height:70px;
+}
+
+.carts_title {
+  float:right;
+  height:100%;
+  width:200px;
+}
+
+.carts_title span{
+  display: block;
+  width:100%;
+  height:100%;
+  line-height: 150px;
+  font-size:20px;
+}
+
+.detail_hr {
+  margin:0 auto;
+  position: relative;
+  border: 2px solid #C0A78C;
+}
+
+.address_page {
+    margin-top: 10px;
+    height: 160px;
+}
+
+.w {
+    width:1190px;
+    height: 100%;
+    margin:0 auto;
+    position: relative;
+}
+
+.address_man {
+    float: left;
+}
+
+.address_man span, .comfirm_orders span {
+    font-weight: 700;
+    font-size:16px;
+    colior:#333;
+    line-height: 25px;
+    margin-left: 8px;
+}
+
+.address_page .address_content {
+    float: right;
+    width:400px;
+    height: 120px;
+    padding:5px;
+    border:1px solid #ddd;
+    margin-top:20px;
+}
+
+.address_content .address_title {
+    height: 30px;
+    font-size: 15px;
+    line-height: 18px;
+    color:#666;
+}
+
+.address_title span:first-child {
+    float:left;
+    display: inline-block;
+    width:200px;
+    overflow: hidden;
+}
+
+.address_title span:last-child {
+    float:right;
+    display: inline-block;
+    width:200px;
+    overflow: hidden;
+}
+
+.address_detail {
+    height:70px;
+    line-height: 30px;
+    color:#666;
+}
+
+.address_detail span:last-child {
+    float:right;
+    margin-right: 20px;
+}
+
+.address_update a{
+    color:#C0A78C;
+    margin-left: 10px;
+}
+
+.address_update a:hover{
+    color:red;
+}
+
+.cart_title {
+  float:left;
+  height:100%;
+  width:150px;
+}
+
+.cart_title span{
+  display: block;
+  width:100%;
+  height:100%;
+  line-height: 150px;
+  font-size:30px;
+}
+
+.search_content {
+    float: right;
+    height:100%;
+}
+
+.search {
+  margin:55.5px auto;
+  border:2px solid #C0A78C;
+}
+
+.search span{
+  display: inline-block;
+  border:none;
+}
+
+.search input[type=text] {
+  width:400px;
+  height:27px;
+  font-size: 15px;
+  border:none;
+  padding-left:10px;
+  outline:0;
+}
+
+.search_btn {
+  display: inline-block;
+  background-color: #C0A78C;
+  line-height:35px;
+  font-size: 18px;
+  height:35px;
+  width:100px;
+  text-align: center;
+  border-left:2px solid #C0A78C;
+  font-weight:700;
+  font-family:tahoma,arial,'Hiragino Sans GB','\5b8b\4f53',sans-serif;
+  color:#fff;
+}
+
+.detail_hr {
+  margin:0 auto;
+  position: relative;
+  border: 2px solid #C0A78C;
+}
+
+.cart_page {
+  margin-top: 12px;
+}
+
+.w {
+  width:1050px;
+  margin: 0 auto;
+  position: relative;
+  height: 100%;
+}
+
+.cart_header,.goodsItem {
+  height:30px;
+  background-color: #f5f5f5;
+  border:1px solid #eee;
+  line-height:30px;
+  padding-left: 20px;
+}
+
+.goodsItem {
+  background-color: #fff;
+  height:85px;
+  border-top: none;
+}
+
+.cart_header li,.goodsItem li {
+  float:left;
+  width:170px;
+}
+
+.cart_header li[class=product],.goodsItem li[class=product] {
+  width:500px;
+}
+
+.cart_header li:not(:first-child):not([class=product]),.goodsItem li:not(:first-child):not([class=product]) {
+  text-align: center;
+  width:160px;
+}
+
+.goodsDetail {
+  margin-top:5px;
+  height:80px;
+ 
+}
+
+.goodsImage {
+  float:left;
+   width:120px;
+}
+
+.goodsDetail .goodsImage img {
+  width:100px;
+  margin-top:5px;
+}
+
+.goodsName {
+  float:left;
+  width:350px;
+  height:80px;
+}
+
+.goodsName .goodsTitle {
+  height:30px;
+  line-height: 29px;
+  font-size: 13px;
+  color:#333;
+}
+
+.goodsName .goodsDesc {
+    font-size: 14px;
+  color:#C0A78C;
+}
+
+.goodsItem li:not([class=product]):not(:first-child) {
+  text-align: center;
+  line-height: 80px;
+}
+
+.goods_count {
+  height:100px;
+  line-height:80px;
+  text-indent: 20px;
+  text-align: center;
+}
+
+
+.goods_count span:not(.count_img) {
+    float:left;
+    display: inline-block;
+    width:40px;
+    height: 30px;
+}
+
+.goods_count span input{
+    float:left;
+    text-align: center;
+    width:40px;
+    height: 20px;
+    border:1px solid #ddd;
+    outline:0;
+    font-size: 15px;
+}
+
+.orders_id {
+    height: 80px;
+}
+
+.orders_id .orders_address {
+    float: right;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.orders_id span{
+    font-size: 14px;
+    color:#666;
+}
+
+.orders_address span{
+    margin-left: 20px;
+}
+
+.orders_phone {
+    float:right;
+     font-size: 14px;
+     font-weight: 700;
+     margin-top:10px;
+}
+
+.pay_page ul {
+    float: right;
+}
+
+.orders_id {
+    height: 80px;
+}
+
+.orders_id .orders_address {
+    float: right;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.orders_id span{
+    font-size: 14px;
+    color:#666;
+}
+
+.orders_address span{
+    margin-left: 20px;
+}
+
+.orders_phone {
+    float:right;
+     font-size: 14px;
+     font-weight: 700;
+     margin-top:10px;
+}
+
+.pay_page {
+  height: 60px;
+  width:100%;
+}
+
+.pay_page .w{
+  border:1px solid #f0f0f0;
+  background-color: #fff;
+}
+
+.pay_content {
+  height:40px;
+  margin:5px;
+  line-height:40px;
+  padding-left: 20px;
+}
+
+.pay_content li {
+  float:left;
+  width:160px;
+}
+
+.pay_content li {
+  font-size: 13px
+}
+
+.pay_content .count span,.pay_content .count em{
+  color:red;
+  font-size: 20px;
+}
+
+.pay_content .count em{
+  margin:0 10px;
+}
+
+.pay_content .count {
+  padidng-left:20px;
+}
+
+.amount span {
+  color:red;
+}

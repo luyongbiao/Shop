@@ -42,14 +42,13 @@ public class GoodsServlet extends HttpServlet {
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setCharacterEncoding("utf-8");
 		
-		int categoryId = Integer.parseInt(request.getParameter("categoryId")); //取得商品分类的id
-		
+		String searchName = request.getParameter("searchName");
+		//System.out.println(searchName);
 		GoodsService goodsService = new GoodsService();
-		List<Goods> goods = goodsService.findByCategoryIdResult(categoryId);
-		HttpSession session = request.getSession();
-		session.setAttribute("goods", goods);
+		List<Goods> goods = new ArrayList<>();
+		goods = goodsService.findGoodsByNameResult(searchName);
+		request.setAttribute("goods", goods);
 		getServletContext().getRequestDispatcher("/goods.jsp").forward(request, response);
-		
 	}
 
 	/**

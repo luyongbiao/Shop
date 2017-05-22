@@ -131,16 +131,7 @@ public class AdminServlet extends HttpServlet {
 		}
 	}
 	
-<<<<<<< HEAD
-	/**
-	 * @see HttpServlet#doPost(HttpServletrequest request, HttpServletresponseonse responseonse)
-	 */
-	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
-	}
 
-=======
 	public String readJSONString(HttpServletRequest request) {
 		StringBuffer json = new StringBuffer();
 		String line = null;
@@ -154,5 +145,5 @@ public class AdminServlet extends HttpServlet {
 		}
 		return json.toString();
 	} 
->>>>>>> remotes/origin/branch1
+
 }

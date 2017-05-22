@@ -1,38 +1,33 @@
 package org.bqj.shopping.dao.impl;
 
-
-import org.bqj.shopping.entity.*;
-
-
 import java.util.List;
 
 import org.bqj.shopping.entity.Goods;
-//>>>>>>> branch 'master' of https://github.com/luyongbiao/Shop.git
 import org.junit.Before;
 import org.junit.Test;
 
 public class BaseDAOTest {
-	private CustomerDAOImpl customerDAOImpl;
-	private AdminDAOImpl adminDAOImpl;
-	private CartDAOImpl cartDAOImpl;
-	private CategoryDAOImpl categoryDAOImpl;
-	private GoodsDAOImpl goodsDAOImpl;
-	private CartDetailDAOImpl cartDetailDAOImpl;
-	private GoodsCategoryDAOImpl goodsCategoryDAOImpl;
-	private OrdersDAOImpl ordersDAOImpl;
-	private OrdersDetailDAOImpl ordersDetailDAOImpl;
+	/*private CustomerDAOImpl customerDAOImpl;*/
+	/*private AdminDAOImpl adminDAOImpl;*/
+	/*private CartDAOImpl cartDAOImpl;*/
+	/*private CategoryDAOImpl categoryDAOImpl;*/
+	/*private GoodsDAOImpl goodsDAOImpl;*/
+	/*private CartDetailDAOImpl cartDetailDAOImpl;*/
+	/*private GoodsCategoryDAOImpl goodsCategoryDAOImpl;*/
+	/*private OrdersDAOImpl ordersDAOImpl;*/
+	/*private OrdersDetailDAOImpl ordersDetailDAOImpl;*/
 	 
 	@Before
 	public void startup() {
-		this.customerDAOImpl = new CustomerDAOImpl();
-		this.adminDAOImpl = new AdminDAOImpl();
-		this.cartDAOImpl = new CartDAOImpl();
-		this.categoryDAOImpl = new CategoryDAOImpl();
-		this.goodsDAOImpl = new GoodsDAOImpl();
-		this.cartDetailDAOImpl = new CartDetailDAOImpl();
-		this.goodsCategoryDAOImpl = new GoodsCategoryDAOImpl();
-		this.ordersDAOImpl = new OrdersDAOImpl();
-		this.ordersDetailDAOImpl = new OrdersDetailDAOImpl();
+		/*this.customerDAOImpl = new CustomerDAOImpl();*/
+		/*this.adminDAOImpl = new AdminDAOImpl();*/
+		/*this.cartDAOImpl = new CartDAOImpl();*/
+		/*this.categoryDAOImpl = new CategoryDAOImpl();*/
+		/*this.goodsDAOImpl = new GoodsDAOImpl();*/
+		/*this.cartDetailDAOImpl = new CartDetailDAOImpl();*/
+		/*this.goodsCategoryDAOImpl = new GoodsCategoryDAOImpl();*/
+		/*this.ordersDAOImpl = new OrdersDAOImpl();*/
+		/*this.ordersDetailDAOImpl = new OrdersDetailDAOImpl();*/
 	}
 
 	/**
@@ -40,18 +35,6 @@ public class BaseDAOTest {
 	 */
 	@Test
 	public void testLoadById() {
-<<<<<<< HEAD
-//<<<<<<< HEAD
-		//Customer customer = new CustomerDAOImpl().loadById(1);
-		//System.out.println(customer.getCustomerName());
-		
-		  // 测试Custoemr
-//=======
-//		List<Goods> list = new GoodsDAOImpl().findByGoodsName("手");
-//		for (Goods g : list)
-//			System.out.println(g.getGoodsName());
-
-=======
 		Runnable thread1 = new Runnable() {
 			public void run() {
 				List<Goods> list = new GoodsDAOImpl().findByGoodsName("手");
@@ -80,75 +63,74 @@ public class BaseDAOTest {
 			threads1[i].start();
 			threads2[i].start();
 		}
->>>>>>> remotes/origin/branch1
 		/*
 		 * 
 		 * // 测试Custoemr
->>>>>>> branch 'master' of https://github.com/luyongbiao/Shop.git
 		Customer customer = customerDAOImpl.loadById(1);
-		System.out.println(customer.getCustomerName());
+		System.out.println(customer.getCustomerName());*/
+		
+		/*
+		 *  //测试Admin
+		 * Admin admin = this.adminDAOImpl.loadById(1);
+		System.out.println(admin.getAdminName());*/
 		
 		
-		 //测试Admin
-		  Admin admin = this.adminDAOImpl.loadById(3);
-		System.out.println(admin.getAdminName());
-		
-		
-		
-		 //测试Cart
-		Cart cart = this.cartDAOImpl.loadById(1);
+		/*
+		 *  //测试Cart
+		Cart cart = this.cartDAOImpl.loadById(2);
 		System.out.println(cart.getCustomerId());
+		*/
 		
-		
-		
-		 //测试Category
-		Category c = this.categoryDAOImpl.loadById(4);
+		/*
+		 *  //测试Category
+		Category c = this.categoryDAOImpl.loadById(1);
 		System.out.println(c.getCategoryName());
+		*/
 		
-		
-		
-		  //测试Goods
-		Goods g = this.goodsDAOImpl.loadById(4);
+		/*
+		 *  //测试Goods
+		Goods g = this.goodsDAOImpl.loadById(2);
 		System.out.println(g.getGoodsName());
 		System.out.println(g.getGoodsPrice());
 		System.out.println(g.getGoodsShelfTime());
+		*/
 		
+		/*	
+		 * //测试CartDetail
+		CartDetail c = this.cartDetailDAOImpl.loadById(1);
+		System.out.println(c.getCartId());
+		System.out.println(c.getGoodsId());*/
 		
-			
-		  //测试CartDetail
-		CartDetail c1 = this.cartDetailDAOImpl.loadById(1);
-		System.out.println(c1.getCartId());
-		System.out.println(c1.getGoodsId());
-		
-			
-		 //测试GoodsCategory
+		/*	
+		 * //测试GoodsCategory
 		GoodsCategory gc = this.goodsCategoryDAOImpl.loadById(1);
 		System.out.println(gc.getCategoryId());
-		System.out.println(gc.getGoodsId());
+		System.out.println(gc.getGoodsId());*/
 		
-			
-		  //测试Orders
-		Orders o = this.ordersDAOImpl.loadById(4);
+		/*	
+		 * //测试Orders
+		Orders o = this.ordersDAOImpl.loadById(1);
 		System.out.println(o.getCustomerId());
-		System.out.println(o.getOrdersCreateTime());
+		System.out.println(o.getOrdersCreateTime());*/
 		
-			
-		 //测试OrdersDetail
-		OrdersDetail od = this.ordersDetailDAOImpl.loadById(3);
+		/*	
+		 * //测试OrdersDetail
+		OrdersDetail od = this.ordersDetailDAOImpl.loadById(1);
 		System.out.println(od.getOrdersId());
 		System.out.println(od.getTotalPrice());
-		
+		*/
 	}
 
 	@Test
 	public void testFindAll() {
-		/测试Custoemr
+		/*
+		 * //测试Custoemr
 		List<Customer> list = customerDAOImpl.findAll();
 		System.out.println(list.size());
 		for (Customer c : list) {
 			System.out.println(c.getCustomerName());
 			System.out.println(c.getCustomerGendar()); 
-		}
+		}*/
 		
 		/*
 		 *  //测试Admin
@@ -225,16 +207,7 @@ public class BaseDAOTest {
 		}
 		*/
 	}
-	@Test
-	public void testFindAll() {
-		//测试Custoemr
-		List<Customer> list = customerDAOImpl.findAll();
-		System.out.println(list.size());
-		for (Customer c : list) {
-			System.out.println(c.getCustomerName()+"aaa");
-			System.out.println(c.getCustomerAge());
-		}
-	}
+
 	@Test
 	public void testSave() {
 		/*
