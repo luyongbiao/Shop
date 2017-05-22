@@ -16,7 +16,10 @@ public class Goods {
     private Timestamp goodsShelfTime;
     
     private Long goodsHits;
+    
     private Long goodsSales;
+    
+    private String goodsPic;
 
     public Integer getGoodsId() {
         return goodsId;
@@ -81,4 +84,12 @@ public class Goods {
 	public void setGoodsSales(Long goodsSales) {
 		this.goodsSales = goodsSales;
 	}
+	
+    public String getGoodsPic() {
+		return goodsPic;
+	}
+
+	public void setGoodsPic(String goodsPic) {
+		this.goodsPic = goodsPic;
+	} 
 }

@@ -54,8 +54,12 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 
 				e.printStackTrace();
 			}
+
+			setMethods[i] = pd.getWriteMethod(); //得到set方法
+
 			
 			setMethods[i] = pd.getWriteMethod();
+//>>>>>>> branch 'master' of https://github.com/luyongbiao/Shop.git
 			getMethods[i] = pd.getReadMethod();
 			i++;
 		}
