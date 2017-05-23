@@ -13,15 +13,15 @@ public class CustomerService {
 		this.custoemrDAO = new CustomerDAOImpl();
 	}
 	
-	public boolean login(Customer customer) {
+	public Customer login(Customer customer) {
 		List<Customer> customers = this.custoemrDAO.findAll();
 		for (Customer c : customers) {
 			if (c.getCustomerName().equals(customer.getCustomerName())
 					&& c.getCustomerPassword().equals(customer.getCustomerPassword())) {
-				return true;
+				return c;
 			}
 		}
-		return false;
+		return null;
 	}
 	
 }
