@@ -1,15 +1,16 @@
 $(document).ready(function(){
-              var height_Items = $(".goodsItem").length * 130;
-              $(".cart_page").height(height_Items + $(".cart_page").height() + "px");
-             
-             $(".goods_count").each(function(index){
-                $(this).find("span").first().click(function() {
-                  if (parseInt($(".goods_count").eq(index).find("span").eq(1).find("input").val()) > 1)
-                        $(".goods_count").eq(index).find("span").eq(1).find("input").val(
-                                    parseInt($(".goods_count").eq(index).find("span").eq(1).find("input").val()) - 1);
-                 });
-                      
-              });
+			$(".addSuccess").css("right",(($("body").width() + 40) / 2) + "px");
+			
+			var height_Items = $(".goodsItem").length * 130;
+			$(".cart_page").height(height_Items + $(".cart_page").height() + "px");
+			
+			$(".goods_count").each(function(index){
+				$(this).find("span").first().click(function() {
+					if (parseInt($(".goods_count").eq(index).find("span").eq(1).find("input").val()) > 1)
+						$(".goods_count").eq(index).find("span").eq(1).find("input").val(
+								parseInt($(".goods_count").eq(index).find("span").eq(1).find("input").val()) - 1);
+					});
+				});
              
              $(".goods_count").each(function(index){
                 $(this).find("span").last().click(function() {
@@ -105,5 +106,4 @@ $(document).ready(function(){
                          $(".pay_content .amount span").text(amount);
                    }
               });
-              
      });

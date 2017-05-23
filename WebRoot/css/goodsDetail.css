@@ -260,18 +260,20 @@ ul {
     display: inline-block;
     width:30px;
     height: 30px;
+    cursor:pointer;
     
 }
 
 .goods_count span:first-child {
-     margin-left: 30px;
+    margin-left: 30px;
     border:1px solid #ddd;
-    background-image: url('../image/increase.jpg');
+    background-image: url('../image/count.jpg');
 }
 
 .goods_count span:last-child {
     border:1px solid #ddd;
-    background-image: url('../image/count.jpg');
+    background-image: url('../image/increase.jpg');
+    cursor:pointer;
 }
 
 .goods_count span:not(.count_img) {
@@ -323,4 +325,23 @@ ul {
     color:red;
     border:1px solid red;
     margin-left:10px;
+}
+
+.addSuccess {
+	width:150px;
+	background-color:#fff;
+	box-shadow:0 0 8px rgba(0,0,0,.4);
+	height:40px;
+	font-size:18px;
+	line-height:39px;
+	position:absolute;
+	top:460px;
+	z-index: 99;
+	display:none;
+}
+
+.addSuccess span{
+	display:block;
+	width:100%;
+	text-align:center;
 }

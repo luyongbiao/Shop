@@ -201,6 +201,7 @@ ul {
 .goodsDetail .goodsImage img {
   width:100px;
   margin-top:5px;
+  height:67px;
 }
 
 .goodsName {
@@ -362,4 +363,37 @@ li.product a {
 
 .amount {
    padding-top:3px;
+}
+
+.contain {
+	height:300px;
+	margin-top:20px;
+	text-align:center;
+}
+
+.contain ul {
+	margin-top:120px;
+}
+
+.contain ul li, .contain ul li a {
+	line-height:30px;
+}
+
+.addSuccess {
+	width:150px;
+	background-color:#fff;
+	box-shadow:0 0 8px rgba(0,0,0,.4);
+	height:40px;
+	font-size:18px;
+	line-height:39px;
+	position:absolute;
+	top:460px;
+	z-index: 999;
+	display:none;
+}
+
+.addSuccess span{
+	display:block;
+	width:100%;
+	text-align:center;
 }
