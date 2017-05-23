@@ -16,6 +16,8 @@ import org.bqj.shopping.entity.Cart;
 import org.bqj.shopping.entity.CartDetail;
 import org.bqj.shopping.entity.Goods;
 
+
+
 public class CartService {
 	private CartDAO cartDAO;
 	private CartDetailDAO cartDetailDAO;
@@ -81,6 +83,21 @@ public class CartService {
 		if (map != null && map.size() != 0)
 			return map;
 		return null;
-		
 	}
+	
+	public void deleteCartDetail(Integer cartDetailId) {
+		CartDetail cd = this.cartDetailDAO.loadById(cartDetailId);
+		
+		if (cd == null)
+			return;
+
+		this.cartDetailDAO.removeOne(cartDetailId);
+		
+		List<CartDetail> cartDetails = this.cartDetailDAO.findByCartId(cd.getCartId());
+		
+		if (cartDetails == null || cartDetails.size() == 0) {
+			this.cartDAO.removeOne(cd.getCartId());			
+		}
+	}
+
 }

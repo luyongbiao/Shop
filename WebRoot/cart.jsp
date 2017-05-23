@@ -96,6 +96,7 @@
 	            	<c:forEach items="${map }" var="item">
 		                <li>
 		                    <div class="goodsItem">
+		                    	<input type="hidden" name="cartDetailId" value="${item.value.cartDetailId }">
 		                        <ul>
 		                            <li>
 		                                <input type="checkbox" class="selectOne">
@@ -135,7 +136,7 @@
 		                                <span></span>
 		                            </li>
 		                            <li>
-		                                <span><a href="#" style='color:red'>删除</a></span>
+		                                <span><a href="cartServlet?op=delete&cartDetailId=${item.value.cartDetailId }" style='color:red'>删除</a></span>
 		                            </li>
 		                        </ul>
 		                    </div>
@@ -153,7 +154,7 @@
                         <span>全选</span>
                     </li>
                     <li class="product">
-                        <a href="#">删除选中的商品</a>
+                        <a>删除选中的商品</a>
                     </li>
                     <li class="amount">
                          已选择<span>0</span>件商品

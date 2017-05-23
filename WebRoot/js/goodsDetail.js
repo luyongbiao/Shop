@@ -41,7 +41,6 @@ $(function() {
     					var message;    					
     					$(dataObj).each(function(index, item) {
     						message = item.message;
-    						alert(message);
     					});
     					
     					if (message == "logout") {

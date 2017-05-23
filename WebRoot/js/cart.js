@@ -1,4 +1,22 @@
 $(document).ready(function(){
+			var arr = [];
+			$(".pay_content li.product a").click(function() {
+				 var i = 0;
+				 $(".goodsItem").each(function() {
+					if ($(this).find(".selectOne[type=checkbox]").prop("checked"))
+						arr[i++] = $(this).find("input[name=cartDetailId]").val();
+				 });
+				
+				$.ajax({
+					url:'cartServlet',
+					type:'post',
+					data:'{cartDetailId:"' + arr.toString() + '",op:"deleteMore"}',
+					contentType:'application/json;charset=utf-8',
+				});
+				
+				location.href = "cartServlet?op=list";
+			});
+			
 			$(".addSuccess").css("right",(($("body").width() + 40) / 2) + "px");
 			
 			var height_Items = $(".goodsItem").length * 130;

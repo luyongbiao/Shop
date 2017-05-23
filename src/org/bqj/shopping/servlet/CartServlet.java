@@ -49,6 +49,7 @@ public class CartServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		
 		String json = readJSONString(request);
+		System.out.print(json);
 		JSONObject jsonObject = null;
 		String op = "";
 		Integer customerId = (Integer) request.getSession().getAttribute("customer");
@@ -114,7 +115,9 @@ public class CartServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			response.getWriter().println(responseJson);
+			
 		} else if (op.equals("list")) {
+			
 			Cart cart = this.cartService.myCart(customerId);
 			
 			if (cart != null) {
@@ -126,6 +129,47 @@ public class CartServlet extends HttpServlet {
 					request.getRequestDispatcher("cart.jsp").forward(request, response);
 					return;
 				}
+			}
+			response.sendRedirect("cart.jsp");
+			
+		} else if (op.equals("delete")) {
+			int cartDetailId = 0;
+			String cdStr = request.getParameter("cartDetailId");
+			
+			try {
+				cartDetailId = Integer.parseInt(cdStr);
+			} catch(NumberFormatException e) {
+				e.printStackTrace();
+			}
+			
+			this.cartService.deleteCartDetail(cartDetailId);
+			
+			response.sendRedirect("cartServlet?op=list");
+			
+		} else if (op.equals("deleteMore")) {
+			String cdIdsStr = "";
+			
+			try {
+				cdIdsStr = jsonObject.getString("cartDetailId");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			if (cdIdsStr == null || cdIdsStr.trim().equals(""))
+				return;
+			
+			String[] arr = cdIdsStr.split(",");
+			
+			for (String cartDetailIdStr : arr) {
+				int cartDetailId = 0;
+				try {
+					cartDetailId = Integer.parseInt(cartDetailIdStr);
+				} catch (NumberFormatException e) {
+					e.printStackTrace();
+				}
+
+				response.getWriter().print("cartServlet?op=list");
 			}
 		}
 	}
