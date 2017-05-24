@@ -1,15 +1,36 @@
 $(document).ready(function(){
-              var height_Items = $(".goodsItem").length * 130;
-              $(".cart_page").height(height_Items + $(".cart_page").height() + "px");
-             
-             $(".goods_count").each(function(index){
-                $(this).find("span").first().click(function() {
-                  if (parseInt($(".goods_count").eq(index).find("span").eq(1).find("input").val()) > 1)
-                        $(".goods_count").eq(index).find("span").eq(1).find("input").val(
-                                    parseInt($(".goods_count").eq(index).find("span").eq(1).find("input").val()) - 1);
-                 });
-                      
-              });
+			var arr = [];
+			$(".pay_content li.product a").click(function() {
+				 var i = 0;
+				 $(".goodsItem").each(function() {
+					if ($(this).find(".selectOne[type=checkbox]").prop("checked"))
+						arr[i++] = $(this).find("input[name=cartDetailId]").val();
+				 });
+				
+				$.ajax({
+					url:'cartServlet',
+					type:'post',
+					data:'{cartDetailId:"' + arr.toString() + '",op:"deleteMore"}',
+					contentType:'application/json;charset=utf-8',
+				});
+				
+				setTimeout(function() {
+					location.reload()
+				}, 300);
+			});
+			
+			$(".addSuccess").css("right",(($("body").width() + 40) / 2) + "px");
+			
+			var height_Items = $(".goodsItem").length * 130;
+			$(".cart_page").height(height_Items + $(".cart_page").height() + "px");
+			
+			$(".goods_count").each(function(index){
+				$(this).find("span").first().click(function() {
+					if (parseInt($(".goods_count").eq(index).find("span").eq(1).find("input").val()) > 1)
+						$(".goods_count").eq(index).find("span").eq(1).find("input").val(
+								parseInt($(".goods_count").eq(index).find("span").eq(1).find("input").val()) - 1);
+					});
+				});
              
              $(".goods_count").each(function(index){
                 $(this).find("span").last().click(function() {
@@ -105,5 +126,4 @@ $(document).ready(function(){
                          $(".pay_content .amount span").text(amount);
                    }
               });
-              
      });

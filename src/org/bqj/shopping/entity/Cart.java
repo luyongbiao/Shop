@@ -7,8 +7,6 @@ public class Cart {
 
     private Timestamp cartCreateTime;
 
-    private String cartStatus;
-
     private Integer customerId;
 
     public Integer getCartId() {
@@ -25,14 +23,6 @@ public class Cart {
 
     public void setCartCreateTime(Timestamp cartCreateTime) {
         this.cartCreateTime = cartCreateTime;
-    }
-
-    public String getCartStatus() {
-        return cartStatus;
-    }
-
-    public void setCartStatus(String cartStatus) {
-        this.cartStatus = cartStatus == null ? null : cartStatus.trim();
     }
 
     public Integer getCustomerId() {

@@ -10,7 +10,9 @@ public class CartDetail {
     private Integer goodsCount;
 
     private Double totalPrice;
-
+    
+    private Integer goodsStatus;
+    
     public Integer getCartDetailId() {
         return cartDetailId;
     }
@@ -50,4 +52,12 @@ public class CartDetail {
     public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
+
+	public Integer getGoodsStatus() {
+		return goodsStatus;
+	}
+
+	public void setGoodsStatus(Integer goodsStatus) {
+		this.goodsStatus = goodsStatus;
+	}
 }
