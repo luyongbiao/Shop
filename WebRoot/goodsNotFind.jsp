@@ -16,7 +16,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
     
-    <link rel='stylesheet' href='css/good.css' type="text/css">
+    <link rel='stylesheet' href='css/goodsNotFind.css' type="text/css">
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/index.js"></script>
     <script type="text/javascript">
@@ -80,7 +80,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
                 <li><a href="#">电子电器</a></li>
             </ul>
         </div>
-    </div>   
+    </div>
+    
     <div class="good_content">
     	<div class="w">
 	       <div class='goods_walls'>
@@ -89,68 +90,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                   <div class='first_walls'>
 	                       <ul>
 	                          <li>
-	                          	<c:forEach items="${goods}" var="goods">
-	                               <div class="apple">
-	                                   <div class='apple_img'>
-	                                       <a>
-	                                           <img src="${goods.goodsPic}">
-	                                           <div class="price">
-	                                               <strong>
-	                                                   <em>￥</em>
-	                                                   <i>${goods.goodsPrice}</i>
-	                                               </strong>
-	                                           </div>
-	                                           <p>
-	                                              ${goods.goodsName}  ${goods.goodsDesc} 
-	                                           </p>
-	                                       </a>
-	                                   </div>
-	                               </div>
-	                               </c:forEach>
+	                          	${MSG}
 	                          </li> 
 	                       </ul>
 	                   </div>
 	             </li>
 	           </ul>
-	               <div class="pages_walls">
-	                   <div class="goods_pages">
-	                       <ul>
-	                           <li>
-	                               <a href="javascript:void(0)">
-	                                   <span >上一页</span>
-	                               </a>
-	                           </li>
-	                           <li>
-	                                <a href="javascript:void(0)">
-	                                   <span>1</span>
-	                               </a>
-	                           </li>
-	                            <li>
-	                                <a href="javascript:void(0)">
-	                                   <span>2</span>
-	                               </a>
-	                           </li>
-	                            <li>
-	                               <a href="javascript:void(0)">
-	                                   <span>3</span>
-	                               </a>
-	                           </li>
-	                            <li>
-	                               <a href="#">
-	                                   <span>...</span>
-	                               </a>
-	                           </li>
-	                            <li>
-	                               <a href="#">
-	                                   <span>下一页</span>
-	                               </a>
-	                           </li>
-	                       </ul>
-	                       <div class="pageCount">
-	                           <span>共10页</span>
-	                       </div>
-	                   </div>
-	               </div>
 	           </div>
 	        </div>
         </div>

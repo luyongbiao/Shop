@@ -1,15 +1,12 @@
 package org.bqj.shopping.servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.bqj.shopping.entity.Goods;
 import org.bqj.shopping.service.GoodsService;
 
@@ -33,16 +30,21 @@ public class GoodsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		response.setCharacterEncoding("utf-8");
-		
+		response.setContentType("text/html;charset=utf-8");
 		String searchName = request.getParameter("searchName");
 		//System.out.println(searchName);
 		GoodsService goodsService = new GoodsService();
-		List<Goods> goods = new ArrayList<>();
-		goods = goodsService.findGoodsByNameResult(searchName);
-		request.setAttribute("goods", goods);
-		getServletContext().getRequestDispatcher("/goods.jsp").forward(request, response);
+		List<Goods> goods = goodsService.findGoodsByNameResult(searchName);
+		String msg = "抱歉,没找到该类商品";
+		if(goods!=null){
+			request.setAttribute("goods", goods);
+			getServletContext().getRequestDispatcher("/goods.jsp").forward(request, response);
+		}else{
+			request.setAttribute("MSG", msg);
+			getServletContext().getRequestDispatcher("/goodsNotFind.jsp").forward(request, response);
+		}
 	}
 
 	/**
