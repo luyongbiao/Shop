@@ -45,7 +45,7 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 		return list;
 
 	}
-public List<Goods> findByCategoryId(int categoryId){
+	public List<Goods> findByCategoryId(int categoryId){
 		
 		String sql = "select * from goods where goodsId in (select goodsId from goodscategory where categoryId="+categoryId + ")";
 		Connection conn = DB.getConn();
@@ -75,5 +75,11 @@ public List<Goods> findByCategoryId(int categoryId){
  		DB.close(stmt);
  		DB.close(conn);
 		return list;
+	}
+	public List<Goods> findGoods(){
+		int begin = (int)(Math.random()*5);
+		int end = 12;
+		List<Goods> goods = this.find(begin, end);
+		return goods;
 	}
 }

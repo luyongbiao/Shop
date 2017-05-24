@@ -1,3 +1,4 @@
+@CHARSET "UTF-8";
 * {
   margin:0;
   padding:0;
@@ -250,8 +251,8 @@ strong {
 }
 
 .goods_walls  {
-  width:100%;
-  height:550px;
+  width:910px;
+  height:893.5px;
   float:left;
 }
 
@@ -262,24 +263,20 @@ strong {
   float:left;
 }
 
-.goods_walls .first_walls {
-   height:520px;
+.goods_walls .first_walls, .goods_walls .second_walls, .goods_walls .three_walls {
+   height:794px;
    border:1px solid #ddd;
    margin-bottom:10px;
 }
 
-.goods_walls .first_walls li:first-child{
- 	margin-left: 5px;
-}
-
-.goods_walls .first_walls li > div{
+.goods_walls .first_walls li > div, .goods_walls .second_walls li > div, .goods_walls .three_walls li > div {
   padding:10px 13px;
   display: block;
   width: 200px;
   float:left;
 }
 
-.goods_walls .first_walls li div > div{
+.goods_walls .first_walls li div > div, .goods_walls .second_walls li div > div, .goods_walls .three_walls li div > div {
   padding:8px;
   display: block;
   height:220px;
@@ -300,14 +297,13 @@ strong {
   margin:0px;
 }
 
-.goods_walls .first_walls img:hover{
+.goods_walls .first_walls img:hover, .goods_walls .second_walls img:hover,.goods_walls .three_walls img:hover {
   transform: scale(1.1);  
 }
 
 .good_content .w{
 	margin-top:10px;
-	height:600px;
-	width:1150px;
+	height:893.5px;
 }
 
 .info  {
@@ -498,5 +494,3 @@ strong {
   .page_end a.permit_for_operation {
     color: #999;
   }
-  
-
