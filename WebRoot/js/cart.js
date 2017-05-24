@@ -14,7 +14,9 @@ $(document).ready(function(){
 					contentType:'application/json;charset=utf-8',
 				});
 				
-				location.href = "cartServlet?op=list";
+				setTimeout(function() {
+					location.reload()
+				}, 300);
 			});
 			
 			$(".addSuccess").css("right",(($("body").width() + 40) / 2) + "px");

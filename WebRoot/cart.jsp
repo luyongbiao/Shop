@@ -9,12 +9,12 @@
     <link rel='stylesheet' href='css/cart.css'>
     <script src='js/jquery-3.1.1.min.js'></script>
     <script src='js/cart.js'></script>
-    <c:if test="${map == null }">
+    <c:if test="${map != null }">
 		<script>
 			$(function() {
-				$(".cart_page").css("display", "none");
-				$(".pay_page").css("display", "none");
-				$(".contain").css("display", "block");
+				$(".contain").css("display", "none");
+				$(".cart_page").css("display", "block");
+				$(".pay_page").css("display", "block");
 			});
 		</script>
 	</c:if>
@@ -53,7 +53,7 @@
         </div>
     </div>
     <div class="detail_hr"></div>
-    <div class="contain" hidden>
+    <div class="contain">
     	<div class="w">
     		<div class="message">
     			<ul>
@@ -67,7 +67,7 @@
     		</div>
     	</div>
     </div>
-    <div class="cart_page">
+    <div class="cart_page" hidden>
         <div class="w">
             <div class="cart_header">
                 <ul>
@@ -145,7 +145,7 @@
 	           </ul>
         </div>
     </div>
-    <div class="pay_page">
+    <div class="pay_page" hidden>
         <div class="w">
              <div class="pay_content">
                 <ul>

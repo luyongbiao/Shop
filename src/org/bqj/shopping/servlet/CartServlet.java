@@ -168,7 +168,8 @@ public class CartServlet extends HttpServlet {
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				}
-
+				
+				this.cartService.deleteCartDetail(cartDetailId);
 				response.getWriter().print("cartServlet?op=list");
 			}
 		}
