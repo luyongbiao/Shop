@@ -64,20 +64,22 @@ public class CustomerServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			boolean customerLogin = false;
-			
+
+			Customer c = null;
 			if (customerName != null && !customerName.equals(""))
 				if (customerPassword != null && !customerPassword.equals("")) {
 					Customer customer = new Customer();
 					customer.setCustomerName(customerName);
 					customer.setCustomerPassword(customerPassword);
 					
-					customerLogin = this.customerService.login(customer);
+
+					c = this.customerService.login(customer);
 				}
-			
-			if (customerLogin)
+
+			if (c != null) {
+				request.getSession().setAttribute("customer", c.getCustomerId());
 				response.getWriter().print("index.html");
-			else
+			} else
 				response.getWriter().print("error");
 		}
 		

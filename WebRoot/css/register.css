@@ -98,12 +98,7 @@ body {
     float: left;
     color:#646464;
 }
-.kong {
-	color:red;
-	font-size:15px;
-	display:none;
-	/* display:table-cell; */
-}
+
 
 .customer_login , .admin_login {
     display:inline-block;
@@ -134,7 +129,7 @@ body {
 }
 
 .customer_content table, .admin_content table{
-    width: 540px;
+    width:500px;
     margin: 0 auto;
 }
 

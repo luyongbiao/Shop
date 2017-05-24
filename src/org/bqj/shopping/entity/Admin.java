@@ -34,6 +34,7 @@ public class Admin {
     public void setAdminPassword(String adminPassword) {
         this.adminPassword = adminPassword == null ? null : adminPassword.trim();
     }
+
     public String getAdminGender() {
         return adminGender;
     }

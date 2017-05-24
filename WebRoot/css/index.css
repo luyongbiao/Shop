@@ -192,7 +192,7 @@ ul {
 }
 
 .menu_classtify a{
-  background: #C0A78C;
+   background: #C0A78C;
   display: block;
   font-size:18px;
   height:50px;
@@ -207,19 +207,7 @@ ul {
 
 .picture {
   float:left;
-  width:924px;
-  height:350px;
 }
-.hide {
-  float:left;
-  margin:0px auto;
-  width:70%;	
-  height:100%;
-  display:none;
-  background-color:white;
-  position:absolute;
-}
-
 
 #picture_item li + li {
   display:none;

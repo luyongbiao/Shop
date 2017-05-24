@@ -5,5 +5,4 @@ import org.bqj.shopping.entity.GoodsCategory;
 
 public class GoodsCategoryDAOImpl extends BaseDAOImpl<GoodsCategory> 
 									implements GoodsCategoryDAO {
-
 }

@@ -73,6 +73,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 				"Id=" + id;
 		ResultSet rs = DB.executeQuery(stmt, sql);
 		T t = null;
+		
 		try {
 			t = tclass.newInstance();
 		} catch (InstantiationException e1) {
@@ -80,6 +81,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 		} catch (IllegalAccessException e1) {
 			e1.printStackTrace();
 		}
+		
 		try {
 			while (rs.next()) {
 				for (int i = 0; i < getMethods.length; i++) {		
@@ -112,6 +114,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 		} catch (SecurityException e) {
 			e.printStackTrace();
 		}
+		
 		DB.close(rs);
 		DB.close(stmt);
 		DB.close(conn);

@@ -6,7 +6,8 @@ public class Customer {
     private String customerName;
 
     private String customerPassword;
-    private String customerGender;
+    
+	private String customerGender;
 
     private Integer customerAge;
 
@@ -39,7 +40,9 @@ public class Customer {
     public void setCustomerPassword(String customerPassword) {
         this.customerPassword = customerPassword == null ? null : customerPassword.trim();
     }
-    public String getCustomerGender() {
+
+   
+	public String getCustomerGender() {
         return customerGender;
     }
 
