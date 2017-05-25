@@ -1,4 +1,12 @@
 $(function(){
+		  $(".menu_classtify ul li").mouseover(function(){
+			  $(".hide").show();
+		  });
+		  $(".menu_classtify ul li").mouseout(function(){
+			  $(".hide").hide();
+		  });
+		  
+		  
           $(".picture .prev, .picture .next").hide();
           var bb = $("#picture_item li:last");
           var aa = $("#picture_item li:first");

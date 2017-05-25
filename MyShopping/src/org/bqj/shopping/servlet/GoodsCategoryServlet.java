@@ -31,15 +31,21 @@ public class GoodsCategoryServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		response.setCharacterEncoding("utf-8");
-		
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.setCharacterEncoding("UTF-8");
+		response.setContentType("text/html;charset=UTF-8");
 		int categoryId = Integer.parseInt(request.getParameter("categoryId")); //取得商品分类的id
-		System.out.println(categoryId);
+		//System.out.println(categoryId);
+		String msg = "抱歉,找不到该类商品";
 		GoodsCategoryService goodsService = new GoodsCategoryService();
 		List<Goods> goods = goodsService.findByCategoryIdResult(categoryId);
-		request.setAttribute("goods", goods);
-		getServletContext().getRequestDispatcher("/goods.jsp").forward(request, response);
+		if(goods!=null){
+			request.setAttribute("goods", goods);
+			getServletContext().getRequestDispatcher("/goods.jsp").forward(request, response);
+		}else{
+			request.setAttribute("MSG", msg);
+			getServletContext().getRequestDispatcher("/goodsNotFind.jsp").forward(request, response);
+		}
 		
 	}
 

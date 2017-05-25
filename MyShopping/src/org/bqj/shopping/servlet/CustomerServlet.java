@@ -64,6 +64,7 @@ public class CustomerServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
+
 			Customer c = null;
 			if (customerName != null && !customerName.equals(""))
 				if (customerPassword != null && !customerPassword.equals("")) {
@@ -71,14 +72,44 @@ public class CustomerServlet extends HttpServlet {
 					customer.setCustomerName(customerName);
 					customer.setCustomerPassword(customerPassword);
 					
+
 					c = this.customerService.login(customer);
 				}
-			
+
 			if (c != null) {
 				request.getSession().setAttribute("customer", c.getCustomerId());
 				response.getWriter().print("index.html");
 			} else
 				response.getWriter().print("error");
+		}
+		
+		if (op.equals("register")) {
+			String customerName = "";
+			String customerPassword = "";
+//			boolean customerRegister = false;
+			try {
+				customerName = jsonObject.getString("customerName");
+				customerPassword = jsonObject.getString("customerPassword");
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			Customer customer = new Customer();
+			customer.setCustomerName(customerName);
+			customer.setCustomerPassword(customerPassword);
+			this.customerService.register(customer);
+			
+			if (true)
+				response.getWriter().print("index.html");
+//			else
+//				response.getWriter().print("error");
+			
+			
+			
+			
+			
+			
+			
+			
 		}
 	}
 	

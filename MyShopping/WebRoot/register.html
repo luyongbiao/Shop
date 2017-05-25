@@ -5,6 +5,7 @@
     <title>用户注册</title>
     <link rel='stylesheet' href='css/register.css'>
     <script src='js/jquery-3.1.1.min.js'></script>
+    <script src="js/register.js"></script>
     <script>
         $(function() {
             $(".form_header span").first().click(function() {
@@ -52,35 +53,40 @@
             <div class="w">
                     <div class="shadow">
                     </div>
-                    <form action="customerServlet" method='post'>
-                        <input type="hidden" name="op" value="register">
                         <div class="form_content">
                             <div class="form_header">
                                 <span class="customer_login">新用户注册</span>
                                 <span class="admin_login">管理员注册</span>
                                 <a href="index.html">前往首页</a>
                             </div> 
+	                    <form action="customerServlet" method='post'>
                             <div class="customer_content">
                                 <table>
                                     <tbody>
-                                        <tr>
+                                        <tr class='item'>
                                             <td class="t">用户名</td>
                                             <td>
                                                 <input type="text" name="customerName">
                                             </td> 
-                                        </tr>
-                                        <tr>
+                                        	<td class="kong" id="kong_name">用户名不能为空</td>	
+                                        </tr> 
+                                                           
+                                        <tr class='item'>
                                             <td class="t">密码</td>
                                             <td>
                                                 <input type="password" name="customerPassword">
                                             </td> 
+                                        	<td class="kong" id="kong_password">密码不能为空</td>	
                                         </tr>
-                                        <tr>
+                                        
+                                        <tr class='item'>
                                             <td class="t">确认密码</td>
                                             <td>
                                                 <input type="password" name="comfirmPassword">
                                             </td> 
+                                        	<td class="kong" id="kong_comfirmPassword"><span id="notCatch">123</span></td>	
                                         </tr>
+                                        
                                          <tr>
                                             <td class="t">性别</td>
                                             <td>
@@ -88,34 +94,35 @@
                                                 <input type="radio" name="customerGender" value="女">女
                                             </td> 
                                         </tr>
-                                         <tr>
+                                        
+                                         <tr class='item'>
                                             <td class="t">年龄</td>
                                             <td>
                                                 <input type="text" name="customerAge">                                                     
                                             </td> 
+                                        	<td class="kong" id="kong_password">年龄不能为空</td>		
                                         </tr>
-                                        <tr>
-                                            <td class="t">电话号码</td>
-                                            <td>
-                                                    <input type="text" name="comfirmPassword">
-                                            </td> 
-                                            </tr>
                                         
-                                        <tr>
+                                        <tr class='item'>
                                             <td class="t">手机号码</td>
                                             <td>
-                                                    <input type="text" name="comfirmPassword">
+                                                   <input type="text" name="comfirmPassword">
                                             </td> 
-                                            </tr>
+                                        	<td class="kong" id="kong_password">号码不能为空</td>		
+                                        </tr>
+                                        
                                         <tr>
                                             <td colspan='2'>
                                                 <input type="submit" value="立即注册">
                                             </td> 
                                         </tr>
+                                        
                                     </tbody>
                                 </table>
                             </div>
-                                <div class="admin_content">
+                        </form>
+                        <form>
+                            <div class="admin_content">
                                     <table>
                                         <tbody>
                                             <tr>
@@ -163,8 +170,8 @@
                                         </tbody>
                                     </table>                                
                             </div>
-                        </div>
-                     </form>
+                       </form>
+                       </div>
             </div>
     </div>
         

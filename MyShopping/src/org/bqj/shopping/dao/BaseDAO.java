@@ -1,5 +1,6 @@
 package org.bqj.shopping.dao;
 
+
 import java.util.List;
 
 public interface BaseDAO<T> {
@@ -14,9 +15,8 @@ public interface BaseDAO<T> {
 	public void removeAll();
 	
 	public void modify(T t);
-	
 	public int findCount();
 
 	public List<T> find(int begin, int pageSize);
-
-}
+==
+	public List<T> find(int begin, int pageSize);}
