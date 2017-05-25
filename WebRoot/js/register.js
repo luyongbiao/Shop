@@ -3,12 +3,26 @@
 			var index = $(this).parents('tr').index();
 			$('.kong').hide();
 			$('.customer_content tr').each(function(i){
+				//验证两次输入的密码是否为相同
+				if( $("input[name=comfirmPassword]").val()== null || $("input[name=comfirmPassword]").val()=="") {
+					$("#notCatch").text("请确认密码");
+					if(i<index) {
+						$("#kong_comfirmPassword").show();
+					}
+				}else if($("input[name=comfirmPassword]").val() != $("input[name=customerPassword]").val()) {
+					$("#notCatch").text("密码不匹配");
+					if(i<index) {
+						$("#kong_comfirmPassword").show();
+					}
+				}
 				if(i>index)	return;
 				if(!$(this).find('input').val() && $(this).hasClass('item')){
 					$(this).find('.kong').show();
 				}
 			})
 		});
+		
+		
 		
 		$("form").submit(function(){
 			return false;
@@ -20,7 +34,7 @@
 		        
 		        if (customerName == null || customerName == "") {
 		 
-		        	$("#kong_name").css("display", "block");
+		        	$("#kong_name").css("display", "table-cell");
 		        	
 		        			
 		        			

@@ -164,7 +164,7 @@
                     </li>
                     <li>
                         <div class="add_order">
-                          <a href="#">
+                          <a href="comfirm_order.html?cartDetailId=${item.value.cartDetailId }">
                             <span>结算</span>
                          </a>
                      </div>
