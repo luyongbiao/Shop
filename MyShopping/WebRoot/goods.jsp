@@ -1,3 +1,4 @@
+
 <%@ page language="java" import="java.util.*" import="org.bqj.shopping.entity.*" pageEncoding="ISO-8859-1"%>
 <%
 String path = request.getContextPath();
