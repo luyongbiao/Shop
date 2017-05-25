@@ -45,7 +45,7 @@
 	                		adminLoginError.children("span").first().text("用户名或密码错误");
 	                		adminLoginError.css("display", "block");
 	                	} else
-	                		location.href = "http://localhost:8080/MyShopping/" + data;
+	                		location.href = "http://localhost:8080/Shopping/" + data;
 	                }               
 	            });
 	       });
