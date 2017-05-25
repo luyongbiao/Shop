@@ -45,6 +45,7 @@ public class GoodsServlet extends HttpServlet {
 		getServletContext().getRequestDispatcher("/goods.jsp").forward(request, response);
 	}
 
+	
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
