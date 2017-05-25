@@ -46,6 +46,7 @@ public class GoodsServlet extends HttpServlet {
 	}
 
 	
+	//此注释用于测试CloudOfLi的github
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
