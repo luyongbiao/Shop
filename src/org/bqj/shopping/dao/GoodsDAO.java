@@ -6,7 +6,13 @@ import org.bqj.shopping.entity.Goods;
 
 public interface GoodsDAO extends BaseDAO<Goods> {
 
-	List<Goods> findByGoodsName(String name);
+	List<Goods> findByGoodsInfo(String info, int begin, int pageSize);
+
+	int findCountByInfo(String info);
+	
+	List<Goods> findByCategoryId(int categoryId, int begin, int pageSize);
+
+	int findCountByCategory(int categoryId);
 
 }
 

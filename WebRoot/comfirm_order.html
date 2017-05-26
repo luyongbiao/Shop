@@ -20,8 +20,13 @@
                     parseInt($(this).find(".goods_count").text());
                     amount += parseInt($(this).find(".goods_count").text());
              });
-              $(".pay_content .count span").text(count);  
+             $(".pay_content .count span").text(count);  
              $(".pay_content .amount span").text(amount);
+             
+            $(".logo_search .logo img").css("cursor", "pointer");
+			$(".logo_search .logo img").click(function() {
+				location.href="indexServlet";
+			});
               
      });
     </script>

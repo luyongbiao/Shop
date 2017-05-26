@@ -3,37 +3,36 @@
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
-
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+ <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
+<!DOCTYPE HTML>
 <html>
   <head>
     <base href="<%=basePath%>">
-    
     <title>商城</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-	 <link rel='stylesheet' href='css/indexJsp.css'>
+	<link rel='stylesheet' href='css/indexJsp.css'>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/index.js"></script>
-	<script type="text/javascript">
+	 <script>
     	function searchGoods(){
-    		var searchName =document.getElementById('searchName').value;
-    		window.location.href = "/MyShopping/goodsServlet?searchName="+searchName;
+    		if ($("#searchName").val() != null && $("#searchName").val() != "")
+	    		window.location.href = "/MyShopping/goodsServlet?searchName="+$("#searchName").val();
     	}
     </script>
-    <%@taglib prefix="c" uri="http://java.sun.com/jstl/core_rt"%>
   </head>
-  
   <body>
     <div class="index_top">
    		<div class="top_content">
 	        <div class="top_menu">
 	            <ul>
-	                <li><a href="#">账户登录</a></li>
+	                <c:choose>
+						<c:when test="${sessionScope.customer != null }">
+							<li><a>${sessionScope.customer.customerName }先生</a>
+								<a class="logout">注销</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="login.html">账户登录</a></li>
+						</c:otherwise>
+					</c:choose>
 	                <li><a href="#">注册</a></li>
 	                <li><a href="#">向导</a></li>
 	                <li><a href="#">博客</a></li>
@@ -41,7 +40,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        </div>
 	        <div class="top_phone">
 	        	<span><a href='#'>我的订单</a></span>
-	            <span><a href='#'>购物车</a></span>
+	            <span><a href='cartServlet?op=list'>购物车</a></span>
 	            <span><a href='#'>请联系我们</a></span>
 	        </div>
 	    </div>
@@ -53,14 +52,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
             </div>
             <div class="search_content">
 	            <div class="search">
-	                <input type="text">
-	                <a class="search_btn" href="/MyShopping/indexServlet">搜索</a>
+	                <input type="text" id="searchName">
+	                <a class="search_btn" onclick="searchGoods()">搜索</a>
 	            </div>
 	       </div>
 	       <div class="cart">
-	       		<a>
+	       		<a href="cartServlet?op=list">
 	       			<img src="image/cart.jpg">
-	       			<span>我的购物车</span>
+	       			<span style="color:#000">我的购物车</span>
 	       		</a>
 	       </div>
         </div>
@@ -230,6 +229,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	                          <li>
 	                          <c:forEach items="${Goods}" var="result">
 	                               <div class="apple">
+	                               		<input type="hidden" name="goodsId" value="${result.goodsId }"/>
 	                                   <div class='apple_img'>
 	                                       <a>
 	                                           <img src="${result.goodsPic }">
@@ -254,45 +254,36 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	               <div class="pages_walls">
 	                   <div class="goods_pages">
 	                       <ul>
-	                           <li>
-	                               <a href="javascript:void(0)">
-	                                   <span >上一页</span>
+	                            <li>
+	                               <a>
+	                                   <span>首页</span>
 	                               </a>
 	                           </li>
-	                           <li>
-	                                <a href="javascript:void(0)">
-	                                   <span>1</span>
+	                            <li class="a2">
+	                               <a>
+	                                   <span>上一页</span>
+	                               </a>
+	                           </li>	                          
+	                            <li class="a3">
+	                               <a>
+	                               		<span>下一页</span>
 	                               </a>
 	                           </li>
 	                            <li>
-	                                <a href="javascript:void(0)">
-	                                   <span>2</span>
+	                               <a>
+	                                   <span >尾页</span>
 	                               </a>
-	                           </li>
-	                            <li>
-	                               <a href="javascript:void(0)">
-	                                   <span>3</span>
-	                               </a>
-	                           </li>
-	                            <li>
-	                               <a href="#">
-	                                   <span>...</span>
-	                               </a>
-	                           </li>
-	                            <li>
-	                               <a href="#">
-	                                   <span>下一页</span>
-	                               </a>
-	                           </li>
+	                           </li>	                           
 	                       </ul>
 	                       <div class="pageCount">
-	                           <span>共10页</span>
+	                       		当前第<span>${pageBean.currentPage }</span>页&nbsp;&nbsp;&nbsp;&nbsp;
+	                           	共<span>${pageBean.pageCount }</span>页
 	                       </div>
 	                   </div>
 	               </div>
 	           </div>
 	        </div>
-        </div>
+    </div>
     <div class="index_end">
        <div class="page_end">
           <p>

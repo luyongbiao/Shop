@@ -75,10 +75,13 @@ public class CustomerServlet extends HttpServlet {
 				}
 			
 			if (c != null) {
-				request.getSession().setAttribute("customer", c.getCustomerId());
-				response.getWriter().print("index.html");
+				request.getSession().setAttribute("customer", c);
+				response.getWriter().print("indexServlet");
 			} else
 				response.getWriter().print("error");
+		}  else if (op.equals("logout")) {
+			
+			request.getSession().removeAttribute("customer");
 		}
 	}
 	

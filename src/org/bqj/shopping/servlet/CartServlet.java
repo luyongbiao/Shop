@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.bqj.shopping.entity.Cart;
 import org.bqj.shopping.entity.CartDetail;
+import org.bqj.shopping.entity.Customer;
 import org.bqj.shopping.entity.Goods;
 import org.bqj.shopping.service.CartService;
 import org.json.JSONException;
@@ -52,7 +53,7 @@ public class CartServlet extends HttpServlet {
 		System.out.print(json);
 		JSONObject jsonObject = null;
 		String op = "";
-		Integer customerId = (Integer) request.getSession().getAttribute("customer");
+		Customer customer = (Customer) request.getSession().getAttribute("customer");
 		
 		if (json != null && !json.equals("")) {
 			try {
@@ -63,8 +64,7 @@ public class CartServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-			
-			if (customerId == null) {
+			if (customer == null) {
 				String responseJsonStr = "{message:logout}";
 				JSONObject responseJson = null;
 				try {
@@ -79,7 +79,7 @@ public class CartServlet extends HttpServlet {
 			response.setContentType("text/html;charset=utf-8");
 			op = request.getParameter("op");
 			
-			if (customerId == null) {
+			if (customer == null) {
 				response.sendRedirect("login.html");
 				return;
 			}
@@ -105,7 +105,7 @@ public class CartServlet extends HttpServlet {
 			cd.setTotalPrice(totalPrice);
 			cd.setGoodsStatus(1);
 			
-			this.cartService.insert(cd, customerId);
+			this.cartService.insert(cd, customer.getCustomerId());
 			
 			String responseJsonStr = "{message:success}";
 			JSONObject responseJson = null;
@@ -118,10 +118,10 @@ public class CartServlet extends HttpServlet {
 			
 		} else if (op.equals("list")) {
 			
-			Cart cart = this.cartService.myCart(customerId);
+			Cart cart = this.cartService.myCart(customer.getCustomerId());
 			
 			if (cart != null) {
-				Map<Goods, CartDetail> map = this.cartService.list(customerId);
+				Map<Goods, CartDetail> map = this.cartService.list(customer.getCustomerId());
 				
 				if (map != null && map.size() != 0) {
 					request.setAttribute("map", map);
@@ -147,31 +147,31 @@ public class CartServlet extends HttpServlet {
 			response.sendRedirect("cartServlet?op=list");
 			
 		} else if (op.equals("deleteMore")) {
-			String cdIdsStr = "";
 			
-			try {
-				cdIdsStr = jsonObject.getString("cartDetailId");
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			String[] cdIdsStr = request.getParameterValues("cartDetailId");
 
-			if (cdIdsStr == null || cdIdsStr.trim().equals(""))
-				return;
+
+			if (cdIdsStr == null || cdIdsStr.length == 0) {
+				response.setContentType("text/html;charset=utf-8");
+				response.sendRedirect("cartServlet?op=list");
+			};
 			
-			String[] arr = cdIdsStr.split(",");
-			
-			for (String cartDetailIdStr : arr) {
-				int cartDetailId = 0;
+			Integer[] cartDetailIds = new Integer[cdIdsStr.length];
+			int i = 0;
+			for (String cartDetailIdStr : cdIdsStr) {
+				Integer cartDetailId = null;
 				try {
 					cartDetailId = Integer.parseInt(cartDetailIdStr);
 				} catch (NumberFormatException e) {
 					e.printStackTrace();
 				}
 				
-				this.cartService.deleteCartDetail(cartDetailId);
-				response.getWriter().print("cartServlet?op=list");
+				cartDetailIds[i++] = cartDetailId;
 			}
+			
+			this.cartService.deleteMore(cartDetailIds);
+			response.setContentType("text/html;charset=utf-8");
+			response.sendRedirect("cartServlet?op=list");
 		}
 	}
 

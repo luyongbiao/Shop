@@ -15,8 +15,10 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 									implements GoodsDAO {
 
 	@Override
-	public List<Goods> findByGoodsName(String goodsName) {
-		String sql = "select * from goods where goodsName like '%" + goodsName + "%'";
+	public List<Goods> findByGoodsInfo(String info, int begin, int pageSize) {
+		info = "'%"+ info + "%'";
+		String sql = "select * from goods where goodsName like " + info 
+				+ " or goodsDesc like " + info + " or goodsDesc like " + info + " limit " + begin + "," + pageSize;
 		Connection conn = DB.getConn();
 		Statement stmt = DB.createStatement(conn);
 		ResultSet rs = DB.executeQuery(stmt, sql);
@@ -45,9 +47,13 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 		return list;
 
 	}
-	public List<Goods> findByCategoryId(int categoryId){
+	
+	public List<Goods> findByCategoryId(int categoryId, int begin, int pageSize){
 		
-		String sql = "select * from goods where goodsId in (select goodsId from goodscategory where categoryId="+categoryId + ")";
+		String sql = "select * from goods where goodsId in (select goodsId from goodscategory"
+				+ " where categoryId="+categoryId + ") limit " 
+											+ begin + "," + pageSize;
+		System.out.println(sql);
 		Connection conn = DB.getConn();
 		Statement stmt = DB.createStatement(conn);
 		ResultSet rs = DB.executeQuery(stmt, sql);
@@ -76,10 +82,49 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
  		DB.close(conn);
 		return list;
 	}
-	public List<Goods> findGoods(){
-		int begin = (int)(Math.random()*5);
-		int end = 12;
-		List<Goods> goods = this.find(begin, end);
-		return goods;
+	@Override
+	public int findCountByInfo(String info) {
+		info = "'%"+ info + "%'";
+		String sql = "select count(*) from goods where goodsName like " + info 
+				+ " or goodsDesc like " + info;
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		ResultSet rs = DB.executeQuery(stmt, sql);
+		int count = 0;
+		
+		try {
+			if(rs.next())
+				count = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		DB.close(rs);
+		DB.close(stmt);
+		DB.close(conn);
+		
+		return count;
+	}
+
+	@Override
+	public int findCountByCategory(int categoryId) {
+		String sql = "select count(*) from goodscategory where categoryId = " + categoryId;
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		ResultSet rs = DB.executeQuery(stmt, sql);
+		int count = 0;
+		
+		try {
+			if(rs.next())
+				count = rs.getInt(1);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		DB.close(rs);
+		DB.close(stmt);
+		DB.close(conn);
+		
+		return count;
 	}
 }
