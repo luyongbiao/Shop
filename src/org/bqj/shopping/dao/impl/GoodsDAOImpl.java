@@ -45,7 +45,6 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 		DB.close(stmt);
 		DB.close(conn);
 		return list;
-
 	}
 	
 	public List<Goods> findByCategoryId(int categoryId, int begin, int pageSize){

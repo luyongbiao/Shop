@@ -67,7 +67,7 @@ body {
 
 .register_form{
     margin-top:20px;
-    height:700px;
+    height:530px;
 }
 
 .shadow {
@@ -78,10 +78,10 @@ body {
 
 .form_content {
     width: 950px;
-    height: 700px;
+    height: 530px;
     background-color: #fff;
     position:absolute;
-    margin-top:-700px;
+    margin-top:-530px;
     margin-left:10px;
     padding:0 20px;
     border:1px solid #ddd;
@@ -100,7 +100,7 @@ body {
 }
 
 
-.customer_login , .admin_login {
+.customer_login {
     display:inline-block;
     width:150px;
     height: 40px;
@@ -163,7 +163,7 @@ body {
     text-align: center;
 }
 
-.customer_content td[colspan='2'] a ,.admin_content td[colspan='2'] a{
+.customer_content td[colspan='2'] a {
 	display:inline-block;
     border:none;
     width:120px;
@@ -178,20 +178,10 @@ body {
     letter-spacing: 5px;
 }
 
-.customer_content td[colspan='2'] a:hover ,.admin_content td[colspan='2'] a:hover{
+.customer_content td[colspan='2'] a:hover{
     text-decoration: none;
     background-color: #C0A78C; 
     color:#333;
-}
-
-.admin_content {
-    display: none;
-    padding-top:50px;
-}
-
-input[type=radio] {
-    width:50px;
-    height:15px;
 }
 
 .error {

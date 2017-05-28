@@ -114,7 +114,6 @@ public class CustomerServlet extends HttpServlet {
 			c.setCustomerAge(customerAge);
 			c.setCustoemrMobilePhone(customerMobilePhone);
 			c.setCustomerHomePhone(customerHomePhone);
-			c.setCustomerAddress("");
 			
 			String msg = this.customerService.register(c);
 			

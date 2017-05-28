@@ -230,6 +230,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 				e.printStackTrace();
 			}
 		}
+		System.out.println(sql);
 		DB.executeUpdate(pstmt);
 		DB.close(pstmt);
 		DB.close(conn);
