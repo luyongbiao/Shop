@@ -25,8 +25,16 @@ public class AdminService {
 		return false;
 	}
 	
-	public void register(Admin admin) {
+	public String register(Admin admin) {
+		List<Admin> admins = this.adminDAO.findAll();
+		
+		for (Admin a : admins) {
+			if (admin.getAdminName().equals(a.getAdminName()))
+				return "姓名已存在";
+		}
+		
 		this.adminDAO.save(admin);
+		return null;
 	}
 	
 	public void delete(Integer id) {

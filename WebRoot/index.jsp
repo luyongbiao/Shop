@@ -33,7 +33,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<li><a href="login.html">账户登录</a></li>
 						</c:otherwise>
 					</c:choose>
-	                <li><a href="#">注册</a></li>
+	                <li><a href="register.html">注册</a></li>
 	                <li><a href="#">向导</a></li>
 	                <li><a href="#">博客</a></li>
 	            </ul>

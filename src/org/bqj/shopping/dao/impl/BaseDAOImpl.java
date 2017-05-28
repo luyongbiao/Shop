@@ -278,7 +278,6 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 		}
 		Statement stmt = DB.createStatement(conn);
 		DB.executeUpdate(stmt, sql.toString());
-		System.out.println(sql);
 		DB.close(stmt);
 		DB.close(conn);
 	}
