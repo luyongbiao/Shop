@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50716
 File Encoding         : 65001
 
-Date: 2017-05-28 16:46:20
+Date: 2017-05-29 01:40:42
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -110,7 +110,6 @@ CREATE TABLE `customer` (
   `customerPassword` varchar(20) NOT NULL,
   `customerGender` varchar(2) NOT NULL,
   `customerAge` int(11) DEFAULT NULL,
-  `customerAddress` varchar(100) NOT NULL,
   `custoemrMobilePhone` varchar(11) NOT NULL,
   `customerHomePhone` varchar(11) DEFAULT NULL,
   PRIMARY KEY (`customerId`)
@@ -119,10 +118,33 @@ CREATE TABLE `customer` (
 -- ----------------------------
 -- Records of customer
 -- ----------------------------
-INSERT INTO `customer` VALUES ('1', '大多数', '2', '男', '1', '1', '1', '1');
-INSERT INTO `customer` VALUES ('2', '大人', '4', '女', '1', '2', '2', '1');
-INSERT INTO `customer` VALUES ('8', '不少人', '13233211', '女', '11', '广东高州', 'dfdsllfsld', '54354354354');
-INSERT INTO `customer` VALUES ('23', '1', '1', 'M', '1', '', '1', '1');
+INSERT INTO `customer` VALUES ('1', '大多数', '2', '男', '1', '1', '1');
+INSERT INTO `customer` VALUES ('2', '大人', '4', '女', '1', '2', '1');
+INSERT INTO `customer` VALUES ('8', '不少人', '13233211', '女', '11', 'dfdsllfsld', '54354354354');
+INSERT INTO `customer` VALUES ('23', '1', '1', 'M', '1', '1', '1');
+
+-- ----------------------------
+-- Table structure for customeraddress
+-- ----------------------------
+DROP TABLE IF EXISTS `customeraddress`;
+CREATE TABLE `customeraddress` (
+  `customerAddressId` int(11) NOT NULL AUTO_INCREMENT,
+  `addressProvince` varchar(50) DEFAULT NULL,
+  `addressCity` varchar(50) DEFAULT NULL,
+  `addressArea` varchar(50) DEFAULT NULL,
+  `addressDetail` varchar(200) DEFAULT NULL,
+  `customerId` int(11) DEFAULT NULL,
+  `addressChecked` int(11) DEFAULT NULL,
+  PRIMARY KEY (`customerAddressId`),
+  KEY `customer_rt` (`customerId`) USING BTREE,
+  CONSTRAINT `customer_rt` FOREIGN KEY (`customerId`) REFERENCES `customer` (`customerId`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
+
+-- ----------------------------
+-- Records of customeraddress
+-- ----------------------------
+INSERT INTO `customeraddress` VALUES ('10', '西藏自治区', null, '个人头', 'GRE', '1', '0');
+INSERT INTO `customeraddress` VALUES ('11', '西藏自治区', '嵩', '个人', 'GR', '1', '0');
 
 -- ----------------------------
 -- Table structure for goods
