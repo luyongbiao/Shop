@@ -52,7 +52,6 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 		String sql = "select * from goods where goodsId in (select goodsId from goodscategory"
 				+ " where categoryId="+categoryId + ") limit " 
 											+ begin + "," + pageSize;
-		System.out.println(sql);
 		Connection conn = DB.getConn();
 		Statement stmt = DB.createStatement(conn);
 		ResultSet rs = DB.executeQuery(stmt, sql);
@@ -125,5 +124,37 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 		DB.close(conn);
 		
 		return count;
+	}
+
+	@Override
+	public List<Goods> findByHits(int amount) {
+		String sql = "select * from goods order by goodsHits desc limit 0," + amount;
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		ResultSet rs = DB.executeQuery(stmt, sql);
+		List<Goods> list = new ArrayList<>();
+ 		try {
+			while(rs.next()){        
+				Goods goods = new Goods();
+				goods.setGoodsId(rs.getInt(1));
+				goods.setGoodsName(rs.getString(2));
+				goods.setGoodsPrice(rs.getDouble(3));
+				goods.setGoodsStock(rs.getInt(4));
+				goods.setGoodsDesc(rs.getString(5));
+				goods.setGoodsShelfTime(rs.getTimestamp(6));
+				goods.setGoodsHits(rs.getLong(7));
+				goods.setGoodsSales(rs.getLong(8));
+				goods.setGoodsPic(rs.getString(9));
+				list.add(goods);
+			}
+		
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+ 		DB.close(rs);
+ 		DB.close(stmt);
+ 		DB.close(conn);
+		return list;
 	}
 }

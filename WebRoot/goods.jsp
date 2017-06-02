@@ -22,8 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul>
 					<c:choose>
 						<c:when test="${sessionScope.customer != null }">
-							<li><a>${sessionScope.customer.customerName }先生</a>
-								<a class="logout">注销</a></li>
+							<li><a>${sessionScope.customer.customerName }先生</a> <a
+								class="logout">注销</a></li>
 						</c:when>
 						<c:otherwise>
 							<li><a href="login.html">账户登录</a></li>
@@ -35,9 +35,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 			</div>
 			<div class="top_phone">
-				<span><a href='#'>我的订单</a></span>
-				<span><a href="cartServlet?op=list">购物车</a></span>
-				<span><a href='#'>请联系我们</a></span>
+				<span><a href='#'>我的订单</a></span> <span><a
+					href="cartServlet?op=list">购物车</a></span> <span><a href='#'>请联系我们</a></span>
 			</div>
 		</div>
 	</div>
@@ -48,13 +47,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
 			<div class="search_content">
 				<div class="search">
-	                <input type="text" id="searchName">
-	                <a class="search_btn" onclick="searchGoods()">搜索</a>
-	            </div>
+					<input type="text" id="searchName"> <a class="search_btn"
+						onclick="searchGoods()">搜索</a>
+				</div>
 			</div>
 			<div class="cart">
-				<a href="cartServlet?op=list"> 
-					<img src="image/cart.jpg">
+				<a href="cartServlet?op=list"> <img src="image/cart.jpg">
 					<span style="color:#000">我的购物车</span>
 				</a>
 			</div>
@@ -85,15 +83,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<ul>
 								<li><c:forEach items="${goods}" var="goods">
 										<div class="apple">
-											<input type="hidden" name="goodsId"
-												value="${goods.goodsId }" />
+											<input type="hidden" name="goodsId" value="${goods.goodsId }" />
 											<div class='apple_img'>
 												<a> <img src="${goods.goodsPic}">
 													<div class="price">
 														<strong> <em>￥</em> <i>${goods.goodsPrice}</i>
 														</strong>
 													</div>
-													<p>${goods.goodsName} ${goods.goodsDesc}</p>
+													<p>${goods.goodsName}${goods.goodsDesc}</p>
 												</a>
 											</div>
 										</div>

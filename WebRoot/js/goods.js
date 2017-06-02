@@ -8,7 +8,7 @@ function searchGoods() {
 
 $(function() {
 	if(location.search.lastIndexOf("searchName") != -1)
-		$("#searchName").val(location.search.substring(location.search.lastIndexOf("searchName") + 11));
+		$("#searchName").val(decodeURI(location.search.substring(location.search.lastIndexOf("searchName") + 11)));
 	
 	$(".logout").click(function() {
 		$.post("customerServlet","{op:logout}", function(data) {

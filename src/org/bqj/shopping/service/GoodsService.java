@@ -50,4 +50,8 @@ public class GoodsService {
 		public int findCount(String info) {
 			return this.goodsDao.findCountByInfo(info);
 		}
+		
+		public List<Goods> getHitsGoods(int amount) {
+			return this.goodsDao.findByHits(amount);
+		}
 }

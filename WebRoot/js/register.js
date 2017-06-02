@@ -24,6 +24,14 @@ $(function() {
 	$(".customer_content table input:not([type=submit])").blur(function() {
 		$(this).css("border", "1px solid #e6e6e6");
 	});
+	
+	$(".admin_content table input:not([type=submit])").focus(function() {
+		$(this).css("border", "1px solid #333");
+	});
+
+	$(".admin_content table input:not([type=submit])").blur(function() {
+		$(this).css("border", "1px solid #e6e6e6");
+	});
 
 	$(".head_logo img").css("cursor", "pointer");
 	$(".head_logo img").click(function() {

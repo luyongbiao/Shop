@@ -67,7 +67,7 @@ body {
 
 .register_form{
     margin-top:20px;
-    height:530px;
+    height:700px;
 }
 
 .shadow {
@@ -78,10 +78,10 @@ body {
 
 .form_content {
     width: 950px;
-    height: 530px;
+    height: 700px;
     background-color: #fff;
     position:absolute;
-    margin-top:-530px;
+    margin-top:-700px;
     margin-left:10px;
     padding:0 20px;
     border:1px solid #ddd;
@@ -100,7 +100,7 @@ body {
 }
 
 
-.customer_login {
+.customer_login , .admin_login {
     display:inline-block;
     width:150px;
     height: 40px;
@@ -154,6 +154,20 @@ body {
     float:left;
 }
 
+.admin_content table input:not([type=radio]){
+    width:200px;
+    height: 18px;
+    border-radius: 2px;
+    color: #333;
+    padding:5px 8px;
+    font-family: 'Microsoft YaHei';
+    outline: 0 none;
+    font-size: 15px;
+    line-height: 18px;
+    border:1px solid #e6e6e6;
+    float:left;
+}
+
 .customer_content table tr, .admin_content table tr {
     color:#646464;
     height: 60px;
@@ -163,7 +177,7 @@ body {
     text-align: center;
 }
 
-.customer_content td[colspan='2'] a {
+.customer_content td[colspan='2'] a ,.admin_content td[colspan='2'] a{
 	display:inline-block;
     border:none;
     width:120px;
@@ -178,10 +192,20 @@ body {
     letter-spacing: 5px;
 }
 
-.customer_content td[colspan='2'] a:hover{
+.customer_content td[colspan='2'] a:hover ,.admin_content td[colspan='2'] a:hover{
     text-decoration: none;
     background-color: #C0A78C; 
     color:#333;
+}
+
+.admin_content {
+    display: none;
+    padding-top:50px;
+}
+
+input[type=radio] {
+    width:50px;
+    height:15px;
 }
 
 .error {

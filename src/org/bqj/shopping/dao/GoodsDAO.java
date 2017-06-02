@@ -14,5 +14,7 @@ public interface GoodsDAO extends BaseDAO<Goods> {
 
 	int findCountByCategory(int categoryId);
 
+	List<Goods> findByHits(int amount);
+
 }
 

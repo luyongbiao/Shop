@@ -1,6 +1,7 @@
 package org.bqj.shopping.servlet;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import javax.servlet.ServletException;
@@ -67,12 +68,14 @@ public class IndexServlet extends HttpServlet {
 		PageBean pageBean = new PageBean(currentPage, pageSize, totalCount);
 		
 		Set<Goods> goods = this.goodsService.getGoods(pageBean);
+		List<Goods> goodsHits = this.goodsService.getHitsGoods(5);
 		
 		System.out.println(currentPage);
 		if (currentPageParam == null || currentPageParam.trim().equals("")) {
 			
 			request.setAttribute("pageBean", pageBean);
 			request.setAttribute("Goods", goods);
+			request.setAttribute("goodsHits", goodsHits);
 			getServletContext().getRequestDispatcher("/index.jsp").forward(request, response);
 		} else {
 			response.setContentType("application/json;charset=utf-8");		

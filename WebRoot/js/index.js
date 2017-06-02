@@ -181,4 +181,8 @@ $(function() {
 			});
 		}
 	});
+	$('.goods_pages li').click(function(){
+		$('body').scrollTop($('.first_walls').offset().top);
+	})
+	
 });
