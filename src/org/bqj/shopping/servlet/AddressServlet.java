@@ -106,7 +106,7 @@ public class AddressServlet extends HttpServlet {
 			customerAddress.setAddressDetail(addressDetail);
 			customerAddress.setCustomerId(customer.getCustomerId());
 			customerAddress.setAddressChecked(addressChecked);
-			System.out.println(addressProvince + addressCity + addressArea + addressDetail);
+			
 			this.customerAddressService.update(customerAddress);
 		} else if (op.equals("findById")) {
 			String customerAddressIdStr = request.getParameter("customerAddressId");
@@ -120,6 +120,31 @@ public class AddressServlet extends HttpServlet {
 			CustomerAddress customerAddress = this.customerAddressService.findById(customerAddressId);
 			request.setAttribute("customerAddress", customerAddress);
 			request.getRequestDispatcher("addressUpdate.jsp").forward(request, response);
+		} else if (op.equals("checked")) {
+			String customerAddressIdStr = request.getParameter("customerAddressId");
+			int customerAddressId = 0;
+			
+			try {
+				customerAddressId = Integer.parseInt(customerAddressIdStr);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			
+			CustomerAddress customerAddress = this.customerAddressService.findById(customerAddressId);
+			customerAddress.setAddressChecked(1);
+			
+			this.customerAddressService.update(customerAddress);
+		} else if (op.equals("delete")) {
+			String customerAddressIdStr = request.getParameter("customerAddressId");
+			int customerAddressId = 0;
+			
+			try {
+				customerAddressId = Integer.parseInt(customerAddressIdStr);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			
+			this.customerAddressService.delete(customerAddressId);
 		}
 	}
 }

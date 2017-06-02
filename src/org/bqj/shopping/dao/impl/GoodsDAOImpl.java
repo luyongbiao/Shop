@@ -7,8 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-
-
+import org.bqj.shopping.dao.GoodsDAO;
+import org.bqj.shopping.db.DB;
 import org.bqj.shopping.entity.Goods;
 
 public class GoodsDAOImpl extends BaseDAOImpl<Goods> 
@@ -197,12 +197,9 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 		Connection conn = DB.getConn();
 		Statement stmt = DB.createStatement(conn);
 		ResultSet rs = DB.executeQuery(stmt, sql);
-
+		Goods goods = new Goods();
 		try {
 			while(rs.next()){
-				Goods goods = new Goods();
-				
-				
 				goods.setGoodsId(rs.getInt(1));
 				goods.setGoodsName(rs.getString(2));
 				goods.setGoodsPrice(rs.getDouble(3));
@@ -211,13 +208,12 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 				goods.setGoodsShelfTime(rs.getTimestamp(6));
 				goods.setGoodsHits(rs.getLong(7));
 				goods.setGoodsSales(rs.getLong(8));
-				goods.setGoodsPic(rs.getString(9));
-				list.add(goods);		
+				goods.setGoodsPic(rs.getString(9));	
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return list;
+		return goods;
 	}
 }

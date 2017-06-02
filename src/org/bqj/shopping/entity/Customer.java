@@ -11,7 +11,7 @@ public class Customer {
 
     private Integer customerAge;
 
-    private String custoemrMobilePhone;
+    private String customerMobilePhone;
 
     private String customerHomePhone;
     
@@ -55,12 +55,12 @@ public class Customer {
         this.customerAge = customerAge;
     }
 
-    public String getCustoemrMobilePhone() {
-        return custoemrMobilePhone;
+    public String getCustomerMobilePhone() {
+        return customerMobilePhone;
     }
 
-    public void setCustoemrMobilePhone(String custoemrMobilePhone) {
-        this.custoemrMobilePhone = custoemrMobilePhone == null ? null : custoemrMobilePhone.trim();
+    public void setCustomerMobilePhone(String customerMobilePhone) {
+        this.customerMobilePhone = customerMobilePhone == null ? null : customerMobilePhone.trim();
     }
 
     public String getCustomerHomePhone() {

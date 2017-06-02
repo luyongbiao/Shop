@@ -59,7 +59,7 @@ $(function() {
 					"addressProvince=" + addressProvince + "&addressArea=" 
 						+ addressArea + "&addressDetail=" + addressDetail + "&op=save&addressChecked=" + addressChecked,
 					function(data) {
-						setTimeout(location.href = "addressServlet?op=list", 1000);
+						location.href = "index.jsp";
 				});
 	});
 

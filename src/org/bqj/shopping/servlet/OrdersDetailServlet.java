@@ -1,6 +1,7 @@
 package org.bqj.shopping.servlet;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -11,8 +12,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.bqj.shopping.entity.CartDetail;
 import org.bqj.shopping.entity.Customer;
+import org.bqj.shopping.entity.CustomerAddress;
 import org.bqj.shopping.entity.Goods;
 import org.bqj.shopping.entity.Orders;
+import org.bqj.shopping.service.CustomerAddressService;
 import org.bqj.shopping.service.OrdersService;
 
 /**
@@ -22,6 +25,7 @@ import org.bqj.shopping.service.OrdersService;
 public class OrdersDetailServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private OrdersService ordersService;
+	private CustomerAddressService customerAddressService;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -29,6 +33,7 @@ public class OrdersDetailServlet extends HttpServlet {
     public OrdersDetailServlet() {
         super();
         this.ordersService = new OrdersService();
+        this.customerAddressService = new CustomerAddressService();
         // TODO Auto-generated constructor stub
     }
 
@@ -62,8 +67,11 @@ public class OrdersDetailServlet extends HttpServlet {
 		}
 		if (op == null && cartDetaileIds != null) {
 			Map<CartDetail, Goods> map= this.ordersService.transListAll(cartDetaileIds);
+			List<CustomerAddress> address = this.customerAddressService.findByCustoemrId(customer.getCustomerId());
+			
 			if (map != null && map.size() != 0) {
 				request.setAttribute("map", map);
+				request.setAttribute("address", address);
 				request.getRequestDispatcher("comfirm_order.jsp").forward(request, response);
 				return;
 			}

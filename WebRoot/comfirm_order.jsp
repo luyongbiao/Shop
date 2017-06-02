@@ -26,7 +26,6 @@
              });
               $(".pay_content .count span").text(count);  
              $(".pay_content .amount span").text(amount);
-              
      });
     </script>
 </head>
@@ -60,26 +59,20 @@
     <div class="detail_hr"></div>
     <div class="address_page">
         <div class="w">
-            <div class="address_man">
-                <span>收货地址</span>
-            </div>
-            <div class="address_content">
-                <div class="address_title">
-                    <span>广东省广州市</span>
-                    <span>卢勇彪（收）</span>
-                </div>
-                <div class="address_detail">
-                    <span>
-                        海珠滨江仲恺农业工程学院海珠校区 北区6栋209
-                    </span>
-                    <span>
-                        15626117850
-                    </span>
-                </div>
-                <div class="address_update">
-                    <a>修改</a>
-                </div>
-            </div>
+            <div class="Caddress">
+			<div class="open_new">
+				<button class="open_btn">新增地址</button>
+			</div>
+			<c:forEach items="${address }" var="item">
+			<div class="add_mi">
+				<input type="hidden" name="addressId" value="${item.customerAddressId }">
+				<p style="border-bottom:1px dashed #ccc;line-height:28px;">${item.addressProvince } ${item.addressCity } ${item.addressArea } (${sessionScope.customer.customerName }先生收)</p>
+				<p>${item.addressDetail } </p>
+				<p style="text-align:right;">手机号码:${sessionScope.customer.customerMobilePhone }</p>
+				<p><a class="address_update" href="#">修改</a> <a class="address_delete" href="#">删除</a></p>
+			</div>
+			</c:forEach>
+		</div>
         </div>
     </div>
     <div class="orders_detail">
@@ -151,10 +144,6 @@
     </div>
     <div class="orders_id">
         <div class="w">
-            <div class="orders_address">
-            	寄送至：<span>广东省广州市 海珠滨江仲恺农业工程学院海珠校区 北区6栋209</span>
-            </div>
-            <br/>
             <div class='orders_phone'>
                	 联系人：<span>卢勇彪 &nbsp;&nbsp;13232187878</span>
             </div>
@@ -181,5 +170,98 @@
             </div>
         </div>
     </div>
+    <div class="shade">
+		</div>
+		
+		<div class="shade_content">
+			<div class="col-xs-12 shade_colse">
+				<button class="btn_remove">x</button>
+			</div>
+			<div class="nav shade_content_div">
+				<div class="col-xs-12 shade_title">
+					新增收货地址
+				</div>
+				<div class="shade_from">
+					<table>
+						<tbody>
+							<tr>
+								<td class="t">省份/直辖市</td>
+								<td>
+									<select name="addressProvince" style="width:180px;height:30px;font-size:18px;">
+										<option value="北京市">北京市
+										<option value="上海市">天津市
+										<option value="重庆市">重庆市
+										<option value="上海市">上海市
+										<option value="内蒙古自治区">内蒙古自治区
+										<option value="新疆维吾尔自治区">新疆维吾尔自治区
+										<option value="西藏自治区">西藏自治区
+										<option value="广西壮族自治区">广西壮族自治区
+										<option value="宁夏回族自治区">宁夏回族自治区
+										<option value=香港特别行政区>香港特别行政区省
+										<option value="澳门特别行政区">澳门特别行政区
+										<option value="广东省">广东省
+										<option value="云南省">云南省
+										<option value="山西省">山西省
+										<option value="陕西省">陕西省
+										<option value="黑龙江省">黑龙江省
+										<option value="河北省">河北省
+										<option value="辽宁省">辽宁省
+										<option value="吉林省">吉林省
+										<option value="江苏省">江苏省
+										<option value="浙江省">浙江省
+										<option value="安徽省">安徽省
+										<option value="福建省">福建省
+										<option value="江西省">江西省
+										<option value="山东省">山东省
+										<option value="河南省">河南省
+										<option value="湖北省">湖北省
+										<option value="湖南省">湖南省
+										<option value="海南省">海南省
+										<option value="四川省">四川省
+										<option value="贵州省">贵州省
+										<option value="甘肃省">甘肃省
+										<option value="青海省">青海省
+										<option value="台湾省">台湾省
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td class="t">市</td>
+								<td>
+									<input type="text" name="city">
+									<span class="error">城市不能为空</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="t">县/区</td>
+								<td>
+									<input type="text" name="area">
+									<span class="error">县/区不能为空</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="t">详细地址</td>
+								<td>
+									<textarea rows="4" cols="40" name="addressDetail" style="font-size:15px;padding:5px"></textarea>
+									<span class="error">请输入详细地址</span>
+								</td>
+							</tr>
+							<tr>
+								<td class="t"></td>
+								<td style="line-height:18px">
+									<input type="checkbox" name="addressChecked" style="width:40px;" value="1">设为默认地址
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					<input type="hidden" name='customerAddressId'/>
+					<div class="col-xs-12">
+							<input class="btn_remove" type="button" id="" onclick="javascript:onclick_close();" value="取消" />
+							<input type="button" class="sub_set" id="" value="提交" />
+					</div>
+				</div>
+			</div>
+		</div>
+		<input type="hidden" id="bubu" value="1">
 </body>
 </html>

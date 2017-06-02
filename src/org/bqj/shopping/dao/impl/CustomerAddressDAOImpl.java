@@ -15,7 +15,7 @@ public class CustomerAddressDAOImpl extends BaseDAOImpl<CustomerAddress> impleme
 
 	@Override
 	public List<CustomerAddress> findByCustomerId(int customerId) {
-		String sql = "select * from customeraddress where customerId=" + customerId;
+		String sql = "select * from customeraddress where customerId=" + customerId + " order by addressChecked desc";
 		Connection conn = DB.getConn();
 		Statement stmt = DB.createStatement(conn);
 		ResultSet rs = DB.executeQuery(stmt, sql);

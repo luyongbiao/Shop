@@ -56,4 +56,8 @@ public class CustomerAddressService {
 	public CustomerAddress findById(int customerAddressId) {
 		return this.customerAddressDAO.loadById(customerAddressId);
 	}
+
+	public void delete(int customerAddressId) {
+		this.customerAddressDAO.removeOne(customerAddressId);
+	}
 }
