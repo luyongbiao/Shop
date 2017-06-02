@@ -2,14 +2,16 @@ package org.bqj.shopping.servlet;
 
 import java.io.IOException;
 import java.util.List;
+<<<<<<< HEAD
 import java.util.Set;
 
+=======
+>>>>>>> remotes/origin/EricWork
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.bqj.shopping.entity.Goods;
 import org.bqj.shopping.entity.PageBean;
 import org.bqj.shopping.service.GoodsService;
@@ -18,6 +20,7 @@ import org.json.JSONArray;
 @WebServlet("/indexServlet")
 public class IndexServlet extends HttpServlet {
 
+<<<<<<< HEAD
 	/**
 	 * 
 	 */
@@ -38,6 +41,10 @@ public class IndexServlet extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
+=======
+	private static final long serialVersionUID = 1L;
+	
+>>>>>>> remotes/origin/EricWork
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -85,16 +92,6 @@ public class IndexServlet extends HttpServlet {
 		}
 	}
 
-	/**
-	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		this.doGet(request, response);

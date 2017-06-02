@@ -7,8 +7,8 @@ body {
   overflow-x: hidden;
 }
 
-.goods_walls div {
-  overflow: hidden;
+div {
+	overflow:hidden;
 }
 
 a {
