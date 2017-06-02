@@ -66,5 +66,33 @@ public class OrdersDAOImpl extends BaseDAOImpl<Orders>
 		DB.close(conn);
 		return OrdersId;
 	}
+
+	@Override
+	public List<Orders> findOrdersByForiegnKey(int customerId, int ordersStatusId) {
+		// TODO Auto-generated method stub
+		String sql = "select * from Orders where customerid = " + customerId + " and ordersStatusId =" + ordersStatusId;
+		List<Orders> orders_list = new ArrayList<>();
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		ResultSet rs = DB.executeQuery(stmt,sql);
+		try {
+			while(rs.next()) {
+				Orders orders = new Orders();
+				orders.setOrdersId(rs.getInt(1));
+				orders.setOrdersNote(rs.getString(2));
+				orders.setOrdersCreateTime(rs.getTimestamp(3));
+				orders.setOrdersStatusId(ordersStatusId);
+				orders.setCustomerId(customerId);
+				orders_list.add(orders);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DB.close(rs);
+		DB.close(stmt);
+		DB.close(conn);
+		return orders_list;
+	}
 	
 }

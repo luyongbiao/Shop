@@ -84,6 +84,41 @@ public class OrdersServlet extends HttpServlet {
 			}
 		}
 		
+		if(op.equals("list")) {
+			Map<Orders,Map<OrdersDetail,Goods>> map = this.ordersService.listGoodsInOrders(customer.getCustomerId());
+			if (map != null && map.size() != 0) {
+				request.setAttribute("map", map);
+//				request.setAttribute("map_goods", map_goods);
+				request.getRequestDispatcher("orders.jsp").forward(request, response);
+				return;
+			}
+			response.sendRedirect("orders.jsp");
+		} else if("listNoPayed".equals(op)){
+			//取出未付款的订单其OrdersStatusId为1
+			Map<Orders,Map<OrdersDetail,Goods>> map = this.ordersService.listGoodsInOrders(customer.getCustomerId(),1);
+			if (map != null && map.size() != 0) {
+				request.setAttribute("map", map);
+//				request.setAttribute("map_goods", map_goods);
+				request.getRequestDispatcher("orders.jsp").forward(request, response);
+				return;
+			}
+			response.sendRedirect("orders.jsp");
+		} else if("listPayed".equals(op)){
+			//取出已经付款的订单其OrdersStatusId为2
+			Map<Orders,Map<OrdersDetail,Goods>> map = this.ordersService.listGoodsInOrders(customer.getCustomerId(),2);
+			if (map != null && map.size() != 0) {
+				request.setAttribute("map", map);
+//				request.setAttribute("map_goods", map_goods);
+				request.getRequestDispatcher("orders.jsp").forward(request, response);
+				return;
+			}
+			response.sendRedirect("orders.jsp");
+		}
+		/*List<Map<OrdersDetail,Goods>> goods = new ArrayList<>(); 
+			for(Orders order : orders) {
+				map_goods = this.ordersService.listGoodsInOrders(order);
+				goods.add(map_goods);
+			}*/
 		/*if(op.equals("comfirm")){
 			int cartDetailId = 0;
 			int goodsId = 0;
@@ -111,22 +146,8 @@ public class OrdersServlet extends HttpServlet {
 			}
 			response.getWriter().println("i am line "+responseJson);
 			response.sendRedirect("ordersServlet?op=list");
-		} else */
-		if(op.equals("list")) {
-			Map<Orders,Map<OrdersDetail,Goods>> map = this.ordersService.listGoodsInOrders(customer.getCustomerId());
-			/*List<Map<OrdersDetail,Goods>> goods = new ArrayList<>(); 
-			for(Orders order : orders) {
-				map_goods = this.ordersService.listGoodsInOrders(order);
-				goods.add(map_goods);
-			}*/
-			if (map != null && map.size() != 0) {
-				request.setAttribute("map", map);
-//				request.setAttribute("map_goods", map_goods);
-				request.getRequestDispatcher("orders.jsp").forward(request, response);
-				return;
-			}
-			response.sendRedirect("orders.jsp");
-		} /*else if(op.equals("trans")) {
+		} else
+		else if(op.equals("trans")) {
 			String[] cartDetaileIds = request.getParameterValues("checked");
 			System.out.println(cartDetaileIds);
 			Map<CartDetail, Goods> map= this.ordersService.transListAll(cartDetaileIds);

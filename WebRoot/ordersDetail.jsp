@@ -23,6 +23,14 @@
                     parseInt($(this).find(".goods_count").text());
                     amount += parseInt($(this).find(".goods_count").text());
              });
+                    var status = $(this).find("li.goods_status").val(); 
+              		if(status == 1){
+	              		$(this).find("li.goods_status span ").first().text("未付款");
+              		} else if(status == 2) {
+	              		$(this).find("li.goods_status span ").first().text("待发货");
+              		} else if(status == 3) {
+	              		$(this).find("li.goods_status span ").first().text("已发货");
+              		}
               $(".pay_content .count span").text(count);  
              $(".pay_content .amount span").text(amount);
               
@@ -121,8 +129,8 @@
 	                            <li>
 	                                    <span class="goods_count">${item.key.goodsCount }</span>
 	                            </li>
-	                            <li>
-	                                <span style='color:red;font-size:18px'>已完成</span>
+	                            <li class="goods_status" value="${orders.ordersStatusId }">
+	                                <span style='color:red;font-size:18px'>&nbsp;</span>
 	                            </li>
 	                        </ul>
 	                    </div>

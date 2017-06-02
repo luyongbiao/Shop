@@ -13,6 +13,7 @@ import org.bqj.shopping.entity.CartDetail;
 import org.bqj.shopping.entity.Customer;
 import org.bqj.shopping.entity.Goods;
 import org.bqj.shopping.entity.Orders;
+import org.bqj.shopping.entity.OrdersDetail;
 import org.bqj.shopping.service.OrdersService;
 
 /**
@@ -49,6 +50,7 @@ public class OrdersDetailServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		request.getParameterValues("checked");
 		String[] cartDetaileIds = request.getParameterValues("checked");
+		String[] ordersDetailIds = request.getParameterValues("ordersDetailId");
 		String op = request.getParameter("op");
 		Customer customer = (Customer) request.getSession().getAttribute("customer");
 		//String[] cartDetaileIds = {"24","25","26"};
@@ -61,10 +63,22 @@ public class OrdersDetailServlet extends HttpServlet {
 			return ;
 		}
 		if (op == null && cartDetaileIds != null) {
-			Map<CartDetail, Goods> map= this.ordersService.transListAll(cartDetaileIds);
+			Map<CartDetail, Goods> map= this.ordersService.transListAllByCartDetailId(cartDetaileIds);
 			if (map != null && map.size() != 0) {
 				request.setAttribute("map", map);
 				request.getRequestDispatcher("comfirm_order.jsp").forward(request, response);
+				return;
+			}
+			response.sendRedirect("comfirm_order.jsp");
+		} else if (op == null && ordersDetailIds != null) {
+			Map<OrdersDetail, Goods> map= this.ordersService.transListAllByOrdersDetailId(ordersDetailIds);
+			int ordersId = Integer.parseInt(request.getParameter("ordersId"));
+			System.out.println(ordersId);
+			Orders orders = this.ordersService.changetoOrders(ordersId);
+			if (map != null && map.size() != 0) {
+				request.setAttribute("map", map);
+				request.setAttribute("orders", orders);
+				request.getRequestDispatcher("ordersDetail.jsp").forward(request, response);
 				return;
 			}
 			response.sendRedirect("comfirm_order.jsp");
@@ -73,7 +87,14 @@ public class OrdersDetailServlet extends HttpServlet {
 			Orders orders = this.ordersService.saveOrders(customer.getCustomerId(), cds);
 			request.setAttribute("orders",orders);
 			System.out.println(orders);
-			Map<CartDetail, Goods> map= this.ordersService.transListAll(cartDetaileIds);
+			Map<CartDetail,Goods> m= this.ordersService.transListAllByCartDetailId(cartDetaileIds);
+			Map<OrdersDetail,Goods> map = this.ordersService.cartDetailToOrdersDetail(m,orders.getOrdersId());
+			
+			/*
+				此处删除Cart detail的代码
+			*/
+			
+			
 			if (map != null && map.size() != 0) {
 				request.setAttribute("map", map);
 				request.getRequestDispatcher("ordersDetail.jsp").forward(request, response);

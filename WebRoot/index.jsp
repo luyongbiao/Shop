@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            </ul>
 	        </div>
 	        <div class="top_phone">
-	        	<span><a href='#'>我的订单</a></span>
+	        	<span><a href='ordersServlet?op=list'>我的订单</a></span>
 	            <span><a href='cartServlet?op=list'>购物车</a></span>
 	            <span><a href='#'>请联系我们</a></span>
 	        </div>
