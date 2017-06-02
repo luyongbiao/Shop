@@ -13,14 +13,16 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.bqj.shopping.dao.BaseDAO;
 import org.bqj.shopping.db.DB;
 
 public class BaseDAOImpl<T> implements BaseDAO<T> {
 	
-	private String tableName;
+	private  String tableName;
 	private Class<T> tclass;
 	private Method[] setMethods; 
 	private Method[] getMethods; 
@@ -228,6 +230,7 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 				e.printStackTrace();
 			}
 		}
+		System.out.println(sql);
 		DB.executeUpdate(pstmt);
 		DB.close(pstmt);
 		DB.close(conn);
@@ -276,7 +279,6 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 		}
 		Statement stmt = DB.createStatement(conn);
 		DB.executeUpdate(stmt, sql.toString());
-		System.out.println(sql);
 		DB.close(stmt);
 		DB.close(conn);
 	}
@@ -301,14 +303,14 @@ public class BaseDAOImpl<T> implements BaseDAO<T> {
 	}
 
 	@Override
-	public List<T> find(int begin, int pageSize) {
+	public Set<T> find(int begin, int pageSize) {
 		String sql = "select * from " + this.tableName + 
 								" limit " + begin + "," + pageSize;
 		System.out.println(sql);
 		Connection conn = DB.getConn();
 		Statement stmt = DB.createStatement(conn);
 		ResultSet rs = DB.executeQuery(stmt, sql);
-		List<T> list  = new ArrayList<>();
+		Set<T> list  = new HashSet<>();
 		try {
 			while (rs.next()) {
 				T t = tclass.newInstance();

@@ -64,7 +64,6 @@ public class CustomerServlet extends HttpServlet {
 				e.printStackTrace();
 			}
 			
-
 			Customer c = null;
 			if (customerName != null && !customerName.equals(""))
 				if (customerPassword != null && !customerPassword.equals("")) {
@@ -72,44 +71,55 @@ public class CustomerServlet extends HttpServlet {
 					customer.setCustomerName(customerName);
 					customer.setCustomerPassword(customerPassword);
 					
-
 					c = this.customerService.login(customer);
 				}
-
+			
 			if (c != null) {
-				request.getSession().setAttribute("customer", c.getCustomerId());
-				response.getWriter().print("index.html");
+				request.getSession().setAttribute("customer", c);
+				response.getWriter().print("indexServlet");
 			} else
 				response.getWriter().print("error");
-		}
 		
-		if (op.equals("register")) {
+		}  else if (op.equals("logout")) {
+			request.getSession().removeAttribute("customer");
+		
+		} else if (op.equals("register")) {
 			String customerName = "";
 			String customerPassword = "";
-//			boolean customerRegister = false;
+			String comfirmPassword = "";
+			String customerGender = "";
+			int customerAge = 0;
+			String customerMobilePhone = "";
+			String customerHomePhone = "";
+			
 			try {
 				customerName = jsonObject.getString("customerName");
 				customerPassword = jsonObject.getString("customerPassword");
+				comfirmPassword = jsonObject.getString("comfirmPassword");
+				customerGender = jsonObject.getString("customerGender");
+				customerAge = jsonObject.getInt("customerAge");
+				customerMobilePhone = jsonObject.getString("customerMobilePhone");
+				customerHomePhone = jsonObject.getString("customerHomePhone");
 			} catch (JSONException e) {
 				e.printStackTrace();
 			}
-			Customer customer = new Customer();
-			customer.setCustomerName(customerName);
-			customer.setCustomerPassword(customerPassword);
-			this.customerService.register(customer);
 			
-			if (true)
-				response.getWriter().print("index.html");
-//			else
-//				response.getWriter().print("error");
+			if (!comfirmPassword.equals(customerPassword))
+				return;
 			
+			Customer c = new Customer();
+			c.setCustomerName(customerName);
+			c.setCustomerPassword(customerPassword);
+			c.setCustomerGender(customerGender);
+			c.setCustomerAge(customerAge);
+			c.setCustoemrMobilePhone(customerMobilePhone);
+			c.setCustomerHomePhone(customerHomePhone);
 			
+			String msg = this.customerService.register(c);
 			
-			
-			
-			
-			
-			
+			if (msg != null) {
+				response.getWriter().print(msg);
+			}
 		}
 	}
 	

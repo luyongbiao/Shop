@@ -30,6 +30,22 @@ public class CartDAOImpl extends BaseDAOImpl<Cart>
 			e.printStackTrace();
 		}
 		
+		DB.close(rs);
+		DB.close(stmt);
+		DB.close(conn) ;
 		return cart;
+	}
+
+	@Override
+	public void deleteMoreById(Integer[] cartDetailIds) {
+		StringBuffer sql = new StringBuffer("delete from cartDetail where 1=2");
+		for (int cartDetailId : cartDetailIds)
+			sql.append(" or cartDetailId = " + cartDetailId);
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		DB.executeUpdate(stmt, sql.toString());
+		
+		DB.close(stmt);
+		DB.close(conn);
 	}
 }

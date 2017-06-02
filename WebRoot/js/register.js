@@ -1,64 +1,133 @@
-	$(function() {
-		$('.customer_content input').blur(function(){
-			var index = $(this).parents('tr').index();
-			$('.kong').hide();
-			$('.customer_content tr').each(function(i){
-				//验证两次输入的密码是否为相同
-				if( $("input[name=comfirmPassword]").val()== null || $("input[name=comfirmPassword]").val()=="") {
-					$("#notCatch").text("请确认密码");
-					if(i<index) {
-						$("#kong_comfirmPassword").show();
-					}
-				}else if($("input[name=comfirmPassword]").val() != $("input[name=customerPassword]").val()) {
-					$("#notCatch").text("密码不匹配");
-					if(i<index) {
-						$("#kong_comfirmPassword").show();
-					}
-				}
-				if(i>index)	return;
-				if(!$(this).find('input').val() && $(this).hasClass('item')){
-					$(this).find('.kong').show();
-				}
-			})
+$(function() {
+	$(".form_header span").first().click(function() {
+		$(this).css("background-color", "#fff");
+		$(this).css("border-bottom", "1px solid #fff");
+		$(".form_header span").last().css("background-color", "#f5f5f5");
+		$(".form_header span").last().css("border-bottom", "none");
+		$(".admin_content").css("display", "none");
+		$(".customer_content").css("display", "block");
+	});
+
+	$(".form_header span").last().click(function() {
+		$(this).css("background-color", "#fff");
+		$(this).css("border-bottom", "1px solid #fff");
+		$(".form_header span").first().css("background-color", "#f5f5f5");
+		$(".form_header span").first().css("border-bottom", "none");
+		$(".admin_content").css("display", "block");
+		$(".customer_content").css("display", "none");
+	});
+
+	$(".customer_content table input:not([type=submit])").focus(function() {
+		$(this).css("border", "1px solid #333");
+	});
+
+	$(".customer_content table input:not([type=submit])").blur(function() {
+		$(this).css("border", "1px solid #e6e6e6");
+	});
+
+	$(".head_logo img").css("cursor", "pointer");
+	$(".head_logo img").click(function() {
+		location.href = "indexServlet";
+	});
+
+	$(".customer_content td[colspan='2'] a").click(function() {
+		var customerName = $(".customer_content input[name=customerName]").val();
+		var customerPassword = $(".customer_content input[name=customerPassword]").val();
+		var comfirmPassword = $(".customer_content input[name=comfirmPassword]").val();
+		var customerGender;
+
+		$(".customer_content input[name=customerGender]").each(function(index, item) {
+			if ($(this).prop("checked"))
+				customerGender = $(this).val();
 		});
-		
-		
-		
-		$("form").submit(function(){
-			return false;
+
+		var customerAge = $(".customer_content input[name=customerAge]").val();
+		var customerMobilePhone = $(".customer_content input[name=customerMobilePhone]").val();
+		var customerHomePhone = $(".customer_content input[name=customerHomePhone]").val();
+
+		if (customerName == null || customerName == "") {
+			$(".customer_content input[name=customerName] + .error").css("display", "block");
+			return;
+		}
+		if (customerPassword == null || customerPassword == "") {
+			$(".customer_content input[name=customerPassword] + .error").css("display", "block");
+			return;
+		}
+		if (customerPassword != comfirmPassword) {
+			$(".customer_content input[name=comfirmPassword] + .error").css("display", "block");
+			return;
+		}
+		if (customerAge == null || customerAge == "") {
+			$(".customer_content input[name=customerAge] + .error").css("display", "block");
+			return;
+		}
+		if (customerMobilePhone == null || customerMobilePhone == "") {
+			$(".customer_content input[name=customerMobilePhone] + .error").css("display", "block");
+			return;
+		}
+		if (customerHomePhone != customerHomePhone) {
+			$(".customer_content input[name=customerHomePhone] + .error").css("display", "block");
+			return;
+		}
+
+		$.post("customerServlet",
+			"{customerName:'" + customerName + "',customerPassword:'" + customerPassword +
+			"',customerGender:'" + customerGender + "',customerAge:" + customerAge
+			+ ",customerMobilePhone:'" + customerMobilePhone +
+			"',customerHomePhone:'" + customerHomePhone +
+			"',comfirmPassword:'" + comfirmPassword +
+			"',op:register}",
+			function(data) {
+				if (data == "用户名已存在") {
+					$(".customer_content input[name=customerName] + .error").text(data);
+					$(".customer_content input[name=customerName] + .error").css("display", "block");
+				} else
+					setTimeout(location.href = "login.html", 1000);
+			});
+	});
+
+	$(".admin_content td[colspan='2'] a").click(function() {
+		var adminName = $(".admin_content input[name=adminName]").val();
+		var adminPassword = $(".admin_content input[name=adminPassword]").val();
+		var comfirmPassword = $(".admin_content input[name=comfirmPassword]").val();
+		var adminGender;
+
+		$(".admin_content input[name=adminGender]").each(function(index, item) {
+			if ($(this).prop("checked"))
+				adminGender = $(this).val();
 		});
-		$("table input[type=submit]").click(function() {
-		        var customerName = $('.customer_content input[name=customerName]').val();
-		        var customerPassword = $('.customer_content input[name=customerPassword]').val();
-		        //var customerLoginError = $(".register_error").first();
-		        
-		        if (customerName == null || customerName == "") {
-		 
-		        	$("#kong_name").css("display", "table-cell");
-		        	
-		        			
-		        			
-		        	return;
-		        }
-		        if (customerPassword == null || customerPassword == "") {
-		        	customerLoginError.children("span").first().text("密码不能为空");
-		        	customerLoginError.css("display", "block");
-		        	return;
-		        }
-	
-		$.ajax({
-			 url:'customerServlet',
-	         type:'post',
-	         data: '{"customerName":"'+customerName+'","customerPassword":"'+customerPassword+'","op":"register"}',
-	         /* dataType:'json',   //指定返回值类型 */
-	         contentType:'application/json;charset=utf-8',
-	         success:function(data,responseXML) {
-	         	if (data == "error") {
-	         		adminLoginError.children("span").first().text("用户名或密码错误");
-	         		adminLoginError.css("display", "block");
-	         	} else
-	         		location.href = "http://localhost:8080/MyShopping/" + data;
-	         }               
-		});
+
+		var adminMobilePhone = $(".admin_content input[name=adminMobilePhone]").val();
+
+		if (adminName == null || adminName == "") {
+			$(".admin_content input[name=adminName] + .error").css("display", "block");
+			return;
+		}
+		if (adminPassword == null || adminPassword == "") {
+			$(".admin_content input[name=adminPassword] + .error").css("display", "block");
+			return;
+		}
+		if (adminPassword != comfirmPassword) {
+			$(".admin_content input[name=comfirmPassword] + .error").css("display", "block");
+			return;
+		}
+		if (adminMobilePhone == null || adminMobilePhone == "") {
+			$(".admin_content input[name=adminMobilePhone] + .error").css("display", "block");
+			return;
+		}
+
+		$.post("adminServlet",
+			"{adminName:'" + adminName + "',adminPassword:'" + adminPassword +
+			"',adminGender:'" + adminGender
+			+ "',adminMobilePhone:'" + adminMobilePhone +
+			"',comfirmPassword:'" + comfirmPassword +
+			"',op:register}",
+			function(data) {
+				if (data == "姓名已存在") {
+					$(".admin_content input[name=adminName] + .error").text(data);
+					$(".admin_content input[name=adminName] + .error").css("display", "block");
+				} else
+					setTimeout(location.href = "login.html", 1000);
+			});
 	});
 });

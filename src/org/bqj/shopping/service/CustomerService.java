@@ -13,22 +13,26 @@ public class CustomerService {
 		this.custoemrDAO = new CustomerDAOImpl();
 	}
 	
-
 	public Customer login(Customer customer) {
 		List<Customer> customers = this.custoemrDAO.findAll();
 		for (Customer c : customers) {
 			if (c.getCustomerName().equals(customer.getCustomerName())
 					&& c.getCustomerPassword().equals(customer.getCustomerPassword())) {
-
 				return c;
 			}
 		}
-
 		return null;
 	}
 	
-	public void register(Customer customer) {
+	public String register(Customer customer) {
+		List<Customer> customers = this.custoemrDAO.findAll();
+		
+		for (Customer c : customers) {
+			if (customer.getCustomerName().equals(c.getCustomerName()))
+				return "用户名已存在";
+		}
+		
 		this.custoemrDAO.save(customer);
+		return null;
 	}
-	
 }

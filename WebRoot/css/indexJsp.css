@@ -8,6 +8,10 @@ body {
   overflow-x: hidden;
 }
 
+div {
+	overflow:hidden;
+}
+
 a {
   text-decoration: none;
   cursor:pointer;
@@ -264,7 +268,7 @@ strong {
 }
 
 .goods_walls .first_walls, .goods_walls .second_walls, .goods_walls .three_walls {
-   height:794px;
+   height:780px;
    border:1px solid #ddd;
    margin-bottom:10px;
 }
@@ -423,15 +427,20 @@ strong {
 .goods_walls .first_walls p,.goods_walls .second_walls p,.goods_walls .three_walls p {
   width:191.5px;
   height:50px;
-  line-height: 25px;
+  line-height: 30px;
   font-size: 15px;
   text-indent:15px;
 }
 
 .goods_pages {
   height:64px;
-  width:400px;
+  width:600px;
   margin:0 auto;
+  margin-top:5px;
+}
+
+.goods_walls {
+	margin-top:12px;
 }
 
 .goods_walls .goods_pages li{
@@ -440,38 +449,30 @@ strong {
   font-size: 20px;
  }
  
+ .goods_pages ul {
+ 	margin-left:60px;
+ 	height:100%;
+ 	float:left;
+ }
+ 
  .goods_walls .goods_pages li a {
   display: block;
   border: solid 1px #ededed;
   color:#000;
  }
  
- .goods_walls .goods_pages li span{
-  margin:0 10px;
- }
- 
- .goods_walls .goods_pages a:active   {
-  background-color:#FF4500; 
-  color:white;
- }
- 
  .goods_walls .goods_pages li{
   margin:5px 10px;
   font-family: arial,'Hiragino Sans GB',"\5b8b\4f53",sans-serif;
  }
- 
- 
- .goods_walls .goods_pages li:not(:first-child):not(:last-child){
-  font-size:15px;
-  margin:5px 0px;
-  font-family: arial,'Hiragino Sans GB',"\5b8b\4f53",sans-serif;
- }
+
  
  .goods_walls .goods_pages .pageCount {
   font-size:15px;
   color:#ADA6A1;
   line-height:50px;
  }
+
  
   .page_end {
     margin:0 auto;

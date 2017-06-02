@@ -6,12 +6,10 @@ public class Customer {
     private String customerName;
 
     private String customerPassword;
-    
-	private String customerGender;
+
+    private String customerGender;
 
     private Integer customerAge;
-
-    private String customerAddress;
 
     private String custoemrMobilePhone;
 
@@ -41,8 +39,7 @@ public class Customer {
         this.customerPassword = customerPassword == null ? null : customerPassword.trim();
     }
 
-   
-	public String getCustomerGender() {
+    public String getCustomerGender() {
         return customerGender;
     }
 
@@ -56,14 +53,6 @@ public class Customer {
 
     public void setCustomerAge(Integer customerAge) {
         this.customerAge = customerAge;
-    }
-
-    public String getCustomerAddress() {
-        return customerAddress;
-    }
-
-    public void setCustomerAddress(String customerAddress) {
-        this.customerAddress = customerAddress == null ? null : customerAddress.trim();
     }
 
     public String getCustoemrMobilePhone() {

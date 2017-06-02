@@ -7,6 +7,10 @@ body {
   overflow-x: hidden;
 }
 
+.goods_walls div {
+  overflow: hidden;
+}
+
 a {
   text-decoration: none;
   cursor:pointer;
@@ -306,7 +310,7 @@ strong {
 
 .good_content .w{
 	margin-top:10px;
-	height:600px;
+	height:630px;
 	width:1150px;
 }
 
@@ -427,14 +431,14 @@ strong {
 .goods_walls .first_walls p,.goods_walls .second_walls p,.goods_walls .three_walls p {
   width:191.5px;
   height:50px;
-  line-height: 25px;
+  line-height: 30px;
   font-size: 15px;
   text-indent:15px;
 }
 
 .goods_pages {
   height:64px;
-  width:400px;
+  width:500px;
   margin:0 auto;
 }
 
@@ -454,20 +458,8 @@ strong {
   margin:0 10px;
  }
  
- .goods_walls .goods_pages a:active   {
-  background-color:#FF4500; 
-  color:white;
- }
- 
  .goods_walls .goods_pages li{
   margin:5px 10px;
-  font-family: arial,'Hiragino Sans GB',"\5b8b\4f53",sans-serif;
- }
- 
- 
- .goods_walls .goods_pages li:not(:first-child):not(:last-child){
-  font-size:15px;
-  margin:5px 0px;
   font-family: arial,'Hiragino Sans GB',"\5b8b\4f53",sans-serif;
  }
  

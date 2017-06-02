@@ -1,7 +1,7 @@
 package org.bqj.shopping.dao;
 
-
 import java.util.List;
+import java.util.Set;
 
 public interface BaseDAO<T> {
 	public T loadById(Integer id);
@@ -15,7 +15,9 @@ public interface BaseDAO<T> {
 	public void removeAll();
 	
 	public void modify(T t);
+	
 	public int findCount();
 
-	public List<T> find(int begin, int pageSize);
+	public Set<T> find(int begin, int pageSize);
+
 }

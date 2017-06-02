@@ -18,21 +18,19 @@ public class OrdersDetailDAOImpl extends BaseDAOImpl<OrdersDetail>
 	 * @see org.bqj.shopping.dao.OrdersDetailDAO#findOrdersDetailByOrdersId(int)
 	 */
 	@Override
-	//find OrdersDetails by OrdersId and then we find the customer who ordered this order.
-	public List<OrdersDetail> findOrdersDetailByOrdersId(int ordersid) {
+	public List<OrdersDetail> findOrdersDetailByOrdersId(int OrdersId) {
 		// TODO Auto-generated method stub
-		String sql = "select * from OrdersDetail where OrdersId = " +ordersid;
+		List<OrdersDetail> list = new ArrayList<>();
+		String sql = "select * from OrdersDetail where ordersId = " +OrdersId;
 		Connection conn = DB.getConn();
 		Statement stmt = DB.createStatement(conn);
 		ResultSet rs = DB.executeQuery(stmt, sql);
-		List<OrdersDetail> list = new ArrayList<OrdersDetail>();
-		OrdersDetail od = null;
 		try {
-			od = new OrdersDetail();
-			while(rs.next()) {		
+			while(rs.next()) {
+				OrdersDetail od = new OrdersDetail();
 				od.setOrdersdetailId(rs.getInt(1));
 				od.setOrdersId(rs.getInt(2));
-				od.setGoodsId(rs.getInt(3));   //so we can find the goodId and show something by goodsId
+				od.setGoodsId(rs.getInt(3));
 				od.setGoodsCount(rs.getInt(4));
 				od.setTotalPrice(rs.getDouble(5));
 				list.add(od);
@@ -41,9 +39,26 @@ public class OrdersDetailDAOImpl extends BaseDAOImpl<OrdersDetail>
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		DB.close(rs);
- 		DB.close(stmt);
- 		DB.close(conn);
 		return list;
 	}
+	
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

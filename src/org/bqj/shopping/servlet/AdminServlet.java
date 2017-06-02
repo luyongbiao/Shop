@@ -87,10 +87,25 @@ public class AdminServlet extends HttpServlet {
 				response.getWriter().print("error");
 			
 		} else if (op.equals("register")) {
-			String adminName = request.getParameter("adminName");
-			String adminPassword = request.getParameter("adminPassword");
-			String adminGender = request.getParameter("adminGender");
-			String adminMobilePhone = request.getParameter("adminMobilePhone");
+			String adminName = "";
+			String adminPassword = "";
+			String adminGender = "";
+			String adminMobilePhone = "";
+			String comfirmPassword = "";
+			
+			try {
+				adminPassword = jsonObject.getString("adminPassword");
+				adminName = jsonObject.getString("adminName");
+				adminGender = jsonObject.getString("adminGender");
+				adminMobilePhone = jsonObject.getString("adminMobilePhone");
+				comfirmPassword = jsonObject.getString("comfirmPassword");
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			if (!adminPassword.equals(comfirmPassword))
+				return;
 			
 			Admin admin = new Admin();
 			admin.setAdminName(adminName);
@@ -98,7 +113,11 @@ public class AdminServlet extends HttpServlet {
 			admin.setAdminGender(adminGender);
 			admin.setAdminMobilePhone(adminMobilePhone);
 			
-			this.adminService.register(admin);
+			String msg = this.adminService.register(admin);
+			
+			if (msg != null) {
+				response.getWriter().print(msg);
+			}
 			
 		} else if (op.equals("delete")) {
 			int id = 0;
@@ -113,25 +132,24 @@ public class AdminServlet extends HttpServlet {
 			String adminId = request.getParameter("adminId");
 			if (adminId != null && !adminId.equals(""))
 				id = Integer.parseInt(adminId);
-		
-	
+			
 			String adminName = request.getParameter("adminName");
 			String adminPassword = request.getParameter("adminPassword");
 			String adminGender = request.getParameter("adminGender");
 			String adminMobilePhone = request.getParameter("adminMobilePhone");
-		
-	
+			
 			Admin admin = new Admin();
 			admin.setAdminId(id);
 			admin.setAdminName(adminName);
 			admin.setAdminPassword(adminPassword);
 			admin.setAdminGender(adminGender);
-			admin.setAdminMobilePhone(adminMobilePhone);	
-
+			admin.setAdminMobilePhone(adminMobilePhone);
+			
 			this.adminService.update(admin);
+			
 		}
 	}
-
+	
 
 	public String readJSONString(HttpServletRequest request) {
 		StringBuffer json = new StringBuffer();
