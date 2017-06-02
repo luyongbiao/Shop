@@ -2,7 +2,6 @@ package org.bqj.shopping.servlet;
 
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -114,7 +113,6 @@ public class OrdersServlet extends HttpServlet {
 			response.sendRedirect("ordersServlet?op=list");
 		} else */
 		if(op.equals("list")) {
-			Map<Orders,List<OrdersDetail>> map2 = this.ordersService.listAll(customer.getCustomerId());
 			Map<Orders,Map<OrdersDetail,Goods>> map = this.ordersService.listGoodsInOrders(customer.getCustomerId());
 			/*List<Map<OrdersDetail,Goods>> goods = new ArrayList<>(); 
 			for(Orders order : orders) {

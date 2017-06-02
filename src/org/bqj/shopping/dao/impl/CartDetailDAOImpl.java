@@ -63,7 +63,23 @@ public class CartDetailDAOImpl extends BaseDAOImpl<CartDetail>
 		}
 		return list;
 	}
-	
-	
-	
+
+	@Override
+	public int finGoodIdByCartDetail(int cartDetailId) {
+		// TODO Auto-generated method stub
+		String sql = "select goodsId from cartDetail where cartDetailId=" + cartDetailId;
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		ResultSet rs = DB.executeQuery(stmt, sql);
+		int goodsid = 0;
+		try {
+			while (rs.next()) {
+				goodsid = rs.getInt("goodsId");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return goodsid;
+	}
+
 }
