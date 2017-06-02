@@ -9,7 +9,21 @@
     <script src='js/jquery-3.1.1.min.js'></script>
     <script>
         $(function(){   
+	       	var op1 = decodeURI(location.search);
+	       	op1 = op1.substring(1);
+	       if (op1 == "op=listNoPayed"){
+	        	$(".orders_status li").eq(1).find("a").css("color","#C0A78C");
+	        	$(".orders_status li").eq(1).css("border-bottom","2px solid #C0A78C");
+	        } else if (op1 == "op=listPayed"){
+	        	$(".orders_status li").eq(2).find("a").css("color","#C0A78C");
+	        	$(".orders_status li").eq(2).css("border-bottom","2px solid #C0A78C");
+	        } else if (op1 == "op=list") {
+	        	$(".orders_status li").eq(0).find("a").css("color","#C0A78C");
+	        	$(".orders_status li").eq(0).css("border-bottom","2px solid #C0A78C");
+	        } 
+	        
               var amount = 0;
+              var ordersDetailId = "";
               $(".cart_page").each(function(index){  
 	              var  count = 0;
               		$(this).find(".goodsItem").each(function(index){
@@ -18,8 +32,47 @@
 	             	 	
               		});  
               		$(this).find(".count").first().text(count);
-              		$(this).find(".goods_total_price span em").first().text("￥"); 
+              		$(this).find(".goods_total_price span em").first().text("￥");
+              		var status = $(this).find("li.goods_status").val(); 
+              		if(status == 1){
+	              		$(this).find("li.goods_status span ").first().text("未付款");
+              		} else if(status == 2) {
+	              		$(this).find("li.goods_status span ").first().text("待发货");
+              		} else if(status == 3) {
+	              		$(this).find("li.goods_status span ").first().text("已发货");
+              		}
+              		$(this).find("div.w").click(function(){
+              			var ordersId = $(this).find("li.product").val();
+              			$(this).find("div.goodsItem li.getOrdersDetailId").each(function(){
+	              			ordersDetailId += "&ordersDetailId=" + $(this).val();
+              			})
+              			ordersDetailId = ordersDetailId.substring(1);
+              			location.href = "ordersDetailServlet?" + ordersDetailId + "&ordersId=" +ordersId;
+              			/* $.ajax({
+            			url : 'ordersDetailServlet',
+            			type : 'post',
+            			contentType: "application/json",
+            			/* cache : false,  
+                        traditional :true,     //必须加上该句话来序列化  
+                        data: '{"ordersDetailId":"' + ordersDetailId + '}',//提交的参数   
+            			success : function(data) {
+            				var msg;
+            				$(data).each(function(index, item) {
+            					msg = item.message;
+            				});
+            			}
+            		}); */
+              		});	
              });
+             
+             
+             
+            //注销操作 
+            $(".top_menu .logout").click(function() {
+			$.post("customerServlet", "{op:logout}", function(data) {
+			location.href = "login.html";
+			});
+		});
      });
     </script>
 </head>
@@ -61,9 +114,9 @@
     <div class="orders_status">
         <div class="w">
             <ul>
-                <li><a href="#">全部订单</a></li>
-                <li><a href="#">未付款</a></li>
-                <li><a href="#">已付款</a></li>
+                <li><a href="ordersServlet?op=list">全部订单</a></li>
+                <li><a href="ordersServlet?op=listNoPayed">未付款</a></li>
+                <li><a href="ordersServlet?op=listPayed">已付款</a></li>
                 <li><a href="#">已完成</a></li>
             </ul>
         </div>
@@ -73,7 +126,7 @@
        		<div class="w">
             	<div class="cart_header">
                	  <ul>
-                    <li class="product">
+                    <li class="product" value='${item.key.ordersId }'>
                         <span style="font-weight:700;font-size:15px;">2017-05-01</span>
                         <span style="margin-left:10px;font-size:15px;">订单号：${item.key.ordersId }</span>
                     </li>
@@ -119,7 +172,7 @@
                                     <span class="goods_price">${item_goods.value.goodsPrice }</span>
                                 </span>
                             </li>
-                            <li>
+                            <li class="getOrdersDetailId" value='${item_goods.key.ordersdetailId }'>
                                     <span class="goods_count">${item_goods.key.goodsCount }</span>
                             </li>
                              <li class='goods_total_price' >
@@ -128,9 +181,9 @@
                                     <span class="count">&nbsp;</span>
                                 </span>
                             </li>
-                             <li class='goods_status' >
+                             <li class='goods_status' value='${item.key.ordersStatusId }'>
                                 <span style="color:red;font-size:17px">
-                                    已完成
+                                &nbsp;
                                 </span>
                             </li>
                         </ul>

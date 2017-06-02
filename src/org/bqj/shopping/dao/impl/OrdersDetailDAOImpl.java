@@ -39,9 +39,37 @@ public class OrdersDetailDAOImpl extends BaseDAOImpl<OrdersDetail>
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		DB.close(rs);
+		DB.close(stmt);
+		DB.close(conn);
 		return list;
 	}
-	
+
+	@Override
+	public OrdersDetail findOrdersDetailByForigenkey(int ordersId, int goodsId) {
+		// TODO Auto-generated method stub
+		String sql = "select * from OrdersDetail where ordersId = " + ordersId + " and goodsId =" + goodsId;
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		ResultSet rs = DB.executeQuery(stmt,sql);
+		OrdersDetail ordersDetail = new OrdersDetail();
+		try {
+			while(rs.next()) {
+				ordersDetail.setOrdersdetailId(rs.getInt(1));
+				ordersDetail.setOrdersId(rs.getInt(2));
+				ordersDetail.setGoodsId(rs.getInt(3));
+				ordersDetail.setGoodsCount(rs.getInt(4));
+				ordersDetail.setTotalPrice(rs.getDouble(5));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		DB.close(rs);
+		DB.close(stmt);
+		DB.close(conn);
+		return ordersDetail;
+	}
 }
 
 
