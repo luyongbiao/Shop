@@ -127,7 +127,7 @@
 	                                </span>
 	                            </li>
 	                            <li>
-	                                    <span class="goods_count">${item.key.goodsCount }</span>
+	                                    <span class="goods_count">${item.key.goodsCount }&nbsp;</span>
 	                            </li>
 	                            <li class="goods_status" value="${orders.ordersStatusId }">
 	                                <span style='color:red;font-size:18px'>&nbsp;</span>
