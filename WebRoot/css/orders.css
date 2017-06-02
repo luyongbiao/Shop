@@ -11,6 +11,9 @@ a {
   text-decoration: none;
   cursor:pointer;
 }
+.goodsImage img {
+	height: 66.63px;
+}
 
 ul {
     list-style: none;

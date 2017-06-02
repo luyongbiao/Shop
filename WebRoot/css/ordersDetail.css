@@ -12,6 +12,11 @@ a {
   cursor:pointer;
 }
 
+.goodsItem img {
+	height: 66.3px;
+}
+
+
 ul {
     list-style: none;
 }

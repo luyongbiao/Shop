@@ -259,6 +259,11 @@ ul {
   border-top: none;
 }
 
+.goodsItem img {
+	height: 66.63px;
+}
+
+
 .cart_header li,.goodsItem li {
   float:left;
   width:160px;
