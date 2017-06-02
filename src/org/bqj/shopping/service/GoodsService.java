@@ -28,7 +28,6 @@ public class GoodsService {
 			}
 			
 		}
-<<<<<<< HEAD
 		
 		public Set<Goods> getGoods() {
 			int begin = (int)(Math.random() * (this.goodsDao.findCount() - 11));
@@ -54,21 +53,25 @@ public class GoodsService {
 		
 		public List<Goods> getHitsGoods(int amount) {
 			return this.goodsDao.findByHits(amount);
-=======
+		}
+		
 		public Goods findGoodsById(int id){
 			GoodsDAOImpl goodsDao = new GoodsDAOImpl();
 			Goods goods = goodsDao.loadById(id);
 			return goods;
 		}
+		
 		public List<Goods> findAllGoods(){
 			GoodsDAOImpl goodsDao = new GoodsDAOImpl();
 			List<Goods> goods = goodsDao.findAll();
 			return goods;
 		}
+		
 		public void deleteGoodsById(int id ){
 			GoodsDAOImpl goodsDao = new GoodsDAOImpl();
 			goodsDao.removeOne(id);
 		}
+		
 		public void modify(Goods goods) {
 			// TODO Auto-generated method stub
 			GoodsDAOImpl goodsDao = new GoodsDAOImpl();
@@ -79,12 +82,12 @@ public class GoodsService {
 			GoodsDAOImpl goodsDao = new GoodsDAOImpl();
 			goodsDao.save(goods);
 		}
+		
 		public Goods getLastGoods() {
 			// TODO Auto-generated method stub
 			GoodsDAOImpl goodsDao = new GoodsDAOImpl();
 			Goods goods = null;
 			goods = goodsDao.getLastGoods();
 			return goods;
->>>>>>> remotes/origin/EricWork
 		}
 }

@@ -3,8 +3,11 @@ package org.bqj.shopping.service;
 import java.util.List;
 
 import org.bqj.shopping.dao.GoodsDAO;
+import org.bqj.shopping.dao.impl.GoodsCategoryDAOImpl;
 import org.bqj.shopping.dao.impl.GoodsDAOImpl;
 import org.bqj.shopping.entity.Goods;
+import org.bqj.shopping.entity.GoodsCategory;
+import org.bqj.shopping.entity.PageBean;
 
 
 public class GoodsCategoryService {
@@ -29,8 +32,7 @@ public class GoodsCategoryService {
     
     public List<Goods> findByCategoryIdResult(int categoryId) {
         List<Goods> list = null;
-        List<Goods> judge = goodsDao.findByCategoryId(categoryId
-                            , pageBean.getBegin(), pageBean.getPageSize());
+        List<Goods> judge = goodsDao.findByCategoryId(categoryId);
         if(judge.size()!=0){
             list = judge;
             return list;
@@ -68,4 +70,4 @@ public class GoodsCategoryService {
 	public int findCountById(int categoryId) {
 		return this.goodsDao.findCountByCategory(categoryId);
 	}
-}}
+}

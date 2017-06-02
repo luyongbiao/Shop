@@ -2,11 +2,8 @@ package org.bqj.shopping.servlet;
 
 import java.io.IOException;
 import java.util.List;
-<<<<<<< HEAD
 import java.util.Set;
 
-=======
->>>>>>> remotes/origin/EricWork
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,11 +16,6 @@ import org.json.JSONArray;
 
 @WebServlet("/indexServlet")
 public class IndexServlet extends HttpServlet {
-
-<<<<<<< HEAD
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private GoodsService goodsService;
 	
@@ -41,10 +33,6 @@ public class IndexServlet extends HttpServlet {
 	 * @throws ServletException if an error occurred
 	 * @throws IOException if an error occurred
 	 */
-=======
-	private static final long serialVersionUID = 1L;
-	
->>>>>>> remotes/origin/EricWork
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
