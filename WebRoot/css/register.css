@@ -27,13 +27,6 @@ body {
     height: 100%;
 }
 
-.kong{
-	color:red; 
-	width:30%;
-	display:none;
-}
-
-
 .head_logo {
     float:left;
     width:200px;
@@ -136,7 +129,7 @@ body {
 }
 
 .customer_content table, .admin_content table{
-    width:500px;
+    width:580px;
     margin: 0 auto;
 }
 
@@ -147,7 +140,7 @@ body {
     color:#646464;
 }
 
-.customer_content table input:not([type=submit]):not([type=radio]), .admin_content table input:not([type=submit]):not([type=radio]){
+.customer_content table input:not([type=radio]) {
     width:200px;
     height: 18px;
     border-radius: 2px;
@@ -158,6 +151,21 @@ body {
     font-size: 15px;
     line-height: 18px;
     border:1px solid #e6e6e6;
+    float:left;
+}
+
+.admin_content table input:not([type=radio]){
+    width:200px;
+    height: 18px;
+    border-radius: 2px;
+    color: #333;
+    padding:5px 8px;
+    font-family: 'Microsoft YaHei';
+    outline: 0 none;
+    font-size: 15px;
+    line-height: 18px;
+    border:1px solid #e6e6e6;
+    float:left;
 }
 
 .customer_content table tr, .admin_content table tr {
@@ -169,7 +177,8 @@ body {
     text-align: center;
 }
 
-.customer_content input[type=submit],  .admin_content input[type=submit]{
+.customer_content td[colspan='2'] a ,.admin_content td[colspan='2'] a{
+	display:inline-block;
     border:none;
     width:120px;
     height: 40px;
@@ -183,7 +192,7 @@ body {
     letter-spacing: 5px;
 }
 
-.customer_content input[type=submit]:hover,  .admin_content input[type=submit]:hover{
+.customer_content td[colspan='2'] a:hover ,.admin_content td[colspan='2'] a:hover{
     text-decoration: none;
     background-color: #C0A78C; 
     color:#333;
@@ -199,3 +208,9 @@ input[type=radio] {
     height:15px;
 }
 
+.error {
+	float:left;
+	margin-left:10px;
+	color:red;
+	display:none;
+}

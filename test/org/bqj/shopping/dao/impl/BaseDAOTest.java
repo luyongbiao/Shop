@@ -1,8 +1,6 @@
 package org.bqj.shopping.dao.impl;
 
-import java.util.List;
 
-import org.bqj.shopping.entity.Goods;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -35,7 +33,7 @@ public class BaseDAOTest {
 	 */
 	@Test
 	public void testLoadById() {
-		Runnable thread1 = new Runnable() {
+		/*Runnable thread1 = new Runnable() {
 			public void run() {
 				List<Goods> list = new GoodsDAOImpl().findByGoodsName("手");
 				for (Goods g : list)
@@ -62,7 +60,7 @@ public class BaseDAOTest {
 		for (int i = 0; i < 3; i++) {
 			threads1[i].start();
 			threads2[i].start();
-		}
+		}*/
 		/*
 		 * 
 		 * // 测试Custoemr

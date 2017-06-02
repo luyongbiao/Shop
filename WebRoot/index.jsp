@@ -39,7 +39,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	            </ul>
 	        </div>
 	        <div class="top_phone">
-	        	<span><a href='ordersServlet?op=list'>我的订单</a></span>
+	        	<span><a href='#'>我的订单</a></span>
 	            <span><a href='cartServlet?op=list'>购物车</a></span>
 	            <span><a href='#'>请联系我们</a></span>
 	        </div>
@@ -111,88 +111,30 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	        <div class="info">
 	           <div class="purchase_info">
 	                 <p>
-	                   	  热门店铺
+	                   	  热门商品
 	                 </p>
 	                 <p>
 	                     GET WHAT YOU WANT！
 	                 </p>
-	             </div>
+	             </div>	                
 	                 <ul>
-	                     <li>
-	                         <a>
-	                             <div class="stores_img">
-	                                 <img src="image/ym.jpg">
-	                             </div>
-	                             <div class="stores_info">
-	                                 <p>
-	                                   	  嘻哈nyc鞋铺
-	                                 </p>
-	                                 <p>
-	                                  	   销量 2614 共223 件商品
-	                                 </p>
-	                             </div>
-	                         </a>
-	                     </li>
-	                     <li>
-	                         <a>
-	                             <div class="stores_img">
-	                                 <img src="image/ym.jpg">
-	                             </div>
-	                             <div class="stores_info">
-	                                 <p>
-	                                   	  嘻哈nyc鞋铺
-	                                 </p>
-	                                 <p>
-	                                  	   销量 2614 共223 件商品
-	                                 </p>
-	                             </div>
-	                         </a>
-	                     </li>
-	                     <li>
-	                         <a>
-	                             <div class="stores_img">
-	                                 <img src="image/ym.jpg">
-	                             </div>
-	                             <div class="stores_info">
-	                                 <p>
-	                                 	    嘻哈nyc鞋铺
-	                                 </p>
-	                                 <p>
-	                                  	   销量 2614 共223 件商品
-	                                 </p>
-	                             </div>
-	                         </a>
-	                     </li>
-	                     <li>
-	                         <a>
-	                             <div class="stores_img">
-	                                 <img src="image/ym.jpg">
-	                             </div>
-	                             <div class="stores_info">
-	                                 <p>
-	                                	     嘻哈nyc鞋铺
-	                                 </p>
-	                                 <p>
-	                                  	   销量 2614 共223 件商品
-	                                 </p>
-	                             </div>
-	                         </a>
-	                     </li>
-	                     <li>
-	                         <a>
-	                             <div class="stores_img">
-	                                 <img src="image/ym.jpg">
-	                             </div>
-	                             <div class="stores_info">
-	                                 <p>
-	                                  	   嘻哈nyc鞋铺
-	                                 </p>
-	                                 <p>
-	                                    	 销量 2614 共223 件商品
-	                                 </p>
-	                             </div>
-	                         </a>
-	                     </li>
+	                 	 <c:forEach var="item" items="${goodsHits }">
+		                     <li>
+		                         <a>
+		                             <div class="stores_img">
+		                                 <img src="${item.goodsPic }">
+		                             </div>
+		                             <div class="stores_info">
+		                                 <p>
+		                                   	 ${item.goodsName }
+		                                 </p>
+		                                 <p>
+		                                  	   销量 ${item.goodsSales } 共${item.goodsStock }件商品
+		                                 </p>
+		                             </div>
+		                         </a>
+		                     </li>
+		                   </c:forEach>
 	                 </ul>
 	              <div class="mod">
 	              	 <div class="mod_pay">

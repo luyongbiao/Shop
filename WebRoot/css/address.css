@@ -140,7 +140,7 @@ body {
     color:#646464;
 }
 
-.customer_content table input:not([type=radio]), .admin_content table input:not([type=radio]){
+.customer_content table input:not([type=radio]) {
     width:200px;
     height: 18px;
     border-radius: 2px;
