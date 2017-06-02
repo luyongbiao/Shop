@@ -16,6 +16,12 @@ import org.json.JSONArray;
 
 @WebServlet("/indexServlet")
 public class IndexServlet extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+	private GoodsService goodsService;
+	
+	public IndexServlet() {
+		this.goodsService = new GoodsService();
+	}
 
 	/**
 	 * 

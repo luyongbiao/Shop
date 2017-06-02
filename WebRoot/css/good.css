@@ -7,13 +7,8 @@ body {
   overflow-x: hidden;
 }
 
-<<<<<<< HEAD
 div {
 	overflow:hidden;
-=======
-.goods_walls div {
-  overflow: hidden;
->>>>>>> remotes/origin/branch1
 }
 
 a {

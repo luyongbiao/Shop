@@ -11,6 +11,8 @@ public interface GoodsDAO extends BaseDAO<Goods> {
 	int findCountByInfo(String info);
 	
 	List<Goods> findByCategoryId(int categoryId, int begin, int pageSize);
+	
+	List<Goods> findByCategoryId(int categoryId);
 
 	int findCountByCategory(int categoryId);
 
