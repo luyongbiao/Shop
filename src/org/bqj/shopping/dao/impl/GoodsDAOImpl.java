@@ -82,4 +82,29 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 		List<Goods> goods = this.find(begin, end);
 		return goods;
 	}
+	public Goods getLastGoods() {
+		// TODO Auto-generated method stub
+		String sql  ="select * from  goods order by goodsShelfTime desc limit 0,1";
+		Connection conn = DB.getConn();
+		Statement stmt = DB.createStatement(conn);
+		ResultSet rs = DB.executeQuery(stmt, sql);
+		Goods goods = new Goods();
+		try {
+			while(rs.next()){
+				goods.setGoodsId(rs.getInt(1));
+				goods.setGoodsName(rs.getString(2));
+				goods.setGoodsPrice(rs.getDouble(3));
+				goods.setGoodsStock(rs.getInt(4));
+				goods.setGoodsDesc(rs.getString(5));
+				goods.setGoodsShelfTime(rs.getTimestamp(6));
+				goods.setGoodsHits(rs.getLong(7));
+				goods.setGoodsSales(rs.getLong(8));
+				goods.setGoodsPic(rs.getString(9));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return goods;
+	}
 }

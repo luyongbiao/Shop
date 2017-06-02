@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.bqj.shopping.dao.impl.*;
 import org.bqj.shopping.entity.Goods;
+import org.bqj.shopping.entity.GoodsCategory;
 
 
 public class GoodsCategoryService {
@@ -18,5 +19,26 @@ public class GoodsCategoryService {
 			return list;
 		}
 		
+	}
+	public GoodsCategory findGoodsCategoryByGoodsId(int id){
+		GoodsCategoryDAOImpl goodsCategoryDao = new GoodsCategoryDAOImpl();
+		GoodsCategory  goodsCategory = goodsCategoryDao.getGoodsCategoryById(id);
+		return goodsCategory;
+	}
+	public void modify(GoodsCategory goodsCategory) {
+		// TODO Auto-generated method stub
+		GoodsCategoryDAOImpl goodsCategoryDao = new GoodsCategoryDAOImpl();
+		goodsCategoryDao.modify(goodsCategory);
+	}
+	public void add(GoodsCategory goodsCategory) {
+		// TODO Auto-generated method stub
+		GoodsCategoryDAOImpl goodsCategoryDao = new GoodsCategoryDAOImpl();
+		goodsCategoryDao.save(goodsCategory);
+		
+	}
+	public void deleteGoodsCategoryById(int goodsCategoryId) {
+		// TODO Auto-generated method stub
+		GoodsCategoryDAOImpl goodsCategoryDao = new GoodsCategoryDAOImpl();
+		goodsCategoryDao.removeOne(goodsCategoryId);
 	}
 }

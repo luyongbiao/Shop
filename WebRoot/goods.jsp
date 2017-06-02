@@ -4,22 +4,16 @@ String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
 %>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<!DOCTYPE HTML>
 <html>
   <head>
     <base href="<%=basePath%>"> 
     <title>商城</title>
-    
-	<meta http-equiv="pragma" content="no-cache">
-	<meta http-equiv="cache-control" content="no-cache">
-	<meta http-equiv="expires" content="0">    
-	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-	<meta http-equiv="description" content="This is my page">
-    
-    <link rel='stylesheet' href='css/good.css' type="text/css">
+ 
+    <link rel='stylesheet' href='css/good.css'>
     <script src="js/jquery-3.1.1.min.js"></script>
     <script src="js/index.js"></script>
-    <script type="text/javascript">
+    <script>
     	function searchGoods(){
     		var searchName =document.getElementById('searchName').value;
     		window.location.href = "/MyShopping/goodsServlet?searchName="+searchName;
