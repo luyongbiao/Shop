@@ -75,10 +75,51 @@ public class CustomerServlet extends HttpServlet {
 				}
 			
 			if (c != null) {
-				request.getSession().setAttribute("customer", c.getCustomerId());
-				response.getWriter().print("index.html");
+				request.getSession().setAttribute("customer", c);
+				response.getWriter().print("indexServlet");
 			} else
 				response.getWriter().print("error");
+		
+		}  else if (op.equals("logout")) {
+			request.getSession().removeAttribute("customer");
+		
+		} else if (op.equals("register")) {
+			String customerName = "";
+			String customerPassword = "";
+			String comfirmPassword = "";
+			String customerGender = "";
+			int customerAge = 0;
+			String customerMobilePhone = "";
+			String customerHomePhone = "";
+			
+			try {
+				customerName = jsonObject.getString("customerName");
+				customerPassword = jsonObject.getString("customerPassword");
+				comfirmPassword = jsonObject.getString("comfirmPassword");
+				customerGender = jsonObject.getString("customerGender");
+				customerAge = jsonObject.getInt("customerAge");
+				customerMobilePhone = jsonObject.getString("customerMobilePhone");
+				customerHomePhone = jsonObject.getString("customerHomePhone");
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			if (!comfirmPassword.equals(customerPassword))
+				return;
+			
+			Customer c = new Customer();
+			c.setCustomerName(customerName);
+			c.setCustomerPassword(customerPassword);
+			c.setCustomerGender(customerGender);
+			c.setCustomerAge(customerAge);
+			c.setCustoemrMobilePhone(customerMobilePhone);
+			c.setCustomerHomePhone(customerHomePhone);
+			
+			String msg = this.customerService.register(c);
+			
+			if (msg != null) {
+				response.getWriter().print(msg);
+			}
 		}
 	}
 	

@@ -1,4 +1,8 @@
 	$(function() {
+		 $(".login_logo img").css("cursor", "pointer");
+		 $(".login_logo img").click(function() {
+				location.href="indexServlet";
+		});
 		
 	    $(".content_header span").first().click(function() {
 	        $(".content_header span").last().css("border-bottom","3px solid #ccc");
@@ -77,7 +81,7 @@
 	                		customerLoginError.children("span").first().text("用户名或密码错误");
 	                		customerLoginError.css("display", "block");
 	                	}  else
-	                		location.href = "http://localhost:8080/MyShopping/" + data;
+	                		location.href = "http://localhost:8080/MyShopping/indexServlet";
 	                }               
 	            });
 	       });

@@ -2,16 +2,27 @@ package org.bqj.shopping.service;
 
 import java.util.List;
 
-import org.bqj.shopping.dao.impl.*;
+import org.bqj.shopping.dao.GoodsDAO;
+import org.bqj.shopping.dao.impl.GoodsCategoryDAOImpl;
+import org.bqj.shopping.dao.impl.GoodsDAOImpl;
 import org.bqj.shopping.entity.Goods;
 import org.bqj.shopping.entity.GoodsCategory;
+import org.bqj.shopping.entity.PageBean;
+
 
 
 public class GoodsCategoryService {
-	public List<Goods> findByCategoryIdResult(int categoryId){
-		GoodsDAOImpl goodsDao = new GoodsDAOImpl();
+	private GoodsDAO goodsDao;
+	
+	public GoodsCategoryService() {
+		this.goodsDao = new GoodsDAOImpl();
+	}
+	
+	public List<Goods> findByCategoryIdResult(int categoryId, PageBean pageBean){
+		
 		List<Goods> list = null;
-		List<Goods> judge = goodsDao.findByCategoryId(categoryId);
+		List<Goods> judge = goodsDao.findByCategoryId(categoryId
+							, pageBean.getBegin(), pageBean.getPageSize());
 		if(judge.size()!=0){
 			list = judge;
 			return list;
@@ -20,6 +31,7 @@ public class GoodsCategoryService {
 		}
 		
 	}
+
 	public GoodsCategory findGoodsCategoryByGoodsId(int id){
 		GoodsCategoryDAOImpl goodsCategoryDao = new GoodsCategoryDAOImpl();
 		GoodsCategory  goodsCategory = goodsCategoryDao.getGoodsCategoryById(id);
@@ -40,5 +52,10 @@ public class GoodsCategoryService {
 		// TODO Auto-generated method stub
 		GoodsCategoryDAOImpl goodsCategoryDao = new GoodsCategoryDAOImpl();
 		goodsCategoryDao.removeOne(goodsCategoryId);
+	}
+
+	public int findCountById(int categoryId) {
+		return this.goodsDao.findCountByCategory(categoryId);
+
 	}
 }

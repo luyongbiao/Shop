@@ -16,8 +16,6 @@ import org.bqj.shopping.entity.Cart;
 import org.bqj.shopping.entity.CartDetail;
 import org.bqj.shopping.entity.Goods;
 
-
-
 public class CartService {
 	private CartDAO cartDAO;
 	private CartDetailDAO cartDetailDAO;
@@ -38,7 +36,7 @@ public class CartService {
 			c.setCartCreateTime(new Timestamp(new Date().getTime()));
 			
 			this.cartDAO.save(c);
-			System.out.println(this.cartDAO.findByCustomerId(customerId));
+
 			cd.setCartId(this.cartDAO.findByCustomerId(customerId).getCartId());
 			this.cartDetailDAO.save(cd);
 		} else {
@@ -98,6 +96,10 @@ public class CartService {
 		if (cartDetails == null || cartDetails.size() == 0) {
 			this.cartDAO.removeOne(cd.getCartId());			
 		}
+	}
+	
+	public void deleteMore(Integer[] cartDetailIds) {
+		this.cartDAO.deleteMoreById(cartDetailIds);
 	}
 
 }

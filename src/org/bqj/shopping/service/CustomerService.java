@@ -24,4 +24,15 @@ public class CustomerService {
 		return null;
 	}
 	
+	public String register(Customer customer) {
+		List<Customer> customers = this.custoemrDAO.findAll();
+		
+		for (Customer c : customers) {
+			if (customer.getCustomerName().equals(c.getCustomerName()))
+				return "用户名已存在";
+		}
+		
+		this.custoemrDAO.save(customer);
+		return null;
+	}
 }

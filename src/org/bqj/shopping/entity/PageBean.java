@@ -7,6 +7,18 @@ public class PageBean {
 	private int begin;
 	private int totalCount;
 	
+	public PageBean(int currentPage, int pageSize, int totalCount) {
+		this.currentPage = currentPage;
+		this.pageSize = pageSize;
+		this.totalCount = totalCount;
+		
+		this.begin = pageSize * (currentPage - 1);
+		if (totalCount % pageSize == 0) {
+			this.pageCount = totalCount / pageSize;
+		} else
+			this.pageCount = totalCount / pageSize + 1;
+	}
+	
 	public int getPageCount() {
 		return pageCount;
 	}

@@ -3,10 +3,6 @@
   padding:0;
 }
 
-body {
-  overflow-x: hidden;
-}
-
 a {
   text-decoration: none;
   cursor:pointer;
@@ -30,7 +26,7 @@ ul {
 
 .top_menu {
     float:left;
-    width:210px;
+    width:310px;
 }
 
 .top_menu li{

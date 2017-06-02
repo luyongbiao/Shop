@@ -1,22 +1,28 @@
 $(document).ready(function(){
 			var arr = [];
 			$(".pay_content li.product a").click(function() {
-				 var i = 0;
-				 $(".goodsItem").each(function() {
-					if ($(this).find(".selectOne[type=checkbox]").prop("checked"))
-						arr[i++] = $(this).find("input[name=cartDetailId]").val();
-				 });
-				
-				$.ajax({
-					url:'cartServlet',
-					type:'post',
-					data:'{cartDetailId:"' + arr.toString() + '",op:"deleteMore"}',
-					contentType:'application/json;charset=utf-8',
+				var i = 0;
+				$(".selectOne[type=checkbox]").each(function() {
+						if($(this).prop("checked")) {
+							i++;
+						}
 				});
 				
-				setTimeout(function() {
-					location.reload()
-				}, 300);
+				if (i != 0) {
+					var url = "cartServlet?";
+					 $(".goodsItem").each(function() {
+						if ($(this).find(".selectOne[type=checkbox]").prop("checked"))
+							url += "cartDetailId=" + $(this).find("input[name=cartDetailId]").val() + "&";
+					 });
+					
+					url += "op=deleteMore";
+					location.href= url;
+				}
+			});
+			
+			$(".logo_search .logo img").css("cursor", "pointer");
+			$(".logo_search .logo img").click(function() {
+				location.href="indexServlet";
 			});
 			
 			$(".addSuccess").css("right",(($("body").width() + 40) / 2) + "px");
