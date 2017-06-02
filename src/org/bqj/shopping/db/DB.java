@@ -19,7 +19,7 @@ public class DB {
 			Class.forName("com.mysql.jdbc.Driver");
 			String url = "jdbc:mysql://localhost:3306/shopping";
 			String username = "root";
-			String password = "root";
+			String password = "as";
 			conn = DriverManager.getConnection(url, username, password);
 			/*conn.setAutoCommit(false);*/
 			threadLocal.set(conn);

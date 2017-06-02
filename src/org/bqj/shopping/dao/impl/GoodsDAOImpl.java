@@ -208,7 +208,7 @@ public class GoodsDAOImpl extends BaseDAOImpl<Goods>
 				goods.setGoodsShelfTime(rs.getTimestamp(6));
 				goods.setGoodsHits(rs.getLong(7));
 				goods.setGoodsSales(rs.getLong(8));
-				goods.setGoodsPic(rs.getString(9));	
+				goods.setGoodsPic(rs.getString(9));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

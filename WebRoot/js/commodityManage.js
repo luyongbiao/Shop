@@ -18,3 +18,6 @@ function deleteById(obj){
 function add(){
 	window.location.href="/MyShopping/addGoods.jsp";
 }
+function orders(){
+	window.location.href="/MyShopping/AllOrdersServlet";
+}

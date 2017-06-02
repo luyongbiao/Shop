@@ -48,6 +48,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	         <div class="commodity1">
 	                <input type="button" value="上传商品" onclick="add()">
 	         </div>
+	         <div class="commodity1">
+	                <input type="button" value="管理订单" onclick="orders()">
+	         </div>
         </div>
     </div>
     <div class="menu_block">
