@@ -102,7 +102,7 @@
 							<input type="hidden" name="cartDetailId"
 								value="${item.value.cartDetailId }">
 							<ul>
-								<li><input type="checkbox" class="selectOne"></li>
+								<li><input type="checkbox" class="selectOne" name="goodsForSelectOne" value="${item.value.cartDetailId}"></li>
 								<li class="product">
 									<div class="goodsDetail">
 										<div class="goodsImage">
@@ -151,7 +151,7 @@
 					</li>
 					<li>
 						<div class="add_order">
-							<a href="#"> <span>结算</span>
+							<a href="javascript:void(0)"><span>结算</span>
 							</a>
 						</div>
 					</li>

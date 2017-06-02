@@ -146,6 +146,29 @@ public class CartServlet extends HttpServlet {
 			
 			response.sendRedirect("cartServlet?op=list");
 			
+		} else if (op.equals("update")) {
+			int goodsCount = 0;
+			double totalPrice = 0;
+			int cartDetailId = 0;
+			try {
+				goodsCount = jsonObject.getInt("goodsCount");
+				totalPrice = jsonObject.getDouble("totalPrice");
+				cartDetailId = jsonObject.getInt("cartDetailId");
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			
+			this.cartService.update(cartDetailId,goodsCount,totalPrice);
+			
+			String responseJsonStr = "{message:success}";
+			JSONObject responseJson = null;
+			try {
+				responseJson = new JSONObject(responseJsonStr);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+			response.getWriter().println(responseJson);
+			
 		} else if (op.equals("deleteMore")) {
 			
 			String[] cdIdsStr = request.getParameterValues("cartDetailId");

@@ -1,7 +1,6 @@
 package org.bqj.shopping.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -26,7 +25,6 @@ public class CommoditySaveServlet extends HttpServlet {
 		response.setContentType("text/html;charset=utf-8");
 		response.setCharacterEncoding("UTF-8");
 		request.setCharacterEncoding("UTF-8");
-		PrintWriter out = response.getWriter();
 		
 		//获取修改参数
 		int id =Integer.parseInt( request.getParameter("goodsId"));
@@ -34,7 +32,6 @@ public class CommoditySaveServlet extends HttpServlet {
 		int goodsStock = Integer.parseInt( request.getParameter("goodsStock"));
 		Double goodsPrice =Double.parseDouble( request.getParameter("goodsPrice"));
 		String goodsName = new String(request.getParameter("goodsName"));	
-		String goodsShelfTime = request.getParameter("goodsShelfTime");
 		String goodsDesc = request.getParameter("goodsDesc");
 		
 		GoodsCategoryService goodsCategoryService = new GoodsCategoryService();
@@ -48,7 +45,6 @@ public class CommoditySaveServlet extends HttpServlet {
 		goods.setGoodsName(goodsName);
 		goods.setGoodsPrice(goodsPrice);
 		goods.setGoodsStock(goodsStock);
-		//goods.setGoodsShelfTime(goodsShelfTime);
 		goods.setGoodsDesc(goodsDesc);
 		
 		goodsCategoryService.modify(goodsCategory);

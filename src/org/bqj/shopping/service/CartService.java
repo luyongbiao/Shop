@@ -58,6 +58,14 @@ public class CartService {
 		}
 	}
 	
+	public void update(int cartDetailId,int goodsCount,double totalPrice){
+		CartDetail cartDetail = this.cartDetailDAO.loadById(cartDetailId);
+		cartDetail.setGoodsCount(goodsCount);
+		cartDetail.setTotalPrice(totalPrice);
+		this.cartDetailDAO.modify(cartDetail);
+	}
+	
+	
 	public Cart myCart(int customerId) {
 		Cart cart = this.cartDAO.findByCustomerId(customerId);
 		return cart;
