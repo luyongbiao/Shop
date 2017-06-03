@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.bqj.shopping.dao.GoodsDAO;
 
-import org.bqj.shopping.dao.GoodsDAO;
 import org.bqj.shopping.db.DB;
 import org.bqj.shopping.entity.Goods;
 

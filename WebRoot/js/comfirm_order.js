@@ -8,16 +8,45 @@ $(document).ready(function() {
 	});
 	
 	$(".add_order a span").click(function() {
-		var strc = "";
+		$(".shade_content2").show();
+		$(".shade").show();
+		/*var strc = "";
 		$("input[name=cartDetailId]").each(function() {
-			//alert($(this).val());
 			strc += "&checked=" + $(this).val();
 		});
 		if (strc == "") {
 			return;
 		}
 		strc = strc.substring(1);
-		location.href = 'ordersDetailServlet?' + strc + '&op=' + 'save';
+		location.href = 'ordersDetailServlet?' + strc + '&op=' + 'save';*/
+	});
+	
+	$(".shade_content2 .btn_remove1").click(function() {
+		$(".shade_content2").hide();
+		$(".shade").hide();
+		var strc = "";
+		$("input[name=cartDetailId]").each(function() {
+			strc += "&checked=" + $(this).val();
+		});
+		if (strc == "") {
+			return;
+		}
+		strc = strc.substring(1);
+		location.href = 'ordersDetailServlet?' + strc + '&op=' + 'save' + "&status=2";
+	});
+	
+	$(".shade_content2 .sub_set1").click(function() {
+		$(".shade_content2").hide();
+		$(".shade ").hide();
+		var strc = "";
+		$("input[name=cartDetailId]").each(function() {
+			strc += "&checked=" + $(this).val();
+		});
+		if (strc == "") {
+			return;
+		}
+		strc = strc.substring(1);
+		location.href = 'ordersDetailServlet?' + strc + '&op=' + 'save' + "&status=1";
 	});
 	
 

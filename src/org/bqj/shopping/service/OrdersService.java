@@ -33,16 +33,15 @@ public class OrdersService {
 		cartDetailDAO = new CartDetailDAOImpl();
 		goodsDAO = new GoodsDAOImpl();
 	}
-	public Orders saveOrders(int customerId,int[] cartDetaileIds/*,String ordersNote*/){
+	public Orders saveOrders(int customerId,int[] cartDetaileIds/*,String ordersNote*/, int OrdersStatus){
 		Orders orders = new Orders();
 //		orders.setOrdersNote(ordersNote);
 		orders.setOrdersCreateTime(new Timestamp(new Date().getTime()));
-		orders.setOrdersStatusId(1);//设置为未付款。
+		orders.setOrdersStatusId(OrdersStatus);//设置为未付款。
 		orders.setCustomerId(customerId);
 		this.ordersDAO.save(orders);
 		/*System.out.println(orders.getOrdersCreateTime().toString().substring(0,19));*/
 		int ordersId = this.ordersDAO.findOrdersByCreateTime(orders.getOrdersCreateTime().toString().substring(0,19),customerId);
-		System.out.println(ordersId);
 		orders.setOrdersId(ordersId);
 		saveOrdersDetails(orders,cartDetaileIds);
 		return orders;

@@ -56,7 +56,7 @@
                 </ul>
             </div>
             <div class="top_phone">
-                <span><a href='#'>我的购物车</a></span>
+                <span><a href='cartServlet?op=list'>我的购物车</a></span>
                 <span><a href='#'>请联系我们</a></span>
                  <span><a href='ordersServlet?op=list' id="myOrders">我的订单</a></span>
             </div>
@@ -141,12 +141,12 @@
     </div>
     <div class="orders_id">
         <div class="w">
-            <div class="orders_address">
-                寄送至：<span>广东省广州市 海珠滨江仲恺农业工程学院海珠校区 北区6栋209</span>
+            <div class="orders_address" >
+                寄送至：<span>${myAddress.addressProvince }${myAddress.addressCity } ${myAddress.addressArea }${myAddress.addressDetail }</span>
             </div>
             <br/>
             <div class='orders_phone'>
-                联系人：<span>卢勇彪 &nbsp;&nbsp;13232187878</span>
+                联系人：<span>${sessionScope.customer.customerName } &nbsp;&nbsp;${sessionScope.customer.customerMobilePhone }</span>
             </div>
         </div>
     </div>

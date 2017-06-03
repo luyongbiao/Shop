@@ -95,7 +95,7 @@
                 </ul>
             </div>
             <div class="top_phone">
-                <span><a href='#'>我的购物车</a></span>
+                <span><a href='cartServlet?op=list'>我的购物车</a></span>
                 <span><a href='#'>请联系我们</a></span>
             </div>
         </div>

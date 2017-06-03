@@ -82,7 +82,7 @@ public class AdminServlet extends HttpServlet {
 				}
 			}
 			if (adminLogin == true)
-				response.getWriter().print("index.jsp");
+				response.getWriter().print("CommodityManageServlet");
 			else
 				response.getWriter().print("error");
 			

@@ -34,14 +34,22 @@
         <div class="top_content">
             <div class="top_menu">
                 <ul>
-                    <li><a href="#">账户登录</a></li>
+                    <c:choose>
+						<c:when test="${sessionScope.customer != null }">
+							<li><a>${sessionScope.customer.customerName }先生</a>
+								<a class="logout">注销</a></li>
+						</c:when>
+						<c:otherwise>
+							<li><a href="login.html">账户登录</a></li>
+						</c:otherwise>
+					</c:choose>
                     <li><a href="#">注册</a></li>
                     <li><a href="#">向导</a></li>
                     <li><a href="#">博客</a></li>
                 </ul>
             </div>
             <div class="top_phone">
-                <span><a href='#'>我的购物车</a></span>
+                <span><a href='cartServlet?op=list'>我的购物车</a></span>
                 <span><a href='#'>请联系我们</a></span>
             </div>
         </div>
@@ -145,7 +153,7 @@
     <div class="orders_id">
         <div class="w">
             <div class='orders_phone'>
-               	 联系人：<span>卢勇彪 &nbsp;&nbsp;13232187878</span>
+               	 联系人：<span>${sessionScope.customer.customerName } &nbsp;&nbsp;${sessionScope.customer.customerMobilePhone }</span>
             </div>
         </div>
     </div>
@@ -260,6 +268,15 @@
 							<input type="button" class="sub_set" id="" value="提交" />
 					</div>
 				</div>
+			</div>
+		</div>
+		<div class="shade_content2">
+			<div class="payOrNot" style="height:130px;text-align:center;line-height:120px;">
+				<span style='font-size:30px;font-weight:500;'>是否付款？</span>
+			</div>
+			<div class="col-xs-12">
+					<input class="btn_remove1" type="button" id="" onclick="javascript:onclick_close();" value="是" />
+					<input type="button" class="sub_set1" id="" value="否" />
 			</div>
 		</div>
 		<input type="hidden" id="bubu" value="1">
