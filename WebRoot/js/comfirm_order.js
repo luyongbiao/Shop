@@ -31,9 +31,10 @@ $(document).ready(function() {
 		if (strc == "") {
 			return;
 		}
-		strc = strc.substring(1);
-		location.href = 'ordersDetailServlet?' + strc + '&op=' + 'save' + "&status=2";
+
+		location.href = "ordersDetailServlet?op=save&status=2" + strc;
 	});
+
 	
 	$(".shade_content2 .sub_set1").click(function() {
 		$(".shade_content2").hide();
@@ -45,8 +46,7 @@ $(document).ready(function() {
 		if (strc == "") {
 			return;
 		}
-		strc = strc.substring(1);
-		location.href = 'ordersDetailServlet?' + strc + '&op=' + 'save' + "&status=1";
+		location.href = "ordersDetailServlet?op=save&status=1" + strc;
 	});
 	
 
@@ -162,7 +162,6 @@ $(document).ready(function() {
 			return;
 		}
 		
-		alert(addressAddressId);
 		if (addressAddressId == null || addressAddressId == "") {
 			if($(".shade_from input[name=city]").attr("disabled") == undefined)
 				$.post("addressServlet",

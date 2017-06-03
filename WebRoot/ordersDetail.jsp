@@ -85,7 +85,7 @@
             <div class="cart_header">
                 <ul>
                     <li class="product">
-                        <span style="font-weight:700;font-size:15px;">2017-05-01</span>
+                        <span style="font-weight:700;font-size:15px;">${orders.ordersCreateTime }</span>
                         <span style="margin-left:10px;font-size:15px;">订单号：${orders.ordersId}</span>
                     </li>
                     <li>

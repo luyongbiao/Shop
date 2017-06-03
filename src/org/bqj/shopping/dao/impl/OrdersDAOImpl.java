@@ -48,7 +48,7 @@ public class OrdersDAOImpl extends BaseDAOImpl<Orders>
 	@Override
 	public int findOrdersByCreateTime(String createTime,int customerId) {
 		// TODO Auto-generated method stub
-		String sql = "SELECT ordersid from orders where ordersCreateTime = '" + createTime + "' and customerId = " + customerId ;                          
+		String sql = "SELECT ordersid from orders where ordersCreateTime like '%" + createTime + "%' and customerId = " + customerId ;                          
 		Connection conn = DB.getConn();
 		Statement stmt = DB.createStatement(conn);
 		ResultSet rs = DB.executeQuery(stmt,sql);

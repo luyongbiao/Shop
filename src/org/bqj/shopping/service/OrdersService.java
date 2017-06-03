@@ -41,7 +41,7 @@ public class OrdersService {
 		orders.setCustomerId(customerId);
 		this.ordersDAO.save(orders);
 		/*System.out.println(orders.getOrdersCreateTime().toString().substring(0,19));*/
-		int ordersId = this.ordersDAO.findOrdersByCreateTime(orders.getOrdersCreateTime().toString().substring(0,19),customerId);
+		int ordersId = this.ordersDAO.findOrdersByCreateTime(orders.getOrdersCreateTime().toString().substring(0,18),customerId);
 		orders.setOrdersId(ordersId);
 		saveOrdersDetails(orders,cartDetaileIds);
 		return orders;
@@ -54,6 +54,7 @@ public class OrdersService {
 			ordersDetail.setGoodsId(this.cartDetailDAO.loadById(cartDetaileId).getGoodsId());
 			ordersDetail.setGoodsCount(this.cartDetailDAO.loadById(cartDetaileId).getGoodsCount());
 			ordersDetail.setTotalPrice(this.cartDetailDAO.loadById(cartDetaileId).getTotalPrice());
+			
 			this.ordersDetailDAO.save(ordersDetail);
 		}
 	}
