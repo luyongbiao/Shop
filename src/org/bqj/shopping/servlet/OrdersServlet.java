@@ -82,6 +82,7 @@ public class OrdersServlet extends HttpServlet {
 				response.sendRedirect("login.html");
 				return;
 			}
+			
 		}
 		
 		if(op.equals("list")) {
