@@ -23,7 +23,7 @@ public class DB {
 			conn = DriverManager.getConnection(url, username, password);
 			/*conn.setAutoCommit(false);*/
 			threadLocal.set(conn);
-		} catch (ClassNotFoundException e) {
+		} catch ( ClassNotFoundException e) {
 			e.printStackTrace();
 		} catch (SQLException e) {
 			e.printStackTrace();
